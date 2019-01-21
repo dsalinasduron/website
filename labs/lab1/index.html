@@ -1,0 +1,408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Lab 1</title>
+  </head>
+  <body>
+    <span style="font-weight: bold;">CMPT 202 </span><br
+      style="font-weight: bold;">
+    <span style="font-weight: bold;">Lab 1: Java Review</span><br
+      style="font-weight: bold;">
+    <br>
+    <table style="text-align: left; width: 75%;" cellspacing="2"
+      cellpadding="2" border="0">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top;">
+            <div style="text-align: center;"><span style="font-weight:
+                bold;">How Labs are Managed and Graded</span><br>
+            </div>
+            <br>
+            1. Select a partner on your own.&nbsp; The rules are you
+            must pair with a new partner each week.<br>
+            <br>
+            2. Work as a pair to complete the lab. At the end of the lab
+            period, make sure to share all files with each partner.<br>
+            <br>
+            3. Each partner will submit the lab separately. (Submission
+            instructions are described later in this lab.) <br>
+            <br>
+            4. If you do not finish the lab during the lab period, you
+            may either get together outside of class to complete it, or
+            complete it on your own. If you choose to complete it on
+            your own, be sure to indicate this in your submission. <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Objectives</span><br>
+    The objectives of this lab are:<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; * To review the Java language<br>
+    &nbsp;&nbsp;&nbsp; * To experiment with enumerations<br>
+    &nbsp;&nbsp;&nbsp; * To run unit tests<br>
+    &nbsp;&nbsp;&nbsp; * To apply some principles of programming and
+    software engineering <br>
+    <br>
+    <span style="font-weight: bold;">Before Proceeding</span><br>
+    <br>
+    Review the <a target="_blank"
+href="http://www.people.westminstercollege.edu/faculty/ggagne/gradingpolicy/gradingpolicy.html">Programming Grading Guidelines</a> for ideas as how to properly write Java
+    programs.<br>
+    <br>
+    This lab involves designing a class called <big><span
+        style="font-weight: bold; font-family: monospace;">GenericCoin</span></big>,
+    that allows you to flip a coin. You will then write a simple tester
+    program to test your class, and a more complicated game that uses
+    your class.<br>
+    <br>
+    Define a class <big><span style="font-weight: bold; font-family:
+        monospace;">GenericCoin</span></big> that represents a coin with
+    no value or name.&nbsp; <br>
+    <br>
+    Using Eclipse, the steps will be as follows:<br>
+    <br>
+    <blockquote>
+      <blockquote><img alt="" src="./step1.png" width="500" height="412"><br>
+      </blockquote>
+    </blockquote>
+    <br>
+    Followed by<br>
+    <br>
+    <blockquote>
+      <blockquote><img alt="" src="./step2.png" width="500" height="598"><br>
+      </blockquote>
+    </blockquote>
+    <br>
+    Notice we do not provide a <big><b><tt>main()</tt></b></big> method
+    at first (we will do so in another class.)<br>
+    <br>
+    The coin should have a <span style="font-style: italic;">heads</span>
+    side and a <span style="font-style: italic;">tails</span> side and
+    should be able to tell you which side is up. You should be able to
+    "toss" the coin so that it lands randomly either heads up or tails
+    up.<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Step 1: Write</span> <big><span
+        style="font-weight: bold; font-family: monospace;">GenericCoin.java</span></big><br>
+    <br>
+    Create the class <big><span style="font-weight: bold; font-family:
+        monospace;">GenericCoin</span></big>. <br>
+    <br>
+    Remember when writing a Java class, place a comment at the top with
+    your name, date, and a brief description of what the class does.<br>
+    <br>
+    <div style="margin-left: 80px;"><big><span style="font-weight: bold;
+          font-family: monospace;">/**</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;*&nbsp;&nbsp;&nbsp;
+
+
+
+
+
+
+
+          @name Greg Gagne</span></big><br style="font-weight: bold;
+        font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;*&nbsp;&nbsp;&nbsp;
+@date
+
+          January 2018</span></big><br style="font-weight: bold;
+        font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;*</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;*
+&nbsp;&nbsp;
+
+
+
+
+
+          This class provides a generic coin.</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;*/</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <br style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">public
+class
+
+
+
+
+
+
+
+          GenericCoin</span></big><br style="font-weight: bold;
+        font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">{</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <br>
+      <br>
+      <br style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">}</span></big><br>
+    </div>
+    <br>
+    <br>
+    It should maintain the side (heads/tails) using an <b>enumerated</b>
+    data type:<br>
+    <br>
+    <div style="margin-left: 80px;"><big><span style="font-weight: bold;
+          font-family: monospace;">public enum CoinSide {HEADS, TAILS};</span></big><br>
+    </div>
+    <br>
+    <br>
+    <span style="font-weight: bold;"></span>For your instance variable,
+    use this enumeration type <big><span style="font-weight: bold;
+        font-family: monospace;">CoinSide</span></big>. You should
+    declare a <big><span style="font-weight: bold; font-family:
+        monospace;">CoinSide</span></big> instance variable in the same
+    way that you would declare any other instance variable. However,
+    this object can only have two values, <big><span
+        style="font-weight: bold; font-family: monospace;">CoinSide.HEADS</span></big>
+    and <big><span style="font-weight: bold; font-family: monospace;">CoinSide.TAILS</span></big>.<br>
+    <br>
+    <b>Example Usage</b>:<br>
+    <br>
+    <blockquote><b><font size="+1"><tt>public enum CoinSide {HEADS,
+            TAILS};&nbsp;&nbsp;&nbsp; // CoinSide is a new data type</tt></font></b><br>
+      <b><font size="+1"><tt>CoinSide side;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; // side is of
+            type CoinSide</tt></font></b><br>
+      <br>
+      <b><font size="+1"><tt>. . .</tt></font></b><br>
+      <b><font size="+1"><tt><br>
+            side = CoinSide.HEADS;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; // sets side to
+            heads<br>
+            <br>
+            . . .<br>
+            <br>
+            if (side == CoinSide.TAILS) <br>
+            {<br>
+            &nbsp;&nbsp;&nbsp; // some logic is side is set to tails<br>
+            }<br>
+          </tt></font></b></blockquote>
+    <br>
+    &nbsp; <br>
+    This class should include the following methods:<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; * a constructor that initializes&nbsp; the coin
+    at heads<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; * three mutators:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o <big><span
+        style="font-weight: bold; font-family: monospace;">void
+        setToHeads()</span></big> - sets the coin to heads<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o <big><span
+        style="font-weight: bold; font-family: monospace;">void
+        setToTails()</span></big> - sets the coin to tails<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o <big><span
+        style="font-weight: bold; font-family: monospace;">void toss()</span></big>
+    - sets the coin randomly to heads or tails. Use <big><tt><b>java.lang.</b></tt></big><big><span
+        style="font-weight: bold; font-family: monospace;">Math.random()</span></big>
+    to set the coin to heads 50% of the time, and tails 50% of the time.
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; (If you've
+    never used <big><tt><b>java</b></tt></big>.<big><span
+        style="font-weight: bold; font-family: monospace;">lang.Math.random()</span></big>
+    before, read more about it in the <a target="_blank"
+      href="http://docs.oracle.com/javase/8/docs/api/">Java API</a>.)<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; * <big><span style="font-weight: bold;
+        font-family: monospace;">isHeads()</span></big> - returns true
+    if the coin is heads<br>
+    &nbsp;&nbsp;&nbsp; * <big><span style="font-weight: bold;
+        font-family: monospace;">isTails()</span></big> - returns true
+    if the coin is tails<br>
+    &nbsp;&nbsp;&nbsp; * t<big><span style="font-weight: bold;
+        font-family: monospace;">oString()</span></big> - returns the
+    String "heads" or "tails" based on the side coin <br>
+    <br>
+    Make sure your class compiles and you implement all of the above
+    requirements.<br>
+    <br>
+    Comment your code as you proceed - it is generally easier to comment
+    code <span style="font-weight: bold;">while</span> you write it,
+    versus <span style="font-weight: bold;">after</span> you write it.<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Step 2: Write a </span><big
+      style="font-weight: bold;"><span style="font-family: monospace;">main()</span></big><span
+      style="font-weight: bold;"> method to test your class</span><br>
+    <br>
+    Write a separate class with a <big><span style="font-weight: bold;
+        font-family: monospace;">main()</span></big> method that uses
+    your <big><span style="font-weight: bold; font-family: monospace;">GenericCoin</span></big>
+    class. Name this class <big><span style="font-weight: bold;
+        font-family: monospace;">UseGenericCoin.java</span></big> . This
+    program will only contain a <b>main()</b> method that tosses <span
+      style="font-weight: bold;">two</span> coins 100 times each.
+    Afterwards, report the percentage of heads for the first coin and
+    the percentage of heads for the second coin.<br>
+    <br>
+    Then report which coin landed heads up most often, and print the
+    difference between the number of heads of the two coins. As an
+    illustration, your program would print <span style="font-weight:
+      bold;">one</span> of the following example outputs<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight: bold;
+          font-family: monospace;">The first coin was heads 3 more
+          times.</span></big><br>
+      <big><span style="font-weight: bold; font-family: monospace;"></span><span
+          style="font-weight: bold; font-family: monospace;"></span></big><br>
+      <big><span style="font-weight: bold; font-family: monospace;">The
+          second coin was heads 7 more times.</span><span
+          style="font-weight: bold; font-family: monospace;"></span></big><br>
+      <big><span style="font-weight: bold; font-family: monospace;"></span></big><br>
+      <big><span style="font-weight: bold; font-family: monospace;">Both
+          coins had the same number of heads.</span></big><br>
+    </div>
+    <br>
+    Test your classes.<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Step 2: Use the provided unit tests
+      to check your class</span><br>
+    <br>
+    Normally, you would write the unit tests first and use them to check
+    your class as you wrote the class. However, in this case, I've
+    written the unit tests for you. You may use them now to test you
+    class.<br>
+    <br>
+    Download these <a target="_blank" href="./Lab1CoinTest.java">unit
+      tests</a> and drag to the same project as your <big><span
+        style="font-weight: bold; font-family: monospace;">GenericCoin</span></big>
+    class. Your project will look similar to the following:<br>
+    <br>
+    <div style="margin-left: 40px;"><img style="width: 375px; height:
+        204px;" alt="" src="./unit.png"><br>
+    </div>
+    <br>
+    You initially may notice there is an error associated with you unit
+    test. If this occurs, click on the 'x' next to one of the "<big><span
+        style="font-family: monospace;">import</span></big>" statements.
+    The following dialog box will appear. Double-click on "Fix project
+    setup"<br>
+    <br>
+    <div style="margin-left: 40px;"><img style="width: 694px; height:
+        289px;" alt="" src="./errors.png"><br>
+    </div>
+    <br>
+    <br>
+    The following dialog box will then appear which allows you to add
+    the <b>Junit 4 library</b> to your build path. This should resolve
+    any errors.<br>
+    <br>
+    Run your unit test by right-clicking on the unit test file, and
+    selecting <b>Run As</b> -&gt;<b> JUnit</b>:<br>
+    <br>
+    <div style="margin-left: 40px;"><img style="width: 400px; height:
+        441px;" alt="" src="./runas.png"><br>
+      <br>
+    </div>
+    If your class fails any tests, you should examine which test is
+    failing, and fix your class (NOT the unit test)!<br>
+    <br>
+    [ You must complete through this portion of the lab before beginning
+    work on homework #1. ]<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Step 4: Comment your code</span><br>
+    <br>
+    You should have commented each of your classes as you completed
+    them. <a target="_blank"
+href="http://www.people.westminstercollege.edu/faculty/ggagne/gradingpolicy/gradingpolicy.html">Good
+
+
+
+
+
+
+
+      programming style</a> includes:<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; * using meaningful variable names<br>
+    &nbsp;&nbsp;&nbsp; * using proper indentation<br>
+    &nbsp;&nbsp;&nbsp; * including a comment block before the program
+    that describes what program does and includes your name and the
+    assignment<br>
+    &nbsp;&nbsp;&nbsp; * including a comment block before each public
+    method that describes what the method does and what its
+    preconditions (assumptions) are<br>
+    &nbsp;&nbsp;&nbsp; * including comments anywhere the code may be
+    confusing <br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Extra Time? </span><span
+      style="font-weight: bold;">Write a game.</span><br>
+    <br>
+    Write a program in a new class: <big><span style="font-weight:
+        bold; font-family: monospace;">CoinGame.java</span></big>. You
+    should ask the user to guess whether the coin will be heads or
+    tails. Then flip the coin and report if the coin was heads or tails.
+    Repeat until the user is done playing.<br>
+    <br>
+    The <big><span style="font-weight: bold; font-family: monospace;">java.util.Scanner</span></big>
+    class is a good choice for capturing user input. <br>
+    <br>
+    After the user is done, report the number of coin tosses, and how
+    many times the user guessed correctly. Also include the percentage
+    of correct guesses.<br>
+    <br>
+    <span style="font-weight: bold;">Lab Handin</span><br>
+    <br>
+    Demonstrate your program to the SI or me. Next, be sure to share the
+    Java files with your partner. This ensures each partner has all
+    necessary files. (assuming you developed it on one computer.) Then
+    upload your <big><span style="font-weight: bold; font-family:
+        monospace;">GenericCoin.java</span></big> , <big><span
+        style="font-weight: bold; font-family: monospace;">UseGenericCoin.java</span></big>
+    , and <big><span style="font-weight: bold; font-family: monospace;">CoinGame.java</span></big>&nbsp;
+(if
+
+you
+completed
+this
+step)
+
+
+
+
+
+
+
+    to Canvas. <span style="font-weight: bold;">Each member</span> in
+    the group needs to submit the&nbsp; Java files to Canvas.<br>
+    <br>
+    The title of your submission should be the names of everyone in your
+    group. The message in the message box should be your rating of your
+    partner.<br>
+    <br>
+    Unless you worked alone, everyone should rate their partner(s) in
+    the Canvas message box. Your partner should be rated on a scale of
+    5-100, based on the following questions: Your partner should be
+    rated on a scale of 5-100, based on the following questions:<br>
+    <br>
+    &nbsp;&nbsp; 1. Did your partner read preparatory materials before
+    coming to the scheduled lab? (1-20)<br>
+    &nbsp;&nbsp; 2. Did your partner do his or her fair share of the
+    work? (1-20)<br>
+    &nbsp;&nbsp; 3. Did your partner cooperatively follow the pair
+    programming model (rotating roles of driver and navigator)? (1-20)<br>
+    &nbsp;&nbsp; 4. Did your partner make contributions to the
+    completion of the lab assignment? (1-20)<br>
+    &nbsp;&nbsp; 5. Did your partner cooperate? (1-20) <br>
+    <br>
+    If you were completely satisfied with the process, you should give
+    your partner a score of 100. If you were not satisfied with the
+    process, please provide a breakdown of your partner's rating, and
+    elaborate (in as much detail as you wish) on your experience.
+  </body>
+</html>

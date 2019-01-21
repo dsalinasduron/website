@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Homework 1</title>
+  </head>
+  <body>
+    <b>CMPT 202</b><br><br>
+    </b><b>Homework #1</b><br>
+    <br>
+    <hr width="100%" size="2"><b></b><br>
+    <b>Overview</b><br>
+    <br>
+    Two numbers are said to be <i>co-prime</i> if their only common
+    factor is 1. For example, 4 and 9 are co-prime as their only common
+    factor is 1. However, the numbers 4 and 10 are not co-prime.
+    (Co-prime numbers are also referred to as <i>relatively prime</i>.)<br>
+    <br>
+    This assignment will involve writing a Java program that is passed
+    two values M and N, and it will determine all the co-prime pairs
+    between (1,1) and (M,N). It will present these co-primes by
+    outputting them as a grid. For example, the following displays the
+    co-prime pairs of of M = 15 N = 15<br>
+    <br>
+    <blockquote>
+      <blockquote><img alt="" src="./coprimes.png" width="400"
+          height="388"><br>
+      </blockquote>
+    </blockquote>
+    <br>
+    where an asterisk represents a co-prime pair. The following image
+    shows the relative positions of each pair (notice that (1,1) is the
+    lower left-hand corner) where the blue circle is the co-prime pair
+    (4,9), and the yellow circle indicates (4,10) is not co-prime.<br>
+    <br>
+    <blockquote>
+      <blockquote><img alt="" src="./coprimes-annotated.png" width="400"
+          height="388"><br>
+      </blockquote>
+    </blockquote>
+    <br>
+    <br>
+    <b>Assignment<br>
+      <br>
+    </b> Write a Java program that is passed two parameters representing
+    the pairs to generate. Use the following program as a starting
+    point:<br>
+    <br>
+    - <a href="./CoPrimes.java">CoPrimes.java</a><br>
+    <br>
+    It currently expects two parameters passed on the command line.
+    Using Eclipse, parameters are passed to Java programs by the
+    following steps:<br>
+    <br>
+    <b>Run As -&gt; Run Configurations</b><br>
+    <br>
+    <blockquote>
+      <blockquote><img alt="" src="./step1.png" width="500" height="592"><br>
+      </blockquote>
+    </blockquote>
+    <br>
+    and then<br>
+    <br>
+    <blockquote>
+      <blockquote><img alt="" src="./step2.png" width="600" height="477"><br>
+      </blockquote>
+    </blockquote>
+    <br>
+    Modify CoPrimes.java so that it displays the co-primes as shown in
+    the above figures (that is, an '*' if the coordinates (i,j)
+    represent a co-prime, or a space if it is not a co-prime pair.)<br>
+    <br>
+    <b>Hint</b><br>
+    <br>
+    Consider how the Euclidean method of determining the greatest common
+    divisor may be helpful at solving this problem.<br>
+    &nbsp;<br>
+    <b>Submission</b><br>
+    <br>
+    Submit your implementation of <big><tt>CoPrimes.java</tt></big> to
+    Canvas. There is a grading
+    rubric on the Canvas dropbox for this assignment.<br>
+    <br>
+    <br>
+    &nbsp;<br>
+    <br>
+    <br>
+  </body>
+</html>
