@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Lab 2</title>
+  </head>
+  <body>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">CMPT 202<span class="Apple-converted-space">&nbsp;</span></span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">Lab 2: Java Fundamentals</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">
+    <br style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">Objectives</span><br>
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">The objectives of this lab are:</span><br style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">&nbsp;&nbsp;&nbsp; * To review the Java language</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">&nbsp;&nbsp;&nbsp; * To use methods in the math API</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">&nbsp;&nbsp;&nbsp; * To design and run unit tests</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">&nbsp;&nbsp;&nbsp; * To apply some principles of
+      programming and software engineering<span
+        class="Apple-converted-space">&nbsp;</span></span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">Before Proceeding</span><br style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">Review the<span class="Apple-converted-space">&nbsp;</span></span><a
+      target="_blank"
+href="http://www.people.westminstercollege.edu/faculty/ggagne/gradingpolicy/gradingpolicy.html"
+      style="font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">Programming
+
+
+
+      Grading Guidelines</a><span style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      display: inline ! important; float: none;"><span
+        class="Apple-converted-space">&nbsp;</span>for ideas as how to
+      properly write Java programs.</span><br>
+    <br>
+    <span style="font-weight: bold;">The Lab</span><br>
+    <br>
+    The following image represents a 3-dimensional point with an x, y,
+    and z coordinate:<br>
+    <br>
+    <div style="margin-left: 80px;"><img style="width: 400px; height:
+        300px;" alt="" src="./3d.jpg"><br>
+    </div>
+    <br>
+    Design a class named <big><span style="font-family: monospace;">ThreeDimensionalPoint</span></big>
+    that represents a 3 dimensional point that has a specified x, y, and
+    z coordinate. These coordinates should be stored as double .<br>
+    <br>
+    (1) Specifically, provide two constructors:<br>
+    <br>
+    <div style="margin-left: 40px;">- a default constructor that sets
+      the origin at <big><span style="font-family: monospace;">(0,0,0)</span></big><br>
+      <br>
+      - a constructor that allows the <big><span style="font-family:
+          monospace;">(x,y,z)</span></big> coordinates to be specified.<br>
+      <br>
+    </div>
+    (2) A getter for the x, y, and z coordinates:<br>
+    <br>
+    <div style="margin-left: 40px; font-family: monospace;"><big>-
+        getX(), getY(), getZ()<br>
+      </big></div>
+    <br>
+    <br>
+    The following steps require implementing specific methods. For each
+    of these methods, first write the stub of the method (i.e. it just
+    compiles, but provides no functionality) then write an appropriate
+    unit test. You should initially fail your unit tests. Next,
+    implement the method. Repeat this process for each of the six
+    methods. This is the process behind test-driven development (TDD).<br>
+    <br>
+    (3) Provide three methods that allow the specified point to be
+    shifted by a specified amount along any of the three axis:<br>
+    <br>
+    <div style="margin-left: 40px;">- <big><span style="font-family:
+          monospace;">double shiftX(double amount)</span></big><br>
+      <br>
+      - <big><span style="font-family: monospace;">double shiftY(double
+          amount)</span></big><br>
+      <br>
+      - <big><span style="font-family: monospace;">double shiftZ(double
+          amount)</span></big><br>
+    </div>
+    <br>
+    In all three instances, each method returns the new position of
+    either the x, y, or z coordinate.<br>
+    <br>
+    (4) Provide three methods that will allow the rotation of a point by
+    a specified angle around a specified axis. This will require a bit
+    of trigonometry:<br>
+    <br>
+    <div style="margin-left: 40px;"><img style="width: 799px; height:
+        645px;" alt="" src="./rotations.png"><br>
+    </div>
+    Look in the Java API on how to use the <big><span
+        style="font-family: monospace;">sin()</span></big> and <big><span
+        style="font-family: monospace;">cos()</span></big> methods.
+    (They are simple and easy to use.)<br>
+    <br>
+    These three methods will have the signature<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">- void rotateX(double theta)<br>
+          <br>
+          - void rotateY(double theta) <br>
+          <br>
+          - void rotateZ(double theta)</span></big><br>
+      <br>
+    </div>
+    <br>
+    When you write these unit tests, you will likely need to perform
+    some of the math using a calculator to first determine what the
+    correct values of x, y, and z are following a rotation. You will
+    also have to think about the value of <big><tt>delta</tt></big> for
+    the <big><span style="font-family: monospace;">assertEquals()</span></big>
+    where you are asserting two double values have the same value. (The
+    <i>delta</i> value is the threshold you are allowing the two
+    variables to vary where you still assert they are equals. For
+    example, if <big><span style="font-family: monospace;">v1 = 5.45</span></big>
+    and <big><span style="font-family: monospace;">v2 = 5.5</span></big>
+    and <big><span style="font-family: monospace;">epsilon = .05</span></big>,
+    <big><span style="font-family: monospace;">assertEquals(v1,v2,epsilon)</span></big>
+    will return <big><span style="font-family: monospace;">true</span></big>.)<br>
+    <br>
+    <br>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">Lab Handin<br>
+    </span><br style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; word-spacing: 0px;">
+    U<span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">pload your<span class="Apple-converted-space"> <span
+          style="font-family: monospace;"><span style="font-weight:
+            bold;"></span></span></span></span><big style="color: rgb(0,
+      0, 0); font-family: Times; font-style: normal; font-variant:
+      normal; font-weight: normal; letter-spacing: normal; line-height:
+      normal; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; word-spacing: 0px;"><span style="font-weight:
+        bold; font-family: monospace;">ThreeDimensionalPoint.java</span></big><span
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px; display: inline ! important; float: none;"><span
+        class="Apple-converted-space"> </span>as well as your unit
+      tests t</span><span style="color: rgb(0, 0, 0); font-family:
+      Times; font-size: medium; font-style: normal; font-variant:
+      normal; font-weight: normal; letter-spacing: normal; line-height:
+      normal; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; word-spacing: 0px; display: inline !
+      important; float: none;">o Canvas.<span
+        class="Apple-converted-space">&nbsp;</span></span><span
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">Each member</span><span style="color: rgb(0,
+      0, 0); font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      display: inline ! important; float: none;"><span
+        class="Apple-converted-space">&nbsp;</span>in the group needs to
+      submit the&nbsp; Java files to Canvas.</span><br style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">The title of your submission should be the names of
+      everyone in your group. The message in the message box should be
+      your rating of your partner.</span><br style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">Unless you worked alone, everyone should rate their
+      partner(s) in the Canvas message box. Your partner should be rated
+      on a scale of 5-100, based on the following questions: Your
+      partner should be rated on a scale of 5-100, based on the
+      following questions:</span><br style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">&nbsp;&nbsp; 1. Did your partner read preparatory materials
+      before coming to the scheduled lab? (1-20)</span><br style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">&nbsp;&nbsp; 2. Did your partner do his or her fair share
+      of the work? (1-20)</span><br style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">&nbsp;&nbsp; 3. Did your partner cooperatively follow the
+      pair programming model (rotating roles of driver and navigator)?
+      (1-20)</span><br style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">&nbsp;&nbsp; 4. Did your partner make contributions to the
+      completion of the lab assignment? (1-20)</span><br style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">&nbsp;&nbsp; 5. Did your partner cooperate? (1-20)<span
+        class="Apple-converted-space">&nbsp;</span></span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; display: inline ! important; float:
+      none;">If you were completely satisfied with the process, you
+      should give your partner a score of 100. If you were not satisfied
+      with the process, please provide a breakdown of your partner's
+      rating, and elaborate (in as much detail as you wish) on your
+      experience.</span><br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>

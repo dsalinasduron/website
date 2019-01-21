@@ -1,0 +1,47 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Brief Article}
+\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+%\maketitle
+%\section{}
+%\subsection{}
+
+\noindent
+Suppose you have a point with coordinates $x$, $y$, and $z$. After rotating this point by  $\Theta$ (specified in radians), the location will have new coordinates which we will call $x'$, $y'$, and $z'$ \\ \\
+
+\noindent
+{\bf After a $\Theta$ rotation around the $x$-axis}: \\ \\
+
+\noindent
+\hspace*{1in} $x' = x$ \\
+\hspace*{1in} $y' = y \; cos(\Theta) - z \; sin(\Theta)$ \\
+\hspace*{1in} $z' = y \; sin(\Theta) + z \; cos(\Theta)$ \\ \\
+
+\noindent
+{\bf After a $\Theta$ rotation around the $y$-axis}: \\ \\
+
+\noindent
+\hspace*{1in} $x' = x \; cos(\Theta) + z \; sin(\Theta)$ \\
+\hspace*{1in} $y' = y$ \\
+\hspace*{1in} $z' =-x \; sin(\Theta) + z \; cos(\Theta)$ \\ \\
+
+\noindent
+{\bf After a $\Theta$ rotation around the $z$-axis}: \\ \\
+
+\noindent
+\hspace*{1in} $x' =  x \; cos(\Theta) - y \; sin(\Theta)$ \\
+\hspace*{1in} $y' = x \; sin(\Theta) + y \; cos(\Theta)$ \\
+\hspace*{1in} $z' = z$
+
+\end{document}  
