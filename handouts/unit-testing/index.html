@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Unit Testing</title>
+  </head>
+  <body>
+    <span style="font-weight: bold;">Unit Testing</span><br>
+    <br>
+    Unit testing is a very powerful technique for ensuring your code
+    meets requirements and specifications. <br>
+    <br>
+    As a general rule, you should always run/re-run unit tests whenever
+    you make any change to working code. This demonstrates the power
+    behind unit tests: you feel free to make changes to code as you have
+    an easy and quick way of ensuring your changes did not break any
+    existing, properly-working code.<br>
+    <br>
+    <img alt="" src="./IMG_8213.jpg" height="400" width="300"> <img
+      alt="" src="./IMG_8214.jpg" height="400" width="300"> <img alt=""
+      src="./IMG_8215.jpg" height="400" width="300"><br>
+    <br>
+    In most instances thus far, you have been given unit tests that test
+    your implementation of certain methods and classes. <br>
+    <br>
+    For example, the following unit test for Lab #1<br>
+    <br>
+    <a target="_blank" href="./Lab1CoinTest.java">Lab1CoinTest.java</a><br>
+    <br>
+    The <a target="_blank"
+      href="http://junit.sourceforge.net/javadoc/org/junit/Assert.html">Assert
+
+
+      API</a>.<br>
+    <br>
+    A unit test is a method that begins with "<big><tt>test</tt></big>"<br>
+    <br>
+    Questions:<br>
+    <br>
+    <div style="margin-left: 40px;">1. How many unit tests are being
+      run?<br>
+      <br>
+      2. How many test cases are being run for <big><span
+          style="font-family: monospace;">testSetTails()</span></big>?<br>
+      <br>
+      3. The <big><span style="font-family: monospace;">assertEquals()</span></big>
+      test takes two arguments. Explain what the first and second
+      arguments represent.<br>
+      <br>
+      There is one version of <big><span style="font-family:
+          monospace;">assertEquals()</span></big> that takes three
+      arguments:<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;<big><span style="font-family: monospace;">
+          assertEquals(double expected, double actual, double delta)</span></big><br>
+      <br>
+      4. When should this version of <big><tt>assertEquals()</tt></big>
+      method used?<br>
+      <br>
+      5. What is the purpose of the <big><tt>delta</tt></big>
+      parameter?<br>
+      <br>
+      6. Are the different versions of <big><tt>assertEquals()</tt></big>
+      an example of method <span style="font-weight: bold;">overriding</span>
+      or method <span style="font-weight: bold;">overloading</span>?<br>
+      <br>
+      &nbsp;<br>
+    </div>
+    However it is also important to know how to design your own unit
+    tests as well. <br>
+    <br>
+    Download <a target="_blank" href="./Rectangle.java">Rectangle.java</a>
+    and insert it into an Eclipse project.<br>
+    <br>
+    Notice it has <span style="font-weight: bold;">stub</span> methods
+    for <big><span style="font-family: monospace;">area()</span></big>
+    and <big><span style="font-family: monospace;">perimeter()</span></big>.
+    We will write unit tests for these two methods.<br>
+    <br>
+    In Eclipse, go to <span style="font-weight: bold;">File -&gt; New
+      -&gt; JUnit test case</span> and give your file the name <big><span
+        style="font-family: monospace;">TestRectangle</span></big> .<br>
+    <br>
+    Eclipse will create a default test case. What happens when you run
+    this test file?<br>
+    <br>
+    As a class, we will first write the unit test for testing the <big><span
+        style="font-family: monospace;">equals()</span></big> method.<br>
+    <br>
+    <br>
+    The&nbsp; <big><span style="font-family: monospace;">area()</span></big>
+    and <big><span style="font-family: monospace;">perimeter()</span></big>methods
+are
+
+
+    not yet implemented. However, we will write the unit test first
+    using a practice known as<span style="font-weight: bold;">
+      test-driven development</span> (TDD) whereby you write the test
+    before writing the implementation of the method being
+    developed.&nbsp; TDD is widely practiced in software development and
+    its basic premise is that you really shouldn't write something
+    unless you know how to test it.<br>
+    <br>
+    As a class, we will write the unit test for <big><span
+        style="font-family: monospace;">testArea()</span></big>,
+    followed by implementing the <big><span style="font-family:
+        monospace;">area()</span></big> method. You will complete <big><span
+        style="font-family: monospace;">testPerimeter</span></big>() and
+    the implementation of <big><span style="font-family: monospace;">perimeter()</span></big>
+    on your own.<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>

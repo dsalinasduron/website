@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Java Basics</title>
+  </head>
+  <body>
+    <span style="font-weight: bold;">Basics</span><br>
+    <br>
+    This page involves some Java basics that we will cover from time to
+    time.<br>
+    <br>
+    <hr style="width: 100%; height: 2px;"><b>Designing Classes</b><br>
+    <br>
+    Suppose we have a Book class:<br>
+    <br>
+    <blockquote><big><tt>public class Book</tt></big><br>
+      <big><tt>{</tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; private String
+          author;</tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; private String
+          title;</tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; private ISBN isbn;</tt></big><br>
+      <br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; public Book(String
+          author, String title, ISBN isbn) {</tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          this.author = author;</tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          this.title = title;</tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          this.isbn = isbn;</tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }</tt></big><br>
+      <br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; public getAuthor()
+          {</tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          return author;</tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }</tt></big><br>
+      <br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; public
+          setTitle(String title) {</tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          this.title = title;</tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }</tt></big><br>
+      <br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; . . .</tt></big><br>
+      <big><tt>}</tt></big><br>
+    </blockquote>
+    <br>
+    Few things to notice:<br>
+    <br>
+    1. Why do we (almost always) declare&nbsp; instance data as <big><tt>private</tt></big>?<br>
+    <br>
+    2. Why do we (almost always) declare methods as <big><tt>public</tt></big>?<br>
+    <br>
+    3.&nbsp; If instance data is declared as <big><tt>private</tt></big>,
+    how can we access/manipulate it from outside the class?<br>
+    <br>
+    4. When might we declare a method as <big><tt>private</tt></big>?<br>
+    <br>
+    5. What is the purpose of defining constructors using the same name
+    for the parameter that is initializing instance data? Do we need to
+    place <big><tt>this</tt></big> in front of the instance data?<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <big><tt>public Book(<b>String
+
+
+
+
+          author</b>, String title, ISBN isbn) {</tt><tt><br>
+      </tt><tt> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <b>this.author =
+          author;</b></tt><tt><br>
+      </tt><tt> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; this.title = title;</tt><tt><br>
+      </tt><tt> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; this.isbn = isbn;</tt><tt><br>
+      </tt><tt> &nbsp;&nbsp; }</tt></big><br>
+    <br>
+    <br>
+    <b>Overriding Equals<br>
+      <br>
+    </b> The <a target="_blank"
+href="https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#equals%28java.lang.Object%29">equals()</a>
+    method in Java is defined in the Object class. <br>
+    <br>
+    1. When do we use <big><tt>.equals()</tt></big> rather than <big><tt>==</tt></big>
+    when comparing two data items?<br>
+    <br>
+    2. What is the default behavior of <big><tt>equals()</tt></big>? <br>
+    <br>
+    Download the following class that represents a Circle:<br>
+    <br>
+    - <a href="./CircleV1.java">CircleV1.java</a><br>
+    <br>
+    and associated unit tests<br>
+    <br>
+    - <a href="./TestCircleV1.java">TestCircleV1.java</a><br>
+    <br>
+    Run the unit tests.<br>
+    <br>
+    3. Why does this unit test fail? <br>
+    <br>
+    4. What is meant by method <b>overriding</b>?<br>
+    <br>
+    5. What do we need to do to fix the <big><tt>CircleV1</tt></big>
+    class so&nbsp; that it passes the unit test?<br>
+    <br>
+    <b>How to Override Equals</b><b><br>
+    </b><br>
+    The following&nbsp;<big><tt></tt></big> method overrides <big><tt>equals()</tt></big>
+    for the <big><tt>CircleV1</tt></big> class:<br>
+    <br>
+    <blockquote>&nbsp;&nbsp;&nbsp;<big><tt> public boolean equals(Object
+          other) {<br>
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <font color="#cc33cc">/**<br>
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; * Quick check
+            #1: No object can be equal to null<br>
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; */<br>
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (other == null)<br>
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            return false;<br>
+          </font><br>
+        </tt></big> <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<font
+            color="#ff0000"> /**</font></tt></big><font color="#ff0000"><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;* Quick
+            check #2: If 'this' and 'other' are the</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;* same
+            object, they are equal so return true.</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;*/</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (other ==
+            this)</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp; return true;</tt></big></font><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <font
+            color="#009900">/**</font></tt></big><font color="#009900"><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;* Quick
+            check #3: Make sure that other</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;* is in
+            fact a Circle. If it is not,</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;* return
+            false.</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;*/</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if ( !(other
+            instanceof CircleV1))</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp; return false;</tt></big></font><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <font
+            color="#3333ff">/**</font></tt></big><font color="#3333ff"><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;* We know
+            that other is a Circle, let's now</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;* compare
+            the relevant instance data</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;*/</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; /* typecast other
+            to a Circle */</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; CircleV1 o =
+            (CircleV1)other;</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; /**</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;* Check the
+            instance data for equality</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;*/</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if ( (this.radius
+            == o.radius) &amp;&amp; (this.color.equals(o.color)) )</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp; return true;</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else</tt></big><br>
+        <big><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp; return false;</tt></big></font><br>
+      <big><tt>&nbsp;&nbsp; </tt></big><br>
+      <big><tt>&nbsp;&nbsp;&nbsp; }</tt></big><br>
+    </blockquote>
+    Add this method to <big><tt>CircleV1.java</tt></big> and re-run the
+    unit tests.<br>
+    <br>
+    Notice how we use <big><tt>==</tt></big> for primitive data types,
+    and <big><tt>.equals()</tt></big> for objects.<br>
+    <br>
+    <br>
+    We do not need to test all fields for equality. For example, the
+    following class file represents a Process in a computer system:<br>
+    <br>
+    -<a href="./Process.java"> Process.java</a><br>
+    <br>
+    where a process is represented by a (1) command, (2) unique process
+    id, and (3) state. (Processes run commands (ie '<big><tt>/usr/bin/javac</tt></big>'
+    or "<big><tt>C:\Program Files\javac.exe</tt></big>"), are associated
+    by unique integer values, and have a state (they are either running
+    on a CPU, are ready - but waiting - to run on a CPU, or are blocked
+    such as waiting for input.)<br>
+    <br>
+    Since process id's are unique, it doesn't make sense for two (or
+    more) processes to have the same process id. <br>
+    <br>
+    Add an <big><tt>equals()</tt></big> method to the <big><tt>Process</tt></big>
+    class that says if two processes are equal if they have the same
+    command and same state. Be sure your implementation passes the
+    following unit tests:<br>
+    <br>
+    - <a href="./TestProcess.java">TestProcess.java</a><br>
+    <a target="_blank" href="./TestCircle.java"><span
+        style="font-weight: bold;"></span></a><br>
+    <hr style="width: 100%; height: 2px;"><br>
+    <br>
+  </body>
+</html>
