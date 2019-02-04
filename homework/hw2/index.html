@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>CMPT 202 - Snowman</title>
+  </head>
+  <body>
+    <span style="font-weight: bold;">CMPT 202</span><br
+      style="font-weight: bold;">
+    <br style="font-weight: bold;">
+    <b>Homework #2</b><br style="font-weight: bold;">
+    <br style="font-weight: bold;">
+<br>
+    <hr style="width: 100%; height: 2px;"><span style="font-weight:
+      bold;"><br>
+      Basic Snowman</span><br>
+    <br>
+    Snowman is a fun spelling game whereby the computer chooses a random
+    word, and the player must guess it within 6 tries. For each
+    incorrect guess, a new part of the snowman is constructed. If the
+    player cannot correctly guess the word within 6 tries, an entire
+    snowman is completed, and the player loses. (For some odd reason the
+    player loses if they can build a snowman.) The player wins if they
+    guess the word within 6 tries.<br>
+    <br>
+    Write a program that plays basic snowman. The computer will choose a
+    word at random from a dictionary of possible words. <br>
+    <br>
+    This program can be written in any style you choose. One simple
+    strategy of the output is as follows: (what the user enters appears
+    in boldface.)<br>
+    <br>
+    <div style="margin-left: 40px; font-family: monospace;"><big>_ _ _ _
+        _ _<br>
+        <br>
+        Incorrect guesses = 0<br>
+        <br>
+        Select a letter: <b>a</b><br>
+        <br>
+        _ a _ _ _ _<br>
+        <br>
+        Incorrect guesses = 0<br>
+        <br>
+        Select a letter: <b>t</b><br>
+        <br>
+        t does not appear<br>
+        <br>
+        _ a _ _ _ _<br>
+        <br>
+        Incorrect guesses = 1<br>
+        <br>
+        Select a letter: <b>s</b><br>
+        <br>
+        _ a _ _ _ s<br>
+        <br>
+        Incorrect guesses = 1<br>
+        <br>
+        Select a letter: <b>m</b><br>
+        <br>
+        m does not appear<br>
+        <br>
+        _ a _ _ _ s<br>
+        <br>
+        Incorrect guesses = 2<br>
+      </big></div>
+    <br>
+    and so forth. At the conclusion of the game, output either whether
+    the player won or lost.<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <big><tt>c a p e r s</tt></big><br>
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <big><tt>Congratulations -
+        you won!</tt></big><br>
+    <br>
+    or<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <big><tt>_ a p _ _ s</tt></big><br>
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <big><tt>Incorrect guesses =
+        6</tt></big><br>
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <big><tt>I'm sorry, you lost!
+        The word was c a p e r s</tt></big><br>
+    <br>
+    A starting point for this program is as follows:<br>
+    <br>
+    - <a target="_blank" href="./Snowman.java">Snowman.java</a><br>
+    <br>
+    which reads in the following textfile<br>
+    <br>
+    - <a href="./words.txt">words.txt</a><br>
+    <br>
+    Be sure to set up your Eclipse project similar to what is shown
+    below. Otherwise the program <big><tt>Snowman.java</tt></big> will
+    be unable to find the file <big><tt>words.txt </tt></big><br>
+    <br>
+    <blockquote><img alt="" src="setup.png" width="225" height="87"><br>
+    </blockquote>
+    <br>
+    <b>Specifics</b>:<br>
+    <br>
+    Your program should be case-neutral: '<big><span style="font-family:
+        monospace;">a</span></big>' is the same as '<big><span
+        style="font-family: monospace;">A</span></big>'.<br>
+    <br>
+    Perform some basic error checking:<br>
+    <br>
+    - If they enter a character other than '<big><span
+        style="font-family: monospace;">a ... z</span></big>' or '<big><span
+        style="font-family: monospace;">A ... Z</span></big>' you simply
+    ignore the input value and prompt again. (In other words, if they
+    enter '$' as a character, you do not check to see if it occurs in
+    the word, nor do you count it against one of their guesses.<br>
+    <br>
+    - Also check if they enter a letter they have already guessed. In
+    this case report they have already guessed that letter. Duplicate
+    incorrect guesses only count once towards the number of incorrect
+    guesses.<br>
+    <br>
+    Submit your solution to the Canvas dropbox for <b>Homework #2</b>.
+    A rubric is posted for this assignment on Canvas.<br>
+    <br>
+    <hr style="width: 100%; height: 2px;"><br>
+  </body>
+</html>

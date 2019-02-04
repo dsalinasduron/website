@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Algorithm Efficiency</title>
+  </head>
+  <body>
+    <br>
+    <h3>Algorithm Analysis</h3>
+    <br>
+    <h3>Objectives</h3>
+    <br>
+    - Introduce the concept of algorithmic efficiences<br>
+    <br>
+    - Explore standard growth rate functions<br>
+    <br>
+    - Introduce the Big-Oh notation<br>
+    <br>
+    <big><span style="font-weight: bold;">Class Activity</span></big><br>
+    <br>
+    Working in a group of three, complete the <a target="_blank"
+      href="./analysis_1.pdf">following class activity</a>.<br>
+    <br>
+    <a target="_blank" href="./analysis_1_sol.pdf">Solution</a><br>
+    <h3>Overview</h3>
+    <br>
+    Consider computing the sum of 1 .... n<br>
+    <br>
+    - <a target="_blank" href="./Sum.java">Sum.java</a><br>
+    <br>
+    Write the <big><span style="font-weight: bold; font-family:
+        monospace;">summation()</span></big> method.<br>
+    <br>
+    &lt;We shall see there are more efficient techniques for writing
+    this method.&gt;<br>
+    <br>
+    <br>
+    <br>
+    <h3>Techniques&nbsp; for Measuring Efficiency</h3>
+    <br>
+    We could measure in terms of time or space (memory requirements)<br>
+    <br>
+    We could use <a target="_blank" href="http://www.cpubenchmark.net/">CPU
+
+      benchmarks</a>.<br>
+    <br>
+    <p>We want to classify algorithms independent of:<br>
+    </p>
+    <ul>
+      <li>Machine<br>
+        <br>
+      </li>
+      <li>Input<br>
+        <br>
+      </li>
+      <li>Implementation <br>
+      </li>
+    </ul>
+    <br>
+    <h3>Growth Rate Functions</h3>
+    <br>
+    We will measure in terms of time using growth rate functions.<br>
+    <br>
+    As a problem grows in size, in general, how do we expect the amount
+    of time to grow?<br>
+    <br>
+    <div style="margin-left: 80px;"><img style="width: 484px; height:
+        267px;" alt="" src="./growth-rate.jpg"><br>
+    </div>
+    <br>
+    <br>
+    What do we want to measure? The operation that is performed the
+    most!<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Standard Growth Rate Functions</span><br>
+    <br>
+    <div style="margin-left: 40px;"><img style="width: 500px; height:
+        355px;" alt="" src="./classes.png"><br>
+    </div>
+    <br>
+    <span style="font-style: italic;">Orders of growth</span> refers to
+    how quickly the algoithm slows down as the size of the input
+    increases. (Intuitively this should make sense.)<br>
+    <br>
+    <span style="font-style: italic;">Fast</span> growth is <span
+      style="font-style: italic;">bad</span> - <span style="font-style:
+      italic;">slow</span> growth is <span style="font-style: italic;">good</span>.<br>
+    <br>
+    In general<br>
+    <br>
+    <div style="margin-left: 80px;"><big><big style="font-style:
+          italic;"><span style="font-weight: bold;">1 &lt; log n &lt; n
+            &lt; n log n &lt; n^2 &lt; n^3 &lt; 2^n &lt; n!</span><br>
+        </big></big></div>
+    <br>
+    <span style="font-weight: bold;">What the Numbers Mean</span><br>
+    <br>
+    <br>
+    <div style="margin-left: 40px;"><img style="width: 750px; height:
+        317px;" alt="" src="./cost-1.png"><br>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>Measuring Simple Loops</h3>
+    <br>
+    What is the growth rate function of <big><span style="font-weight:
+        bold; font-family: monospace;">summation()</span></big> for
+    Algorithm #1? For Algorithm #2?<br>
+    <br>
+    What are the growth rate functions for the following loops?<br>
+    <br>
+    (a)<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight: bold;
+          font-family: monospace;">for (int i = 0; i &lt; N; i++) {</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+
+          System.out.println(i);</span></big><br style="font-weight:
+        bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">}</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+    </div>
+    <big><br style="font-weight: bold; font-family: monospace;">
+    </big><br>
+    (b)<span style="font-family: monospace; font-weight: bold;"><br>
+      <big><br>
+      </big></span>
+    <div style="margin-left: 40px;"><span style="font-family: monospace;
+        font-weight: bold;"><big>for (int i = 0; i &lt; N; i++) {</big></span><br>
+      <span style="font-family: monospace; font-weight: bold;"><big>&nbsp;&nbsp;&nbsp;
+for
+(int
+j
+=
+
+          0; j &lt; N; j++) {</big></span><br>
+      <span style="font-family: monospace; font-weight: bold;"><big>&nbsp;&nbsp;&nbsp;
+
+          &nbsp;&nbsp;&nbsp; System.out.println(i+j);</big></span><br>
+      <span style="font-family: monospace; font-weight: bold;"><big>&nbsp;&nbsp;&nbsp;
+
+          }</big></span><br>
+      <span style="font-family: monospace; font-weight: bold;"><big>}</big></span><br>
+      <span style="font-family: monospace; font-weight: bold;"></span></div>
+    <div style="margin-left: 80px;"><big><big style="font-weight: bold;"><span
+            style="font-family: monospace;"></span></big></big><br>
+    </div>
+    <br>
+    (c)<br>
+    &nbsp;&nbsp; <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight: bold;
+          font-family: monospace;">for (int i = 0; i &lt; N; i++) {</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+for
+(int
+j
+=
+0;
+
+          j &lt; i; j++) {</span></big><br style="font-weight: bold;
+        font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+
+          &nbsp;&nbsp;&nbsp; System.out.println(i+j);</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+
+          }</span></big><br style="font-weight: bold; font-family:
+        monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">}</span></big><br>
+    </div>
+    <h3><br>
+    </h3>
+    <h3>Big-Oh Notation</h3>
+    <br>
+    The Big-Oh notation formalizes growth rate functions:<br>
+    <br>
+    <div style="margin-left: 40px;"><b><big><big><span
+              style="font-style: italic;">f(n) &lt;= c * g(n)</span> for
+            all <span style="font-style: italic;">n &gt;= n</span><sub
+              style="font-style: italic;">0</sub></big></big></b><br>
+    </div>
+    <br>
+    We say <span style="font-weight: bold;">f(n)</span> is <span
+      style="font-weight: bold;">&#927;(g(n))</span><br>
+    <br>
+    What is the Big-oh notation for Algorithms #1 and #2?<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table style="text-align: left; width: 50%;" border="0"
+      cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top;">
+            <div style="text-align: center;"><span style="font-weight:
+                bold;">Why should I Care?</span><br>
+              <br>
+              (or Computers are Just Getting Faster)<br>
+            </div>
+            <br>
+            <div style="text-align: center;">Consider the <a
+                target="_blank" href="http://www.mazeworks.com/hanoi/">Towers
+
+                of Hanoi</a>.<br>
+              <br>
+              Some Numbers<br>
+              <br>
+              If N = 1,000,000 at the rate of 1,000,000 operations per
+              second<br>
+            </div>
+            <br>
+            <table style="text-align: left; width: 50%; margin-left:
+              auto; margin-right: auto;" border="1" cellpadding="2"
+              cellspacing="2">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top; text-align: center;"><span
+                      style="font-weight: bold;">g(n)</span><br>
+                  </td>
+                  <td style="vertical-align: top; text-align: center;"><span
+                      style="font-weight: bold;">time</span><br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">log n<br>
+                  </td>
+                  <td style="vertical-align: top;">0.0000199 seconds<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">n<br>
+                  </td>
+                  <td style="vertical-align: top;">1 second<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">n log n<br>
+                  </td>
+                  <td style="vertical-align: top;">19.9 seconds<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">n^2<br>
+                  </td>
+                  <td style="vertical-align: top;">11.6 days<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">n^3<br>
+                  </td>
+                  <td style="vertical-align: top;">31,708 years<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">2^n<br>
+                  </td>
+                  <td style="vertical-align: top;">10^(301,016) years<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    &nbsp;<br>
+    <br>
+    <br>
+    <h3>In Practice</h3>
+    <br>
+    Using the <a target="_blank" href="./ArrayBag.java">ArrayBag</a>
+    class, answer the following questions: (Note we have eliminated the
+    <big><tt>ensureCapacity()</tt></big> method)<br>
+    <br>
+    1. We use the letter <span style="font-weight: bold; font-style:
+      italic;">n</span> generically, what does <span
+      style="font-weight: bold; font-style: italic;">n</span> refer to
+    in ArrayBag?<br>
+    <br>
+    2. What is the Big-oh notation of the following methods: <br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight: bold;
+          font-family: monospace;">add()</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big></big><br style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-family: monospace;"><span
+            style="font-weight: bold;">getSize</span></span><span
+          style="font-weight: bold; font-family: monospace;">()</span></big><br>
+      <big><span style="font-weight: bold; font-family: monospace;"></span></big><br>
+      <big><span style="font-weight: bold; font-family: monospace;">getCapacity()</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;"></span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">indexOf()</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big></big><br style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">remove()
+
+        </span></big><br>
+      <big><span style="font-weight: bold; font-family: monospace;"></span></big><br>
+      <big><span style="font-weight: bold; font-family: monospace;">addAll()</span></big><br>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>

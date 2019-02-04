@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;
+      charset=windows-1252">
+    <title>Polymorphism</title>
+  </head>
+  <body>
+    <h2>Polymorphism</h2>
+    <p> Polymorphism allows an object to take on (assume) different
+      forms. <br>
+    </p>
+    <p>A good example of polymorphism:<br>
+    </p>
+    <p style="margin-left: 40px;"><img style="width: 360px; height:
+        190px;" alt="" src="./abstractdiagram.jpg"><br>
+    </p>
+    <div style="margin-left: 40px;"><big><span style="font-weight: bold;
+          font-family: monospace;">Shape[] figures = new Shape[3]; </span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">figures[0]
+
+          = new Circle(10); </span></big><br style="font-weight: bold;
+        font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">figures[1]
+
+          = new Triangle(5,12); </span></big><br style="font-weight:
+        bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">figures[2]
+
+          = new Rectangle(5,12);</span></big><br>
+    </div>
+    <p><br>
+      The object figures is declared as type <big><span
+          style="font-weight: bold; font-family: monospace;">Shape</span></big>.
+      We then can declare an instance of a <big><span
+          style="font-weight: bold; font-family: monospace;">Circle,
+          Triangle, Rectangle</span></big>. Because these three classes
+      are derived from <big><span style="font-weight: bold;
+          font-family: monospace;">Shape</span></big> (they satisfy the
+      IS-A relationship), we can declare them as such. This is an
+      example of <span style="font-weight: bold;">type polymorphism</span>.
+      Among other things, polymorphism allows the ease of statements
+      such as: <br>
+      &nbsp;<br>
+      <big><span style="font-weight: bold; font-family: monospace;">for(int
+
+          i = 0; i &lt; figures.length; i++) { </span><br
+          style="font-weight: bold; font-family: monospace;">
+        <span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+
+          figures[i].area(); </span><br style="font-weight: bold;
+          font-family: monospace;">
+        <span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+
+          System.out.println(figures[i]); </span><br
+          style="font-weight: bold; font-family: monospace;">
+        <span style="font-weight: bold; font-family: monospace;">}</span></big><br>
+      <br>
+    </p>
+    <p>You should understand the distinction between: </p>
+    <ul>
+      <li>the <font color="#ff0000"><u>declared variable type</u></font>
+        - which determines what code will compile - and <br>
+        <br>
+      </li>
+      <li>the <font color="#3333ff"><u>created object type</u></font> -
+        which determines what code will run. </li>
+    </ul>
+    <p> </p>
+    The statement<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight: bold;
+          font-family: monospace;"><font color="#ff0000">Shape</font> c
+          = new
+          <font color="#3333ff"> Circle</font>()</span></big><br>
+    </div>
+    <br>
+    <big><span style="font-weight: bold; font-family: monospace;">Shape</span></big>
+    is the declared variable type, <big><span style="font-weight: bold;
+        font-family: monospace;">Circle</span></big> is the created
+    object type.<span style="font-weight: bold;"><br>
+      <br>
+      <br>
+      Java Interfaces</span><br>
+    <br>
+    Perhaps the best way of expressing polymorphism is with Java
+    interfaces. Java interfaces act as <span style="font-weight: bold;">types</span>
+    where they specify <span style="font-weight: bold;">what</span> an
+    object instance is to do, but not <span style="font-weight: bold;">how</span>
+    it is to be done.<br>
+    <br>
+    <span style="font-weight: bold;">Example </span><br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight: bold;
+          font-family: monospace;">public interface Shape</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">{</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+
+          /**</span></big><br style="font-weight: bold; font-family:
+        monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;
+*
+Returns
+the
+
+          perimeter of a Shape object</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;
+
+          */</span></big><br style="font-weight: bold; font-family:
+        monospace;">
+      <br style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+
+          public double getPerimeter();</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <br style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+
+          /**</span></big><br style="font-weight: bold; font-family:
+        monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;
+*
+Returns
+the
+
+          area of a Shape object</span></big><br style="font-weight:
+        bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;
+
+          */</span></big><br style="font-weight: bold; font-family:
+        monospace;">
+      <br style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+
+          public double getArea();</span></big><br style="font-weight:
+        bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">}</span></big><br>
+    </div>
+    <br>
+    Implementing the interface <a target="_blank" href="./Shape.java">Shape.java</a>
+    <br>
+    <br>
+    - <a target="_blank" href="./Circle.java">Circle.java</a> (Notice
+    the slight differences from the version we&nbsp; looked at from
+    above.)<br>
+    <br>
+    Classes implement interfaces with the following syntax:<br>
+    <br>
+    <blockquote><big><tt>public class Circle <b>implements Shape</b></tt></big><br>
+      <big><tt>{</tt></big><br>
+      <big><tt>/**</tt></big><br>
+      <big><tt>&nbsp;* Circle must implement all of the methods </tt></big><br>
+      <big><tt>&nbsp;* defined in the Shape interface.</tt></big><br>
+      <big><tt>&nbsp;*/</tt></big><br>
+      <big><tt>}</tt></big><br>
+    </blockquote>
+    <br>
+    <br>
+    As a class, implement a class named <big><span style="font-weight:
+        bold; font-family: monospace;">Square</span></big> that
+    implements the <big><span style="font-weight: bold; font-family:
+        monospace;">Shape</span></big> interface.<br>
+    <br>
+    &lt;We will also go over the UML for representing these
+    relationships&gt;
+    <p><br>
+    </p>
+  </body>
+</html>

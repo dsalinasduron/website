@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Abstract Data Types</title>
+  </head>
+  <body>
+    <big><span style="font-weight: bold;">Abstract Data Types</span></big><br>
+    <br>
+    <span style="font-weight: bold;">Objectives</span><br>
+    <br>
+    - Understand the concept of an ADT<br>
+    <br>
+    - Specify an ADT as a Java interface<br>
+    <br>
+    - Implement an ADT using an array<br>
+    <br>
+    <br>
+    An <span style="font-weight: bold;">abstract data type</span> - <span
+      style="font-weight: bold;">ADT</span> - is <span
+      style="font-style: italic;"><br>
+      <br>
+    </span>
+    <div style="margin-left: 40px;"><big><big><span style="font-style:
+            italic;">a specification that describes a data set and a set
+            of operations on that data</span></big></big>. <br>
+    </div>
+    <br>
+    An ADT is <span style="font-weight: bold;">conceptual</span> and
+    describes the <span style="font-weight: bold;">behavior</span> of
+    an object. It does not indicate how to <span style="font-weight:
+      bold;">store</span> the data or how the operations are <span
+      style="font-weight: bold;">implemented</span>.<br>
+    <br>
+    Objects that store and manipulate data are called <span
+      style="font-weight: bold;">data structures</span>. An ADT is a
+    technique for describing the conceptual behavior of a data
+    structure, without defining how it is implemented.<br>
+    <br>
+    <span style="font-weight: bold;">First Example</span><br>
+    <br>
+    The <big><span style="font-weight: bold; font-family: monospace;">Shape</span></big>
+    class that demonstrates <a target="_blank"
+      href="../polymorphism/index.html">polymorphism</a> is an example
+    of an ADT.<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Example - Bag</span><br>
+    <br>
+    A <span style="font-weight: bold;">Bag</span> is an ADT that holds
+    a collection of items. Some of its behavior:<br>
+    <br>
+    - there can be duplicate items<br>
+    <br>
+    - in real-life, items are heterogeneous<br>
+    <br>
+    - in this ADT, items must be homogeneous (they must all be of the
+    same type)<br>
+    <br>
+    - items have no order<br>
+    <br>
+    - it may or may not have a finite capacity (our initial
+    implementation will have a finite capacity)<br>
+    <br>
+    <span style="font-weight: bold;">Operations</span><br>
+    <br>
+    &lt;As a class we will identify possible operations on a Bag ADT&gt;<br>
+    <br>
+    <b>Implementation Details</b><br>
+    <br>
+    <div style="margin-left: 40px;">- use an array<br>
+      <br>
+      - finite capacity<br>
+      <br>
+      - keep track of the number of items in the bag<br>
+      <br>
+      - what else?<br>
+    </div>
+    <br>
+    <br>
+    <b>Usage Examples</b><br>
+    <br>
+    <div style="margin-left: 40px;">- Provide three examples of where a
+      program might be able to use a Bag ADT<br>
+    </div>
+    <span style="font-weight: bold;"></span><br>
+    <br>
+    <span style="font-weight: bold;">Methods</span><br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">void add(element) &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; /* adds an element to the bag
+          */</span></big><br>
+      <big><span style="font-family: monospace;"></span></big><br>
+      <big><span style="font-family: monospace;"></span></big><big><span
+          style="font-family: monospace;">int getCapacity()
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; /* returns
+          the capacity of the bag */</span></big><br style="font-family:
+        monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">int getSize()
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; /* returns the number of elements in the
+          bag */</span></big><br>
+      <br>
+      <big><span style="font-family: monospace;">boolean
+          contains(element) &nbsp;&nbsp; /* determines if the bag
+          contains a particular element */</span></big><br>
+    </div>
+    <big><span style="font-weight: bold; font-family: monospace;"></span></big><br>
+    <br>
+    &gt;&gt;&gt; Notice how we distinguish between <font size="+1"><tt>capacity</tt></font>
+    and <font size="+1"><tt>size</tt></font>.<br>
+    <br>
+    &gt;&gt;&gt; With a partner, sketch the algorithms (not the source
+    code) for these four methods. Assume elements are stored in an
+    array. (Do not be concerned if there is not sufficient available
+    space in the array.)<big><span style="font-weight: bold;
+        font-family: monospace;"><br>
+      </span></big><br>
+    &gt;&gt;&gt; What is a general algorithm for removing a specified
+    element?<br>
+    <br>
+    <br>
+    How about?<br>
+    <br>
+    1. Get the index of the item to be removed <br>
+    <br>
+    2. Remove the item at that index.<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">A&nbsp; Bag of Objects</span><br>
+    <br>
+    A Bag that can hold Objects:<br>
+    <br>
+    - <a target="_blank" href="./Bag.java">Bag.java </a><br>
+    <br>
+    Notice this interface says nothing as to how this interface is to be
+    implemented. This is a crucial component behind an abstract data
+    type - the focus is on the behavior of the ADT, not the
+    implementation.<br>
+    <br>
+    - <a target="_blank" href="./TestArrayBag.java">TestArrayBag.java</a>
+    Unit tests that test an array-based implementation of the <big><span
+        style="font-family: monospace; font-weight: bold;">Bag</span></big>
+    interface.<br>
+    <br>
+    - <a target="_blank" href="./ArrayBag.java">ArrayBag.java</a> An
+    implementation of the <big><span style="font-family: monospace;
+        font-weight: bold;">Bag</span></big> interface.<br>
+    <br>
+    - <a target="_blank" href="./UseBag.java">UseBag.java</a> A simple
+    example program that uses a Bag.<br>
+    <br>
+    Explain the difference between the capacity of the bag, and the
+    number of elements.<br>
+    <br>
+    What is the role of the <big><tt>ensureCapacity()</tt></big>
+    method?<br>
+    <br>
+    What is the role of the <big><tt>indexOf</tt><tt>()</tt></big>
+    method?<br>
+    <br>
+    <br>
+    There are in fact alternatives to arrays for implementing the <big><span
+        style="font-weight: bold; font-family: monospace;">Bag</span></big>
+    interface. Assume we were to use one of these alternatives: apart
+    from changing the name of the object instance from <big><span
+        style="font-family: monospace; font-weight: bold;">ArrayBag</span></big>
+    to another appropriate name, would the above unit tests still be
+    appropriate?<br>
+    <br>
+    Polymorphism allows us to easily change instance representations. In
+    a short while we will look at other <big><span style="font-weight:
+        bold; font-family: monospace;"></span></big>implementations of
+    the <big><span style="font-weight: bold; font-family: monospace;">Bag</span></big>
+    interface. Polymorphism allows us to replace<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <big><span
+        style="font-family: monospace;">Bag bag = new ArrayBag(5);</span><br
+        style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp; </span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;
+        bag.add("Apple");</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;
+        bag.add("Banana");</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;
+        bag.add("Cherry");</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;
+        bag.add("Dates");</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;
+        bag.add("Eggplant");</span></big><br>
+    <br>
+    with<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <big><span
+        style="font-family: monospace;">Bag bag = new ArrayListBag(5);</span><br
+        style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp; </span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;
+        bag.add("Apple");</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;
+        bag.add("Banana");</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;
+        bag.add("Cherry");</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;
+        bag.add("Dates");</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;
+        bag.add("Eggplant");</span></big><br>
+    <br>
+    The behavior of the bag remains the same, its implementation has
+    changed. This is the fundamental idea behind an abstract data type
+    and how polymorphism allows us to readily substitute one
+    implementation for another.<br>
+    <br>
+    Look through the Java API at the <a target="_blank"
+      href="http://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html">java.util.ArrayList</a>
+    class. Implement the <big><tt>Bag</tt></big> interface, this time
+    using an ArrayList. Name your implementation ArrayListBag.java <br>
+    <br>
+    (All of the methods in the <big><tt>Bag</tt></big> interface should
+    be easily implemented by using a similar, corresponding method in
+    the Java <big><tt>ArrayList</tt></big> class.) <br>
+    <br>
+    Once you have written <big><tt>ArrayListBag.java</tt></big> and it
+    compiles correctly, modify <a target="_blank" href="./UseBag.java">UseBag.java</a>
+    so that it uses an <big><tt>ArrayListBag</tt></big>, and not an <big><tt>ArrayBag</tt></big>.<br>
+    <br>
+    <br>
+  </body>
+</html>

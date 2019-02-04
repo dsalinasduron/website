@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="Content-Type">
+  <title>Eclipse Debugger</title>
+</head>
+<body>
+<span style="font-weight: bold;">Eclipse Debugger</span><br>
+<br>
+This will present an overview of how to use the debugger in Eclipse<br>
+<br>
+A debugger allows you to step through code on a line-by-line basis and
+observe how data changes value. The Eclipse debugger is a relatively
+simple, yet quite powerful, tool to use.<br>
+<br>
+This overview uses the following two class files:<br>
+<br>
+- <a target="_blank" href="./BuggyCode.java">BuggyCode.java</a> (The
+buggy code we will debug.)<br>
+<br>
+- <a target="_blank" href="./TestBuggyCode.java">TestBuggyCode.java</a>
+(Unit tests.)<br>
+<br>
+<br>
+Let's assume you have run <big><span
+ style="font-weight: bold; font-family: monospace;">TestBuggyCode</span></big>
+and the unit tests indicate the
+following error:<br>
+<br>
+<br>
+<div style="margin-left: 120px;"><img src="./screen-1.png" alt=""><br>
+<br>
+</div>
+<br>
+The unit tests tells you what line in the unit test that failed. In
+this situation it is line 16 of the unit test which calls the <big><span
+ style="font-weight: bold; font-family: monospace;">max()</span></big>
+method in the <big><span
+ style="font-weight: bold; font-family: monospace;">BuggyCode</span></big>
+class.<br>
+<br>
+We will have to set up the debugger so that we can step through the
+buggy code line by line. We do this by setting a <span
+ style="font-weight: bold;">breakpoint</span> at the <big><span
+ style="font-weight: bold; font-family: monospace;">max()</span></big>
+method in the <big><span
+ style="font-weight: bold; font-family: monospace;">BuggyCode</span></big>
+class. A <span style="font-weight: bold;">breakpoint</span> is a
+stoppage point when running a program.<br>
+<br>
+<br>
+<div style="margin-left: 120px;"><img
+ style="width: 567px; height: 637px;" alt="" src="./screen-2.png"><br>
+<br>
+</div>
+<br>
+After we have set a breakpoint, we will run the unit test again,
+however this time running it under the debugger:<br>
+<br>
+<br>
+<div style="margin-left: 120px;"><img
+ style="width: 890px; height: 961px;" alt="" src="./screen-3.png"><br>
+</div>
+<br>
+<br>
+The debugger will run each line of code until it reaches the breakpoint
+- in this case the <big><span
+ style="font-weight: bold; font-family: monospace;">max()</span></big>
+method in the <big><span
+ style="font-weight: bold; font-family: monospace;">BuggyCode</span></big>
+class. <br>
+<br>
+Once we reach a breakpoint, we can then step through each line of code
+line by line. There are in fact a few ways of stepping through code,
+however. If a line of code calls another method, we can either <span
+ style="font-weight: bold;">step into</span> that method, or <span
+ style="font-weight: bold;">step over</span> it. Stepping into a method
+allows us to step through that method line by line. However, if there
+are no known problems with that method, it is usually best to step over
+it which has the effect of running the method, but not requiring the
+developer to step through it line by line.<br>
+<br>
+In this case we have the contrived <big><span
+ style="font-weight: bold; font-family: monospace;">printMessage()</span></big>
+method which has no bugs, so we will step over that method:<br>
+<br>
+<br>
+<div style="margin-left: 40px;"><img
+ style="width: 1487px; height: 1166px;" alt="" src="./screen-4.png"><br>
+<br>
+<br>
+</div>
+<br>
+After we step over the calls to <big><span
+ style="font-weight: bold; font-family: monospace;">printMessage()</span></big>,
+we
+will step into each of the remaining lines of code in the <big><span
+ style="font-weight: bold; font-family: monospace;">max()</span></big>
+method. This allows us to examine the variables and their values as we
+step through each line of code.<br>
+<br>
+<br>
+<br>
+<div style="margin-left: 80px;"><img
+ style="width: 1490px; height: 1044px;" alt="" src="./screen-5.png"><br>
+<br>
+</div>
+<br>
+There are two other buttons that are useful - one that resumes program
+execution to the next break point (you can have multiple breakpoints)
+and another that terminates program execution.<br>
+<br>
+<br>
+<div style="margin-left: 80px;"><img
+ style="width: 879px; height: 721px;" alt="" src="./screen-6.png"><br>
+</div>
+<br>
+<br>
+A <a target="_blank"
+ href="http://eclipsesource.com/blogs/2013/01/08/effective-java-debugging-with-eclipse/">useful
+link</a> with good Eclipse practices<br>
+<br>
+</body>
+</html>

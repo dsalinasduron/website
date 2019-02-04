@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Linked Lists</title>
+  </head>
+  <body>
+    <big><big>Lists</big></big><br>
+    <br>
+    <span style="font-weight: bold;">Objectives</span><br>
+    <br>
+    <div style="margin-left: 40px;">- Provide an overview of lists and
+      linked lists<br>
+      <br>
+      - Explore algorithms for managing linked lists<br>
+      <br>
+      - Benefits of using linked lists<br>
+    </div>
+    <br>
+    <span style="font-weight: bold;">Overview</span><br>
+    <br>
+    A list is an ADT that provides the following functionality:<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; - items are ordered by position (beginning at
+    position 0)<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; - items can be referenced by position (beginning
+    at position 0)<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; - there can be duplicate items in the list<br>
+    <br>
+    A List API<br>
+    <br>
+    - Java <a target="_blank"
+      href="https://docs.oracle.com/javase/7/docs/api/java/util/List.html">java.util.List</a>
+    API - an <a target="_blank"
+href="https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html">ArrayList</a>
+    is an implementation of this <big><tt>List</tt></big> interface.<br>
+    <br>
+    - <a href="./List.java">List.java</a><br>
+    <br>
+    <b>Example Usage</b><br>
+    <br>
+    <big><tt>List list;</tt></big><br>
+    <br>
+    <table border="0" cellpadding="2" cellspacing="2" width="50%">
+      <tbody>
+        <tr>
+          <td valign="top"><big><tt>list.add(apple)</tt></big><br>
+          </td>
+          <td valign="top">
+            <table border="1" cellpadding="2" cellspacing="2"
+              width="50%">
+              <tbody>
+                <tr>
+                  <td valign="top">apple<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">0<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><big><tt>list.add(banana)</tt></big><br>
+          </td>
+          <td valign="top">
+            <table border="1" cellpadding="2" cellspacing="2"
+              width="50%">
+              <tbody>
+                <tr>
+                  <td valign="top">apple<br>
+                  </td>
+                  <td valign="top">banana<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">0<br>
+                  </td>
+                  <td valign="top">1<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><big><tt>list.add(cherries,1)</tt></big><br>
+          </td>
+          <td valign="top">
+            <table border="1" cellpadding="2" cellspacing="2"
+              width="50%">
+              <tbody>
+                <tr>
+                  <td valign="top">apple<br>
+                  </td>
+                  <td valign="top">cherries<br>
+                  </td>
+                  <td valign="top">banana<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">0<br>
+                  </td>
+                  <td valign="top">1<br>
+                  </td>
+                  <td valign="top">2<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><big><tt>list.add(donut,0)</tt></big><br>
+          </td>
+          <td valign="top">
+            <table border="1" cellpadding="2" cellspacing="2"
+              width="50%">
+              <tbody>
+                <tr>
+                  <td valign="top">donut<br>
+                  </td>
+                  <td valign="top">apple<br>
+                  </td>
+                  <td valign="top">cherries<br>
+                  </td>
+                  <td valign="top">banana<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">0<br>
+                  </td>
+                  <td valign="top">1<br>
+                  </td>
+                  <td valign="top">2<br>
+                  </td>
+                  <td valign="top">3<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    What would the contents of the list appear as after the following
+    operations?<br>
+    <blockquote><big><tt>list.add(apple)</tt></big><br>
+      <big><tt>list.add(banana)</tt></big><br>
+      <big><tt>list.add(cherry)</tt></big><br>
+      <big><tt>list.add(donut)</tt></big><br>
+      <big><tt>list.add(eggplant,0)</tt></big><br>
+      <big><tt>list.add(fig, 5)</tt></big><br>
+    </blockquote>
+    <br>
+    How would the list be modified after the following operations?<br>
+    <blockquote><big><tt>list.remove(1)</tt></big><br>
+      <big><tt>list.remove(2)</tt></big><br>
+      <big><tt>list.remove(banana)</tt></big><br>
+    </blockquote>
+    <br>
+    <br>
+    <big><big>Linked Lists</big></big><br>
+    <br>
+    Designing a bag or a set using an array has advantages:<br>
+    <br>
+    <div style="margin-left: 40px;">- arrays are relatively simple to
+      use.<br>
+      <br>
+      - it is possible to resize an array <br>
+    </div>
+    <br>
+    The drawback is that we typically have to create an array that
+    occupies more space than we need.<br>
+    <br>
+    A Linked List is an ADT that only allocates space when needed.<br>
+    <br>
+    <span style="font-weight: bold;">Conceptually</span><br>
+    <br>
+    <div style="margin-left: 80px;"><img style="width: 553px; height:
+        202px;" alt="" src="./linked_list.png"><br>
+    </div>
+    <br>
+    <span style="font-weight: bold;">A Node</span><br>
+    <br>
+    A node represents (1) data, and (2) a reference to the next node.<br>
+    <br>
+    <div style="margin-left: 40px;"><img style="width: 553px; height:
+        202px;" alt="" src="./linked_list_node.png"><br>
+    </div>
+    <br>
+    <br>
+    We will represent a Node as a class:<br>
+    <br>
+    <div style="margin-left: 80px;"><big><span style="font-weight: bold;
+          font-family: monospace;">class Node</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">{</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+
+
+
+
+
+          private Object data;</span></big><br style="font-weight: bold;
+        font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+
+
+
+
+
+          private Node next;</span></big><br style="font-weight: bold;
+        font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+
+
+
+
+
+          . . .</span></big><br style="font-weight: bold; font-family:
+        monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">}</span></big><br>
+    </div>
+    <br>
+    We will also keep track of the head of the list:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight: bold;
+          font-family: monospace;">Node head;</span></big><br>
+    </div>
+    <br>
+    This leads to syntax such as<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <big><tt>Node current = head;</tt><tt><br>
+      </tt><tt><br>
+      </tt><tt>&nbsp;&nbsp; while (current != null) {</tt><tt><br>
+      </tt><tt>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+        System.out.println(current.data);</tt><br>
+      <tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </tt><tt>current =
+        current.next;</tt><tt><br>
+      </tt><tt>&nbsp;&nbsp; }</tt></big><br>
+    <br>
+    What would this output for the following figure?<br>
+    <br>
+    <blockquote><img alt="" src="./linked_list.png" height="202"
+        width="553"><br>
+    </blockquote>
+    <br>
+    <br>
+    <b>Zybooks Note</b><br>
+    <br>
+    Zybooks uses pseudocode that is closer to C++ than Java. For the
+    most part this does not matter, however there are a few syntax
+    differences between C++ and Java. In Java we use the notation <big><tt>&lt;object&gt;.&lt;data&gt;</tt></big>
+    or <big><tt>&lt;object&gt;.&lt;method&gt;</tt></big> where a dot '
+    . ' separates the object and&nbsp; the data or the method. In C++ it
+    is an arrow ' -&gt; '<br>
+    <br>
+    <blockquote>
+      <blockquote><img alt="" src="./zybook.png" height="227"
+          width="460"><br>
+      </blockquote>
+    </blockquote>
+    <br>
+    <br>
+    Operations:<br>
+    <br>
+    <div style="margin-left: 40px;"><span style="font-weight: bold;">Add</span>
+      - Simple<br>
+      <br>
+      <br>
+      <span style="font-weight: bold;">Remove</span> - Not so simple<br>
+    </div>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Implementation of a Linked List</span>
+    (Not so complete.)<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; <a href="./List.java">List.java</a> - interface
+    specifying operations.<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; <a href="./LinkedList.java">LinkedList.java</a>
+    - implementation of several operations.<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>

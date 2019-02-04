@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Linked Lists</title>
+  </head>
+  <body>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">CMPT 202<span class="Apple-converted-space">&nbsp;</span></span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">Lab 4: Linked Lists<br>
+    </span><br style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px; font-weight: bold;">
+<br style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">Objectives</span><br style="color: rgb(0, 0,
+      0); font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">The objectives of this lab are:</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">&nbsp;&nbsp;&nbsp; * To review using linked lists</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">&nbsp;&nbsp;&nbsp; * To implementation several methods
+      for a linked list</span><br style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">&nbsp;&nbsp;&nbsp; * To apply some principles of
+      programming and software engineering<span
+        class="Apple-converted-space">&nbsp;</span></span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">Before Proceeding</span><br style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">Review the<span class="Apple-converted-space">&nbsp;</span></span><a
+      target="_blank"
+href="http://www.people.westminstercollege.edu/faculty/ggagne/gradingpolicy/gradingpolicy.html"
+      style="font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">Programming
+      Grading Guidelines</a><span style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      float: none; display: inline ! important;"><span
+        class="Apple-converted-space">&nbsp;</span>for ideas as how to
+      properly write Java programs.</span><br style="color: rgb(0, 0,
+      0); font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">The Lab</span><br>
+    <br>
+    Java Files:<br>
+    <br>
+    <div style="margin-left: 40px;"><a href="./List.java">List.java</a>
+      specifies the interface for a linked list.<br>
+      <br>
+      <a href="./TestLinkedList.java">TestLinkedList.java</a> is a set
+      of unit tests that test an implementation of the <big><span
+          style="font-weight: bold; font-family: monospace;">List</span></big>
+      interface.<br>
+      <br>
+      <a href="./LinkedList.java">LinkedList.java</a> is a
+      partially-completed implementation of the <big><span
+          style="font-weight: bold; font-family: monospace;">List</span></big>
+      interface.<br>
+    </div>
+    <br>
+    Complete the remainder of <b><big><tt>LinkedList.java</tt></big></b>
+    so that it passes all unit tests. The methods that need to be
+    completed are identified with a <i><big><tt><b>TO DO</b></tt></big></i>
+    comment.<br>
+    <br>
+    A few of the easier methods to first&nbsp; complete are <big><tt><b>isEmpty()</b></tt></big>
+    and <big><b><tt>clear()</tt></b></big> . It is suggested that you
+    then complete <big><tt><b>get()</b></tt></big> .<br>
+    <br>
+    It is recommended that you first complete both <big><tt><b>add()</b></tt></big>
+    methods, followed by both <big><tt><b>remove()</b></tt></big>
+    methods. It is important to identify the special case of when you
+    are adding or removing to the head of the list. When this occurs,
+    you are modifying the <b><big><tt>head</tt></big></b> instance
+    data.<br>
+    <br>
+    <b>What to Submit</b><br>
+    <br>
+    <big><tt><b>LinkedList.java</b></tt></big> to the Canvas Dropbox.<br>
+    <br>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;"></span><br style="color: rgb(0, 0, 0); font-family:
+      Times; font-size: medium; font-style: normal; font-variant:
+      normal; font-weight: normal; letter-spacing: normal; line-height:
+      normal; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; word-spacing: 0px;">
+    <br>
+    <br>
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+  </body>
+</html>
