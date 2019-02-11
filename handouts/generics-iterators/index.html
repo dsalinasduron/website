@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Generics and Iterators</title>
+  </head>
+  <body>
+    <span style="font-weight: bold;">Generics and Iterators</span><br>
+    <br>
+    <span style="font-weight: bold;">Objectives</span><br>
+    <br>
+    - To get an understanding of the benefits of using both generic
+    types as well as iterators<br>
+    <br>
+    <span style="font-weight: bold;">Generics</span><br>
+    <br>
+    The following program demonstrates how to use Java generics:<br>
+    <br>
+    - <a href="./UseArrayList.java">UseArrayList.java</a><br>
+    <br>
+    - <a href="./Item.java">Item.java</a> (items we place in the <big><span
+        style="font-weight: bold; font-family: monospace;">ArrayList</span></big>)<br>
+    <br>
+    Notice we need to type-cast what returns from the <big><span
+        style="font-weight: bold; font-family: monospace;">get()</span></big>
+    method of the <big><span style="font-weight: bold; font-family:
+        monospace;">ArrayList</span></big><br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight: bold;
+          font-family: monospace;">contents = (Item)list.get(i); </span></big><br>
+    </div>
+    <br>
+    Java generics allows a generic data type to be stored in a data
+    structure, without having to typecast the return value. It also does
+    compile time checking to ensure we in use the data structure
+    correctly.<br>
+    <br>
+    Without generics<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight: bold;
+          font-family: monospace;">List list = new ArrayList();</span></big><br>
+    </div>
+    <br>
+    With generics<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight: bold;
+          font-family: monospace;">List<span style="color: rgb(255, 0,
+            0);">&lt;Item&gt;</span> list = new ArrayList<span
+            style="color: rgb(255, 0, 0);">&lt;Item&gt;</span>();</span></big><br>
+    </div>
+    <br>
+    This indicates that <big><span style="font-weight: bold;
+        font-family: monospace;">Item</span></big> is the only type of
+    object that can go into <big><span style="font-weight: bold;
+        font-family: monospace;">list</span></big> .<br>
+    <br>
+    <br>
+    ArrayBag with Generics<br>
+    <br>
+    - <a href="./Bag.java">Bag.java</a> (Interface with generics)<br>
+    <br>
+    - <a href="./ArrayBag.java">ArrayBag.java</a> (Implementation of <big><span
+        style="font-weight: bold; font-family: monospace;">Bag</span></big>
+    interface)<br>
+    <br>
+    Usage:<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; <big><tt><b>Bag<font color="#ff0000">&lt;String&gt;</font>
+          sack = new ArrayBag<font color="#ff0000">&lt;String&gt;</font>();<br>
+          &nbsp; </b></tt></big><br>
+    <span style="font-weight: bold;">Iterators</span><br>
+    <br>
+    Iterators provide a consistent technique for iterating
+    (traversing/visiting) a collection of objects.<br>
+    <br>
+    The <a target="_blank"
+      href="http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html">java.util.Iterator</a>
+    API<br>
+    <br>
+    The&nbsp; two methods we care about are <big><span
+        style="font-weight: bold; font-family: monospace;">hasNext()</span></big>
+    and <big><span style="font-weight: bold; font-family: monospace;">next()</span></big><br>
+    <br>
+    - <a href="./UseIterator.java">UseIterator.java</a> (Notice how
+    this replaces the for loop from <a href="./UseArrayList.java">UseArrayList.java</a>
+    with an iterator)<br>
+    <br>
+    <br>
+    <b> ArrayBag with Generics and an Iterator</b><br>
+    <br>
+    - <a href="./ArrayBag.java">ArrayBag.java</a><br>
+    <br>
+    Write a program named <big><b><tt>UseArrayBag.java</tt></b></big>
+    that uses generics to create an <big><tt><b>ArrayBag</b></tt></big>,
+    and then adds items into the bag. Next. get an iterator for your <big><tt><b>ArrayBag</b></tt></big>
+    object and output the contents of the bag. Place <b><font size="+1"><tt>String</tt></font></b>
+    objects in your <b><font size="+1"><tt>Bag</tt></font></b>.<br>
+    <br>
+    Now, remove some of the items from the bag, and get another iterator
+    for your <big><tt><b>ArrayBag</b></tt></big> object. The removed
+    items should no longer appear.<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>
