@@ -1,0 +1,555 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Lab 5</title>
+  </head>
+  <body>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">CMPT 202<span class="Apple-converted-space">&nbsp;</span></span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">Lab 5: Generics and Iterators</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">
+<span style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; word-spacing: 0px; float: none; display:
+      inline ! important;"></span><span style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      display: inline ! important; float: none;"></span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">Objectives</span><br style="color: rgb(0, 0,
+      0); font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">The objectives of this lab are:</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">&nbsp;&nbsp;&nbsp; * To implement a class using
+      generics<br>
+    </span><br style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">&nbsp;&nbsp;&nbsp; * To implement the iterator
+      interface<br>
+    </span><br style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">&nbsp;&nbsp;&nbsp; * To apply some principles of
+      programming and software engineering<span
+        class="Apple-converted-space">&nbsp;</span></span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">Before Proceeding</span><br style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">Review the<span class="Apple-converted-space">&nbsp;</span></span><a
+      target="_blank"
+href="http://www.people.westminstercollege.edu/faculty/ggagne/gradingpolicy/gradingpolicy.html"
+      style="font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">Programming
+
+
+
+
+
+      Grading Guidelines</a><span style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      float: none; display: inline ! important;"><span
+        class="Apple-converted-space">&nbsp;</span>for ideas as how to
+      properly write Java programs.</span><br style="color: rgb(0, 0,
+      0); font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">The Lab</span><br style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br>
+    Although this lab is intended to demonstrate how to use Java
+    generics as well as iterators, most of this lab will primarily
+    involve Java syntax issues. Be patient as you work through this, and
+    it is useful to refer to our earlier coverage of <a target="_blank"
+href="../../handouts/generics-iterators/index.html">generics and iterators</a> as a reference to any syntax details or
+    conceptual issues.<br>
+    <br>
+    There are several Java files you will be using to complete this lab.
+    You may download them individually by following the links throughout
+    this lab. These files are also available as a <a href="./lab5.zip">single zip file</a>.<br>
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="font-weight: bold;">Part I - Write a Program That Uses
+      Generics and Iterators</span><br>
+    <br>
+    Before you proceed with implementing a class that provides both
+    generics as well as iterators, you will first write a simple program
+    that <span style="font-weight: bold;">uses</span> generics and
+    iterators.<br>
+    <br>
+    The <big><span style="font-weight: bold; font-family: monospace;">ArrayBag</span></big>
+    class shown below provides both generics as well as an iterator. <br>
+    <br>
+    - <a href="./Bag.java">Bag.java</a> (the interface)<br>
+    <br>
+    - <a href="./ArrayBag.java">ArrayBag.java</a> (the implementation)<br>
+    <br>
+    Write a simple program named <big><span style="font-weight: bold;
+        font-family: monospace;">UseArrayBag.java</span></big> that
+    creates an <big><span style="font-weight: bold; font-family:
+        monospace;">ArrayBag</span></big> that contains <big><span
+        style="font-weight: bold; font-family: monospace;">String</span></big>
+    objects. You can write everything in the <big><tt><b>main()</b></tt></big>
+    method for the <big><tt><b>UseArrayBag</b></tt></big> class.<br>
+    <br>
+    Add the following <big><span style="font-weight: bold; font-family:
+        monospace;">String</span></big> objects to your bag:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight: bold;
+          font-family: monospace;">"Apple"</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">"Banana"</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">"Cherry"</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">"Donut"</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">"Eggs"</span></big><br>
+    </div>
+    <br>
+    Be sure to use generics.<br>
+    <br>
+    Next, get an iterator from your bag (by calling the <big><span
+        style="font-weight: bold; font-family: monospace;">iterator()</span></big>
+    method) and print out the objects from the iteration using a <big><span
+        style="font-weight: bold; font-family: monospace;">while</span></big>
+    loop. Your output should of course appear as<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight: bold;
+          font-family: monospace;">apples</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">bananas</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">cherry</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">donuts</span></big><br
+        style="font-weight: bold; font-family: monospace;">
+      <big><span style="font-weight: bold; font-family: monospace;">eggs</span></big><br>
+    </div>
+    <br>
+    <br>
+    It may be useful to review the <a href="./UseIterator.java">UseIterator.java</a>
+    class before proceeding as your <span style="font-weight: bold;">UseArrayBag&nbsp;</span>
+    program will use a very similar approach. <br>
+    <br>
+    *** Call an instructor over to look at your code before you proceed.<br>
+    <br>
+    <span style="font-weight: bold;">Part II - Modify ArraySet So That
+      it Now Uses Generics and an Iterator</span><br>
+    <br>
+    In <a target="_blank"
+href="../lab3/index.html">Lab
+      #3</a> you created an <big><span style="font-weight: bold;
+        font-family: monospace;">ArraySet</span></big> class that
+    implemented the <big><span style="font-weight: bold; font-family:
+        monospace;">Set</span></big> interface. You will base your
+    solution to this lab using your <big><tt> ArraySet</tt></big>
+    class. Before doing so, make sure your <big><tt>ArraySet</tt></big>
+    class passes the following unit tests from Lab #3:<br>
+    <br>
+    - <a href="./TestArraySetLab3.java">TestArraySetLab3.java</a><br>
+    <br>
+    Once you pass these tests, copy your solution to <big><tt>ArraySet.java</tt></big>
+    from Lab #3 to your Lab #5 project.<br>
+    <br>
+    &nbsp;<br>
+    The following interface is a modification to the Set interface we
+    saw in <a target="_blank"
+href="../lab3/index.html">Lab
+      #3</a>. However it now adds generics, as well as an <big><span
+        style="font-weight: bold; font-family: monospace;">iterator()</span></big>
+    method to its list of provided methods:<br>
+    <br>
+    - <a href="./Set.java">Set.java</a><br>
+    <br>
+    Initially you should have several compile errors in <big><tt><b>ArraySet.java</b></tt></big>
+    as it does not correctly implement the <big><tt><b>Set</b></tt></big>
+    interface. <br>
+    <br>
+    Modify your <big><span style="font-weight: bold; font-family:
+        monospace;">ArraySet</span></big> class so that it implements
+    this new <big><span style="font-weight: bold; font-family:
+        monospace;">Set</span></big> interface. Initially much of your
+    work will involve syntax related to generics. I strongly encourage
+    you to first examine the notes on generics and iterators and see how
+    the <a href="./ArrayBag.java">ArrayBag</a> class was modified
+    according to the <a href="./Bag.java">Bag</a> interface so that it
+    included&nbsp; generics and an iterator.<br>
+    <br>
+    The unit tests provided below are how I will test your
+    implementation of the <big><span style="font-weight: bold;
+        font-family: monospace;">Set</span></big> interface for this
+    lab:<br>
+    <br>
+    - <a href="./TestArraySet.java">TestArraySet.java</a><br>
+    <br>
+    I encourage you to first get your implementation working with just
+    generics, and make sure you pass all unit tests (minus the <big><span
+        style="font-weight: bold; font-family: monospace;">testIterator()</span></big>
+    method.) Then, once you have that step completed, implement the
+    details of the <big><span style="font-weight: bold; font-family:
+        monospace;">iterator()</span></big> method. You will have to use
+    a private inner class that implements the <big><span
+        style="font-weight: bold; font-family: monospace;">java.util.Iterator</span></big>
+    interface.<br>
+    <br>
+    <b>Part III - Implement a Set using an ArrayList</b><br>
+    <br>
+    Implement the <big><tt><b>Set</b></tt></big> interface using an <a
+      target="_blank"
+href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html">ArrayList</a>
+    from the Java API. Name this implementation <big><tt><b>ListSet</b></tt></big>
+    .<br>
+    <br>
+    This should be relatively easy to complete as most of the methods in
+    the <big><tt><b>Set</b></tt></big> interface can be delegated to
+    equivalent methods available from <big><tt><b>ArrayList</b></tt></big>.
+    <br>
+    <br>
+    Test your implementation by ensuring you pass the following unit
+    tests:<br>
+    <br>
+    - <a href="./TestListSet.java">TestListSet.java</a><br>
+    <br>
+    Once you pass the above unit tests, the following code example
+    demonstrates abstraction:<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <big><tt>Set&lt;String&gt; s1 = new
+        ArraySet&lt;String&gt;();</tt><tt><br>
+      </tt><tt>&nbsp;&nbsp; Set&lt;String&gt; s2 = new
+        ListSet&lt;String&gt;();</tt><tt><br>
+      </tt><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </tt><tt><br>
+      </tt><tt>&nbsp;&nbsp; s1.add("apples");</tt><tt><br>
+      </tt><tt>&nbsp;&nbsp; s1.add("cherries");</tt><tt><br>
+      </tt><tt>&nbsp;&nbsp; s1.add("eggplant");</tt><tt><br>
+      </tt><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </tt><tt><br>
+      </tt><tt>&nbsp;&nbsp; s2.add("brownies");</tt><tt><br>
+      </tt><tt>&nbsp;&nbsp; s2.add("donuts");</tt><tt><br>
+      </tt><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </tt><tt><br>
+      </tt><tt>&nbsp;&nbsp; Set&lt;String&gt; s3 = s1.union(s2);</tt><tt><br>
+      </tt><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </tt><tt><br>
+      </tt><tt>&nbsp;&nbsp; </tt></big><br>
+    This code example illustrates how you can perform a union of two
+    different implementations of the <big><tt><b>Set</b></tt></big>
+    interface. <br>
+    <br>
+    The complete code example:<br>
+    <br>
+    - <a href="./UnionDifferentSets.java">UnionDifferentSets.java</a><br>
+    <br>
+    Run this program and make sure the program output matches what you
+    expect.<br>
+    <br>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">Lab Handin</span><br style="color: rgb(0, 0,
+      0); font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">Upload your<span class="Apple-converted-space"><span
+          class="Apple-converted-space"><span
+            class="Apple-converted-space">&nbsp;</span>implementation of<big><span
+              style="font-weight: bold; font-family: monospace;">
+              UseArrayBag.java</span></big><span
+            class="Apple-converted-space"> , <big><span
+                style="font-weight: bold; font-family: monospace;">ArraySet.java</span></big>
+            , and <big><tt><b>ListSet.java</b></tt></big> </span></span></span></span><big
+      style="color: rgb(0, 0, 0); font-family: Times; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;"><span
+        style="font-weight: bold; font-family: monospace;"></span></big><span
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px; float: none; display: inline ! important;"><big><span
+          style="font-weight: bold; font-family: monospace;"></span></big><span
+        class="Apple-converted-space"></span>t</span><span style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      float: none; display: inline ! important;">o Canvas.<span
+        class="Apple-converted-space">&nbsp;</span></span><span
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      font-weight: bold;">Each member</span><span style="color: rgb(0,
+      0, 0); font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;
+      float: none; display: inline ! important;"><span
+        class="Apple-converted-space">&nbsp;</span>in the group needs to
+      submit the&nbsp; Java files to Canvas.</span><br style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">The title of your submission should be the names of
+      everyone in your group. The message in the message box should be
+      your rating of your partner.</span><br style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">Unless you worked alone, everyone should rate their
+      partner(s) in the Canvas message box. Your partner should be rated
+      on a scale of 5-100, based on the following questions: Your
+      partner should be rated on a scale of 5-100, based on the
+      following questions:</span><br style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">&nbsp;&nbsp; 1. Did your partner read preparatory
+      materials before coming to the scheduled lab? (1-20)</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">&nbsp;&nbsp; 2. Did your partner do his or her fair
+      share of the work? (1-20)</span><br style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">&nbsp;&nbsp; 3. Did your partner cooperatively follow
+      the pair programming model (rotating roles of driver and
+      navigator)? (1-20)</span><br style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">&nbsp;&nbsp; 4. Did your partner make contributions to
+      the completion of the lab assignment? (1-20)</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">&nbsp;&nbsp; 5. Did your partner cooperate? (1-20)<span
+        class="Apple-converted-space">&nbsp;</span></span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px; float: none; display: inline !
+      important;">If you were completely satisfied with the process, you
+      should give your partner a score of 100. If you were not satisfied
+      with the process, please provide a breakdown of your partner's
+      rating, and elaborate (in as much detail as you wish) on your
+      experience.</span><br style="color: rgb(0, 0, 0); font-family:
+      Times; font-size: medium; font-style: normal; font-variant:
+      normal; font-weight: normal; letter-spacing: normal; line-height:
+      normal; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; word-spacing: 0px;">
+    <br>
+    <br>
+    &nbsp;<br>
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; word-spacing: 0px;">
+  </body>
+</html>
