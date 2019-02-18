@@ -1,0 +1,392 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Stacks</title>
+  </head>
+  <body>
+    <h3>Stacks</h3>
+    <br>
+    <span style="font-weight: bold;">Objectives</span><br>
+    <br>
+    - Provide an overview of the stack ADT<br>
+    <br>
+    - Examine uses of stacks <br>
+    <br>
+    - Explore an array-based implementation of stacks<br>
+    <br>
+    <a target="_blank" href="./stack-POGIL.pdf">In Class Activity</a><br>
+    <br>
+    <span style="font-weight: bold;">Stack Interface</span><br>
+    <br>
+    - <a target="_blank" href="./Stack.java">Stack.java</a><br>
+    <br>
+    <span style="font-weight: bold;">Example Usage</span><br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">Stack&lt;String&gt; stringStack = new
+          StackImpl&lt;String&gt;();</span></big><br>
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">stringStack.push("Jim");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">stringStack.push("Jess");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">stringStack.push("Jill");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">stringStack.push("Jane");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">stringStack.push("Joe");</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">String top =
+          stringStack.peek(); <span style="color: rgb(0, 153, 0);">//
+            returns "Joe"</span></span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">System.out.println(top
+          + " is at the top of the stack.");</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">top =
+          stringStack.pop(); <span style="color: rgb(0, 153, 0);">//
+            removes and returns "Joe"</span></span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">System.out.println(top
+          + " is removed from the stack.");</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">top =
+          stringStack.peek(); <span style="color: rgb(0, 153, 0);">//
+            returns "Jane"</span></span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">System.out.println(top
+          + " is at the top of the stack.");</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">top =
+          stringStack.pop(); <span style="color: rgb(0, 153, 0);">//
+            removes and returns "Jane"</span></span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">System.out.println(top
+          + " is removed from the stack.");</span></big><br>
+    </div>
+    <br>
+    After the following statements are performed, what string is at the
+    top of the stack? At the bottom of the stack?<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">Stack&lt;String&gt; stringStack = new
+          Stack&lt;String&gt;();</span></big><br>
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">stringStack.push("Jim");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">stringStack.push("Jess");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">stringStack.pop();</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">stringStack.push("Jill");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">stringStack.push("Jane");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">stringStack.pop();</span></big><br>
+    </div>
+    <br>
+    For obvious reasons, stacks are often referred to as a <span
+      style="font-weight: bold;">LIFO</span> (Last-In-First-Out) data
+    structure.<br>
+    <br>
+    <b>Usage - Web Browser</b><br>
+    <br>
+    <blockquote>
+      <blockquote><img src="./browser.png" alt="" height="117"
+          width="325"><br>
+      </blockquote>
+    </blockquote>
+    <span style="font-weight: bold;">Usage - Program Execution</span><br>
+    <br>
+    When a program is running, a stack is used extensively, and it is an
+    important data structure for the representation of a running
+    program.<br>
+    <br>
+    Consider the following (meaningless) generic program example:<br>
+    <br>
+    <div style="margin-left: 80px;"><big><span style="font-family:
+          monospace;">void main()</span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">{</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          someMethod(5, true, "hello");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">}</span></big><br
+        style="font-family: monospace;">
+      <br>
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">void someMethod(int a,
+          boolean b, String c)</span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">{</span></big><br
+        style="font-family: monospace;">
+      &nbsp; <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; </span><big><span
+          style="font-family: monospace;">int v;</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; . .
+          .</span></big><br style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; v =
+          anotherMethod(a, b);</span></big><br style="font-family:
+        monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; . .
+          .</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">}</span></big><br
+        style="font-family: monospace;">
+      <br>
+      <br style="font-family: monospace;">
+      <span style="font-family: monospace;"></span><big><span
+          style="font-family: monospace;">int anotherMethod(int a,
+          boolean b)</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">{</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; if
+          (b)</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; return a * 2;</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; else</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; return a / 2;</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">}</span></big><small><br
+          style="font-family: monospace;">
+      </small></div>
+    <br>
+    <br>
+    Each method invocation is known as a <span style="font-weight:
+      bold;">stack frame</span>, and these are pushed when a method is
+    called, and popped when we return from a method.<br>
+    <br>
+    A stackframe contains (1) parameters, (2) local variables, and (3)
+    return values.<br>
+    <br>
+    The concept of a stack is also helpful when understanding <span
+      style="font-weight: bold;">recursion</span>:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">void countdown(int n)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">{</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; if
+          (n == 0)</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; return;</span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; else
+          {</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; print n;</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; </span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; countdown(n - 1);</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; }</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">}</span></big><br>
+    </div>
+    <br>
+    The stack frame stores the separate copies of the parameter <big><big><span
+          style="font-family: monospace;">n</span></big></big> for each
+    method invocation.<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Usage - Balance Checker</span><br>
+    <br>
+    Imagine we have three types of delimiters: <big><big><span
+          style="font-weight: bold;">{ }, ( ),</span></big></big>&nbsp;
+    <big><big><span style="font-weight: bold;">[ ]</span></big></big><br>
+    <br>
+    <div style="margin-left: 40px;"><big><big><span style="font-weight:
+            bold;">{ ( [ ] ) }</span></big></big> is balanced<br>
+    </div>
+    <br>
+    <div style="margin-left: 40px;"><big><big><span style="font-weight:
+            bold;">{ ( [ ) ] }</span></big></big> is unbalanced<br>
+    </div>
+    <br>
+    <span style="font-weight: bold;">Balance Checking Algorithm</span><br>
+    <br>
+    - <a target="_blank" href="./BalanceChecker.java">BalanceChecker.java</a><br>
+    <br>
+    <b>Usage - HTML Tags</b><br>
+    <br>
+    HTML Tags must also balance, (for each opening tag, there must be a
+    closing tag)<br>
+    <br>
+    <blockquote><font size="+2"><tt>&lt;head&gt;</tt></font><br>
+      <font size="+2"><tt> &lt;title&gt;Stacks&lt;/title&gt;</tt></font><br>
+      <font size="+2"><tt> &lt;/head&gt;</tt></font><br>
+    </blockquote>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Usage - Infix and Postfix
+      Expressions</span><br>
+    <br>
+    <table style="text-align: left; width: 439px; height: 194px;"
+      cellspacing="2" cellpadding="2" border="1">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top; text-align: center;"><span
+              style="font-weight: bold;">Infix</span><br>
+          </td>
+          <td style="vertical-align: top; text-align: center;"><span
+              style="font-weight: bold;">Postfix</span><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">x + y<br>
+          </td>
+          <td style="vertical-align: top;">x y +<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">(a + b) * c<br>
+          </td>
+          <td style="vertical-align: top;">a b + c *<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">a + b * c <br>
+          </td>
+          <td style="vertical-align: top;">a b c * +<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">w - x * y ^ z<br>
+          </td>
+          <td style="vertical-align: top;">w x y z ^ * -<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">a + (b - c) * d<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">x ^ y ^ z<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <span style="font-weight: bold;">Evaluating Postfix Expressions
+      Using a Stack</span><br>
+    <br>
+    General Algorithm:<br>
+    <br>
+    1. If operand, push.<br>
+    <br>
+    2. If operator, pop top two operands, perform the operation, push
+    the result.<br>
+    <br>
+    3. When you reach the end of the expression, the result is on top of
+    the stack. Pop the result.<br>
+    <br>
+    <br>
+    The position of the two operands popped off of the stack does
+    matter! (Consider division or subtraction)<br>
+    <br>
+    <blockquote><big><tt>pop operand<sub>1</sub></tt><tt><br>
+        </tt><tt>pop operand<sub>2</sub></tt><tt><br>
+        </tt><tt><br>
+        </tt><tt>operand2 &lt;operation&gt; </tt></big><big><tt>operand<sub>1</sub></tt></big>
+    </blockquote>
+    <br>
+    Evaluate the following postfix expressions:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight:
+          bold;">3, 5, *, 8, +</span></big><br style="font-weight:
+        bold;">
+      <br style="font-weight: bold;">
+      <big><span style="font-weight: bold;">2, 6, 5, 3, +, -, *</span></big><br>
+    </div>
+    <br>
+    <span style="font-weight: bold;">Converting Infix to Postfix</span><br>
+    <br>
+    General Algorithm:<br>
+    <br>
+    As your process the infix expression, take the following actions<br>
+    <br>
+    <table style="text-align: left; width: 100%;" cellspacing="2"
+      cellpadding="2" border="1">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top;"><span style="font-weight:
+              bold;">Encounter</span><br>
+          </td>
+          <td style="vertical-align: top;"><span style="font-weight:
+              bold;">Action</span><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">Operand</td>
+          <td style="vertical-align: top;">Append each operand to the
+            end of the postfix output expression</td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">Operator ^&nbsp;&nbsp; <br>
+          </td>
+          <td style="vertical-align: top;">Push ^ onto the stack</td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">Operator +, -, *, /&nbsp; <br>
+          </td>
+          <td style="vertical-align: top;">Pop operators from the stack,
+            appending them to the postfix output expression, until the
+            stack is empty or its top entry has a lower precedence than
+            the new operator. Then push the new operator onto the stack.<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">Open
+            parenthesis&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <br>
+          </td>
+          <td style="vertical-align: top;">Push ( onto the stack.</td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">Closed parenthesis</td>
+          <td style="vertical-align: top;">Pop operators from the stack
+            and append them to the postfix output expression until an
+            open parenthesis is popped. Discard both parenthesis.</td>
+        </tr>
+      </tbody>
+    </table>
+    <span style="font-weight: bold;"></span><br>
+    <br>
+    When you reach the end of the infix expression, pop all operators
+    from the stack and append them to the postfix output string.<br>
+    <br>
+    Convert the following infix expressions to postfix:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight:
+          bold;">w + x * y / z</span></big><br>
+    </div>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-weight:
+          bold;">a + b * (c * (d - e)) / f</span></big><br>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>
