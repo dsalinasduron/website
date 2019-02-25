@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Homework 4 - Melody Maker</title>
+  </head>
+  <body>
+    <big><b>CMPT 202 Fall 2018</b><b><br>
+      </b><b>Homework #4</b><b><br>
+      </b><b><br>
+      </b></big><br>
+    <br>
+    <big>Melody Maker</big><br>
+    <br>
+    [ This assignment was developed by
+    <meta charset="utf-8">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant-ligatures: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: 2; text-align: center; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 2;
+      word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline
+      !important; float: none;">Allison Obourn (</span><span
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant-ligatures: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: 2; text-align: center; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 2;
+      word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline
+      !important; float: none;"><span style="color: rgb(0, 0, 0);
+        font-family: Times; font-size: medium; font-style: normal;
+        font-variant-ligatures: normal; font-variant-caps: normal;
+        font-weight: normal; letter-spacing: normal; orphans: 2;
+        text-align: center; text-indent: 0px; text-transform: none;
+        white-space: normal; widows: 2; word-spacing: 0px;
+        -webkit-text-stroke-width: 0px; display: inline !important;
+        float: none;">University of Washington) </span>and Marty Stepp</span><span
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant-ligatures: normal;
+      font-variant-caps: normal; font-weight: normal; letter-spacing:
+      normal; orphans: 2; text-align: center; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 2;
+      word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline
+      !important; float: none;"> (Stanford University) and used with
+      their permissions.]<br>
+      <br>
+    </span>This homework will involve writing a Java class that plays
+    melodies. The details for this assignment can be found on the
+    following link:<br>
+    <br>
+    - <a href="./MelodyPlayer.pdf">MelodyPlayer.pdf</a><br>
+    <br>
+    The source code download is below<br>
+    <br>
+    - <a href="./hw4.zip">hw4.zip</a><br>
+    <br>
+    The songs downloads<br>
+    <br>
+    - <a href="./songs.zip">songs.zip</a><br>
+    <br>
+    <table border="0" cellpadding="2" cellspacing="2" width="50%">
+      <tbody>
+        <tr>
+          <td valign="top"><a target="_blank" href="./songs/epona.txt">Epona's
+
+
+
+
+
+
+
+
+
+
+              Song</a><br>
+          </td>
+          <td valign="top">From the Legend of Zelda<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./songs/birthday.txt">Happy Birthday</a><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./songs/hotcrossbuns.txt">Hot
+              Crossed Buns</a><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./songs/levels.txt">Levels</a><br>
+          </td>
+          <td valign="top">by Avicii<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./songs/mystery.txt">Mystery</a><br>
+          </td>
+          <td valign="top">reverse it to see what it is<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./songs/weasel.txt">Pop Goes the
+              Weasel</a><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./songs/tetris.txt">Tetris</a><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./songs/twinkle.txt">Twinkle Twinkle
+              Little Star</a><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./songs/zombie.txt">Zombie Nation</a><br>
+          </td>
+          <td valign="top">Seattle Mariner's hype song<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./songs/sample.txt">Sample</a><br>
+          </td>
+          <td valign="top">Sample file shown to illustrate repeating
+            sections<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    Sound Files<br>
+    <br>
+    Below are the sound files for each of the songs. Also indicated is
+    if the song has repeated notes.<br>
+    <br>
+    As a <a href="./sounds.zip">zip file</a>. (Use the zip file if the
+    individual downloads do not work.)<br>
+    <br>
+    <table border="0" cellpadding="2" cellspacing="2" height="303"
+      width="592">
+      <tbody>
+        <tr>
+          <td align="center" valign="top"><b>Song</b><b><br>
+            </b></td>
+          <td align="center" valign="top"><b>Repeat Notes</b><b><br>
+            </b></td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./sounds/Birthday.m4a">Birthday.m4a</a><br>
+          </td>
+          <td valign="top">No<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./sounds/Epona.m4a">Epona.m4a</a><br>
+          </td>
+          <td valign="top">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./sounds/Hotcrossbuns.m4a">Hotcrossbuns.m4a</a><br>
+          </td>
+          <td valign="top">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./sounds/Levels.m4a">Levels.m4a</a><br>
+          </td>
+          <td valign="top">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./sounds/Mystery.m4a">Mystery.m4a</a><br>
+          </td>
+          <td valign="top">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./sounds/Sample.m4a">Sample.m4a</a><br>
+          </td>
+          <td valign="top">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./sounds/Tetris.m4a">Tetris.m4a</a><br>
+          </td>
+          <td valign="top">No<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./sounds/Twinkle.m4a">Twinkle.m4a</a><br>
+          </td>
+          <td valign="top">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./sounds/Weasel.m4a">Weasel.m4a</a><br>
+          </td>
+          <td valign="top">No<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><a href="./sounds/Zombie.m4a">Zombie.m4a</a><br>
+          </td>
+          <td valign="top">Yes<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    When you add these songs to your Eclipse project, be sure to add
+    them to the project, and not the source file. Otherwise your program
+    will be unable to find the text files for each song. Your Eclipse
+    project should look similar to what is show below:<br>
+    <br>
+    <blockquote>
+      <blockquote><img alt="" src="setup.png" height="274" width="400"><br>
+      </blockquote>
+    </blockquote>
+    When completed, submit your <big><tt>Melody.java</tt></big> class
+    as well as <big><tt>song.txt</tt></big> to the Canvas dropbox. A
+    grading rubric is also posted for the dropbox.<br>
+  </body>
+</html>

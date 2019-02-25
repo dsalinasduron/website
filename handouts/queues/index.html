@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Queues</title>
+  </head>
+  <body>
+    <h3>Queues/Deques/Priority Queues<br>
+    </h3>
+    <br>
+    <span style="font-weight: bold;">Objectives</span><br>
+    <br>
+    - Provide an overview of the queue, deque, and priority queue ADTs<br>
+    <br>
+    - Examine uses of queues, deques, and priority queues<br>
+    <br>
+    - Explore implementations of these ADTs<br>
+    <br>
+    <h3><span style="font-weight: bold;">Queue</span></h3>
+    <a href="./Queue-POGIL.pdf" target="_blank">In-class exercise</a><br>
+    <br>
+    A queue is a FIFO (first-in first-out) data structure. It operates
+    much like what we call a line, although in the <a target="_blank"
+      href="./queue.png">UK</a> they indeed call it a <a
+      target="_blank" href="http://en.wikipedia.org/wiki/Queue_area">queue</a>.<br>
+    <br>
+    <span style="font-weight: bold;">Queue Interface</span><br>
+    <br>
+    - <a target="_blank" href="./Queue.java">Queue.java</a><br>
+    <br>
+    <span style="font-weight: bold;">Example Usage</span><br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">Queue&lt;String&gt; queue = new
+          QueueImpl&lt;String&gt;();</span></big><br>
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">queue.add("Jim");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">queue.add("Jess");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">queue.add("Jill");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">queue.add("Jane");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">queue.add("Joe");</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">String front =
+          queue.remove(); <span style="color: rgb(0, 153, 0);">//
+            returns "Jim"</span></span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">System.out.println(front
+
+
+
+          + " is at the front of the queue.");</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">front = </span></big><big><span
+          style="font-family: monospace;">queue</span></big><big><span
+          style="font-family: monospace;">.</span></big><big><span
+          style="font-family: monospace;">remove</span></big><big><span
+          style="font-family: monospace;">(); <span style="color:
+            rgb(0, 153, 0);">// removes and returns "</span></span></big><big><span
+          style="font-family: monospace;"><span style="color: rgb(0,
+            153, 0);">Jess</span></span></big><big><span
+          style="font-family: monospace;"><span style="color: rgb(0,
+            153, 0);">"</span></span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">System.out.println(front
+
+
+
+          + " is removed from the queue.");</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <span style="font-family: monospace;"></span><big><span
+          style="font-family: monospace;">front = </span></big><big><span
+          style="font-family: monospace;">queue</span></big><big><span
+          style="font-family: monospace;">.</span></big><big><span
+          style="font-family: monospace;">remove</span></big><big><span
+          style="font-family: monospace;">(); <span style="color:
+            rgb(0, 153, 0);">// returns "Jill"</span></span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">System.out.println(front
+
+
+
+          + " is at the front of the queue.");</span></big><big><span
+          style="font-family: monospace;"></span></big><br>
+    </div>
+    <br>
+    After the following statements are performed, what string is at the
+    front of the queue? At the rear of the queue?<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">Queue&lt;String&gt; queue = new
+          QueueImpl&lt;String&gt;();</span></big><br>
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">queue</span></big><big><span
+          style="font-family: monospace;">.</span></big><big><span
+          style="font-family: monospace;">add</span></big><big><span
+          style="font-family: monospace;">("Jim");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">queue</span></big><big><span
+          style="font-family: monospace;">.</span></big><big><span
+          style="font-family: monospace;">add</span></big><big><span
+          style="font-family: monospace;">("Jess");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">queue</span></big><big><span
+          style="font-family: monospace;">.</span></big><big><span
+          style="font-family: monospace;">remove</span></big><big><span
+          style="font-family: monospace;">();</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">queue</span></big><big><span
+          style="font-family: monospace;">.</span></big><big><span
+          style="font-family: monospace;">add</span></big><big><span
+          style="font-family: monospace;">("Jill");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">queue</span></big><big><span
+          style="font-family: monospace;">.</span></big><big><span
+          style="font-family: monospace;">add</span></big><big><span
+          style="font-family: monospace;">("Jane");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">queue</span></big><big><span
+          style="font-family: monospace;">.</span></big><big><span
+          style="font-family: monospace;">remove</span></big><big><span
+          style="font-family: monospace;">();</span></big><br>
+    </div>
+    <span style="font-weight: bold;"></span><br>
+    <b>Implementation</b><br>
+    <br>
+    <a href="./Implementation.pdf" target="_blank">In class exercise</a><br>
+    <h3><span style="font-weight: bold;"></span>Deque</h3>
+    <br>
+    A deque (pronounced "deck") is short for "double-ended queue" where
+    you can insert and delete at either ends of the data structure.<br>
+    <br>
+    <span style="font-weight: bold;">Deque Interface</span><br>
+    <br>
+    - <a target="_blank" href="./Deque.java">Deque.java</a><br>
+    <br>
+    Example Usage<br>
+    <br>
+    After the following statements are performed, what string is at the
+    front of the deque? What string is at the rear?<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">Deque&lt;String&gt; deque = new
+          DequeImpl&lt;String&gt;();</span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">deque</span></big><big><span
+          style="font-family: monospace;">.addToFront("Jim");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">deque</span></big><big><span
+          style="font-family: monospace;">.addToBack("Jess");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">deque</span></big><big><span
+          style="font-family: monospace;">.addToFront("Jill");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">deque</span></big><big><span
+          style="font-family: monospace;">.addToBack("Jane");</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">String name = </span></big><big><span
+          style="font-family: monospace;">deque</span></big><big><span
+          style="font-family: monospace;">.getFront();</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">deque</span></big><big><span
+          style="font-family: monospace;">.addToBack(name);</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">deque</span></big><big><span
+          style="font-family: monospace;">.removeFront();</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">deque</span></big><big><span
+          style="font-family: monospace;">.addToFront(myDeque.removeBack());</span></big><br>
+    </div>
+    <br>
+    <h3><a name="PQ"></a>PriorityQueue</h3>
+    A priority queue is simply a queue with priority. That is, the
+    element with the highest priority is at the front of the queue, not
+    necessarily the element that arrived first. (Although elements that
+    have the same priority may be serviced in FIFO order.)<br>
+    <br>
+    The <a target="_blank"
+href="http://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html">Java
+
+
+
+      API</a> provides a priority queue. We will have to follow the
+    inheritance hierarchy and examine the <big><span
+        style="font-family: monospace;">AbstractQueue</span></big> that
+    <big><span style="font-family: monospace;">PriorityQueue</span></big>
+    extends.<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Example Usage:</span><br>
+    <br>
+    - <a href="./PriorityQueueExample.java">PriorityQueueExample.java</a><br>
+    <br>
+    Notice it uses the <span style="font-style: italic;">natural
+      ordering</span> of objects for referring to priority. This natural
+    ordering refers to the <a target="_blank"
+href="http://docs.oracle.com/javase/7/docs/api/java/lang/Comparable.html">Comparable</a>
+    interface.<br>
+    <br>
+    The implementation of <big><span style="font-family: monospace;">PriorityQueue</span></big>
+    calls the <big><span style="font-family: monospace;">compareTo()</span></big>
+    method of objects being inserted into the priority queue to
+    determine order.<br>
+    <br>
+    [ <b>In-Class Example</b> - We will write a Java program that calls
+    the <big><tt>compareTo()</tt></big> method on different <big><tt>String</tt></big>
+    objects. ] <br>
+    <br>
+    <span style="font-weight: bold;"></span><br>
+    <span style="font-weight: bold;">Second Example Usage</span><br>
+    <br>
+    <br>
+    - <a target="_blank" href="./Job.java">Job.java</a> (Notice we have
+    to put objects that implement the <big><span style="font-family:
+        monospace;">Comparable</span></big> interface.)<br>
+    <br>
+    - <a target="_blank" href="./UsePQ.java">UsePQ.java</a> <br>
+    <br>
+    Modify the <big><span style="font-family: monospace;">compareTo()</span></big>
+    method in the <big><span style="font-family: monospace;">Job</span></big>
+    class so that it orders priorities from <big><span
+        style="font-family: monospace;">HIGH</span></big> to <big><span
+        style="font-family: monospace;">LOW</span></big>.<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Lab 7</title>
+  </head>
+  <body>
+    <big><b>CMPT 202</b><b><br>
+      </b><b> Lab 7</b><b><br>
+      </b><b> </b><b><br>
+      </b><b>Queues &amp; Palindromes<br>
+        </b></big> <br>
+    <b>Overview</b><br>
+    <br>
+    This lab will first require implementing a Queue interface.
+    Afterwards, you will use your queue implementation, as well as
+    implementation of a stack from Lab 6, to design a second algorithm
+    that detects palindromes.<br>
+    <br>
+    Only proceed with this lab once you have developed a solution to Lab
+    6 with stacks. Be sure you pass the following unit tests for your
+    Stack implementation before proceeding:<br>
+    <br>
+    - <a href="./TestStack.java">TestStack.java</a><br>
+    <br>
+    <b>Queue Interface</b><br>
+    <br>
+    You will implement the following interface for a Queue<br>
+    <br>
+    - <a href="./Queue.java">Queue.java</a><br>
+    <br>
+    <b>List-Based Queue</b><br>
+    <br>
+    You will initially use a <big><tt>java.util.ArrayList</tt></big> to
+    implement the <big><tt>Queue</tt></big>. Name your implementation <big><tt>ListQueue.java</tt></big>
+    . Test your implementation with the following unit tests:<br>
+    <br>
+    - <a href="./TestQueue.java">TestQueue.java</a><br>
+    <br>
+    Initially don't be concerned with failing the unit test <big><tt>testArrayQueue()</tt></big>
+    - you will implement a queue using an array that at a later step.
+    (To avoid a compile error, you should create a class <big><tt>ArrayQueue.java</tt></big>
+    and simply stub the methods in the <big><tt>Queue</tt></big>
+    interface for the time being.)<br>
+    <br>
+    <br>
+    <br>
+    <b>Array-Based Queue</b><br>
+    <br>
+    Implement the <big><tt>Queue</tt></big> interface using an array.
+    Name your implementation <font size="+1"><tt>ArrayQueue.java</tt></font><br>
+    <br>
+    Provide two constructors:<br>
+    <br>
+    <big><tt>public ArrayQueue()</tt></big> - which creates a
+    default-sized array<br>
+    <br>
+    <big><tt>public ArrayQueue(int capacity)</tt></big> - which
+    specifies an initial capacity.<br>
+    <br>
+    You will need to also provide an <big><tt>ensureCapacity()</tt></big>
+    method. However, this is&nbsp; more difficult that what we have seen
+    thus far as you need to create a larger array, but copy the elements
+    to ensure the ordering of the queue remains intact. Carefully plan
+    how you will design your implementation to support this. The graphic
+    below describes how the elements would need to be copied.<br>
+    <br>
+    <blockquote>
+      <blockquote><img alt="" src="./ensure-capacity.png" height="218"
+          width="800"><br>
+      </blockquote>
+    </blockquote>
+    <br>
+    In this example, the order of the elements in the queue are a, b, c,
+    d, e, f (that is, 'a' is at the front of the queue, 'f' is at the
+    rear of the queue.)<br>
+    <br>
+    To copy the elements over to a new array to make room for inserting
+    'g', we must copy the elements in the order they appear in the
+    queue. Once we have copied them, we can insert g at the rear of the
+    new queue.<br>
+    <br>
+    Notice how the values of front and rear must be adjusted from
+    positions in the old array to positions in the new array after the
+    elements have been copied. In the original queue<br>
+    <br>
+    Make sure you correctly pass the <font size="+1"><tt>TestQueue.java</tt></font>
+    unit tests.<br>
+    <br>
+    <b>Palindromes</b><br>
+    <br>
+    In Lab #6 you used two stacks to detect a palindrome. To complete
+    this lab, modify that solution so that it uses a (1) one stack, and
+    (2) one queue.<br>
+    <br>
+    &nbsp;<br>
+    <b>What to Submit:</b><br>
+    <br>
+    - Stack implementation (either <big><tt>ListStack.java</tt></big>
+    or <big><tt>ArrayStack.java</tt></big>)<br>
+    <br>
+    - <big><tt>ListQueue.java</tt></big><br>
+    <br>
+    - <big><tt>ArrayQueue.java</tt></big><br>
+    <br>
+    - Palindrome checker<br>
+    &nbsp;<br>
+  </body>
+</html>

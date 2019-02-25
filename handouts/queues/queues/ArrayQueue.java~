@@ -1,0 +1,12 @@
+public class ArrayQueue<T> implements QueueInterface<T>
+{
+  private T[] queue;
+  private int front;
+  private int rear;
+  private static final int DEFAULT_CAPACITY = 10;
+  
+  public ArrayQueue(int capacity) {
+    @SuppressWarnings("unchecked")
+    
+      T[] queue = (T[]) new Object[capacity];
+  }
