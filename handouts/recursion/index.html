@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Recursion</title>
+  </head>
+  <body>
+    <h3>Recursion</h3>
+    <span style="font-weight: bold;">Objectives</span><br>
+    <br>
+    - Gain an understanding of recursion<br>
+    <br>
+    - Explore naturally recursive algorithms<br>
+    <br>
+    <span style="font-weight: bold;">Simple Example</span><br>
+    <br>
+    Output a list of numbers from n down to 0<br>
+    <br>
+    <span style="font-weight: bold;">Iterative Solution</span><br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">public static void iterative(int n) {</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; for (int i = n; i &gt;= 0; i--)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println(i + "
+          ");</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">}</span></big><br
+        style="font-family: monospace;">
+    </div>
+    <br>
+    <span style="font-weight: bold;">Recursive Solution</span><br>
+    <br>
+    &nbsp;&nbsp;&nbsp;<big><span style="font-family: monospace;"> public
+        static void recursive(int n) {</span><br style="font-family:
+        monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp; if (n &lt; 0)</span><br style="font-family:
+        monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return; <b>// Base Case</b></span><br
+        style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp; else {</span><br style="font-family:
+        monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.print(n + " ");</span><br
+        style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; recursive(n - 1); <b>//
+          Recursive Case</b></span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp; }</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+        }&nbsp;&nbsp;&nbsp; </span></big><br>
+    <br>
+    - <a target="_blank" href="./Recurse.java">Recurse.java</a><br>
+    <br>
+    - <a href="./Activity.pdf" target="_blank">In Class Activity</a><br>
+    <br>
+    The general distinction between iterative and recursive solutions is
+    that an iterative method contains a loop, a recursive method calls
+    itself.<br>
+    <br>
+    <div style="text-align: center;">Before we proceed ....... do you
+      see the relationship between recursion and a stack??<br>
+      <br>
+      <hr style="width: 50%; height: 2px;"><br>
+    </div>
+    <br>
+    <span style="font-weight: bold;">Factorial</span><br>
+    <br>
+    Consider the example<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-style:
+          italic;">N! = N * (N - 1) * (N - 2) * ... 1</span></big><br>
+    </div>
+    <br>
+    where <br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-style:
+          italic;">0! = 1</span></big><br>
+    </div>
+    <br>
+    i.e.<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-style:
+          italic;">5! = 5 * 4 * 3 * 2 * 1 = 120</span></big><br>
+    </div>
+    <br>
+    <br>
+    Working with a partner, write an iterative solution to this problem<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">/**</span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">&nbsp;* iterative
+          solution</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;*/</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">int factorial(int n) {</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">}</span></big><br>
+    </div>
+    <br>
+    Recursive Solution<br>
+    <br>
+    <div style="margin-left: 40px;">&lt;&lt; we will develop this as a
+      class &gt;&gt;<br>
+    </div>
+    <br>
+    What is the Big-Oh notation of both the iterative and recursive
+    solutions?<br>
+    <br>
+    <span style="font-weight: bold;"></span><br>
+    <span style="font-weight: bold;">Other Examples of Recursion</span><br>
+    <br>
+    Recursion is often called the <span style="font-style: italic;">replacement
+
+
+
+      rule </span><br>
+    <br>
+    A nice <a target="_blank"
+      href="http://www.mi.sanu.ac.rs/vismath/bridges2005/burns/index.html">web
+
+
+
+      page</a> illustrating this.<br>
+    <br>
+    <span style="font-weight: bold;">Exercises</span><br>
+    <br>
+    <br>
+    1. Write a recursive method <br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">public static void displayForwards(int[] array,
+          int position)</span></big><br>
+    </div>
+    <br>
+    that displays the contents of the array in forward order. For
+    example, the following code<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">int[] nums = {5,10,15,20,25};</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">displayForwards(nums,0);</span></big><br>
+    </div>
+    <br>
+    would output<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">5 10 15 20 25</span></big><br>
+    </div>
+    <br>
+    2. Write a recursive method<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">public static void displayBackwards(int[] array,
+          int position)</span></big><br>
+    </div>
+    <br>
+    that would display the contents of the array in backwards order. For
+    example, the following code<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">int[] nums = {5,10,15,20,25};</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">displayBackwards(nums,0);</span></big><br>
+    </div>
+    <br>
+    would output<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">25 20 15 10 5</span></big><br>
+      <big><span style="font-family: monospace;"></span></big><br>
+    </div>
+    <br>
+    3. An interesting problem in computer science is known as the <a
+      target="_blank"
+      href="https://en.wikipedia.org/wiki/Halting_problem">Halting
+      Problem</a>. Essentially, it says that it is impossible to write a
+    program P that evaluates another program S that determines if
+    program S ever stops (halts) on a given input. (For Alan Turing
+    fans, in 1936 he wrote a proof that showed it was impossible to
+    write such a program P, and its importance led to the growth of
+    computer science as a field, as well as the topic of
+    undecidability.)<br>
+    <br>
+    Using the following program as a starting point, finish writing the
+    method <big><tt>halt()</tt></big> that returns false if a random
+    boolean of false is generated, and makes a recursive call if a
+    random boolean of true is created. (Obviously if all true values
+    were randomly generated, this program would never stop!)<br>
+    <br>
+    - <a href="./Halt.java">Halt.java</a> <br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Towers of Hanoi</span><br>
+    <br>
+    The <a target="_blank"
+      href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Towers of
+      Hanoi</a> is a classic recursive algorithm:<br>
+    <br>
+    <a target="_blank" href="./Towers.java">Towers.java</a><br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">When Not To Use Recursion</span><br>
+    <br>
+    - Tail recursion. This occurs when the last line of the method is a
+    recursive call. A simple iterative loop works just as well as
+    recursion.<br>
+    <br>
+    - Repeating the same action over and over (Fibonacci Sequence)<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">When To Use Recursion</span><br>
+    <br>
+    - When applying to naturally recursive problems (various sorting
+    algorithms) and data structures (trees) - two topics we will
+    see&nbsp; this semester.)<br>
+    <br>
+    - Backtracking<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Backtracking</span><br
+      style="font-weight: bold;">
+    <br>
+    Backtracking is a form of a <i>brute force</i> or <i>exhaustive</i>
+    solution - we potentially try <i>every</i> possibility&nbsp; when
+    searching for a solution.<br>
+    <br>
+    <span style="font-weight: bold;">General Backtracking Algorithm</span><br>
+    <br>
+    <p style="border: 0px none ; margin: 0px 0px 1.5em 40px; padding:
+      0px; font-weight: normal; font-style: normal; font-size: 13px;
+      font-family: 'Helvetica Neue',Arial,'Liberation
+      Sans',FreeSans,sans-serif; vertical-align: baseline; color:
+      rgb(51, 51, 51); font-variant: normal; letter-spacing: normal;
+      line-height: 19px; orphans: 2; text-align: start; text-indent:
+      0px; text-transform: none; white-space: normal; widows: 2;
+      word-spacing: 0px; background-color: rgb(255, 255, 255);"><big>public
+
+
+
+        boolean backtracking (solutionSoFar) {<br>
+        <span style="border: 0px none ; margin: 0px; padding: 0px;
+          font-weight: inherit; font-style: inherit; font-size: 13px;
+          font-family: inherit; vertical-align: baseline;">&nbsp; &nbsp;
+          &nbsp;</span>if (solutionSoFar is final solution)<br>
+        <span style="border: 0px none ; margin: 0px; padding: 0px;
+          font-weight: inherit; font-style: inherit; font-size: 13px;
+          font-family: inherit; vertical-align: baseline;">&nbsp; &nbsp;
+          &nbsp;</span><span style="border: 0px none ; margin: 0px;
+          padding: 0px; font-weight: inherit; font-style: inherit;
+          font-size: 13px; font-family: inherit; vertical-align:
+          baseline;">&nbsp; &nbsp; &nbsp;</span>return true<span
+          style="border: 0px none ; margin: 0px; padding: 0px;
+          font-weight: inherit; font-style: inherit; font-size: 13px;
+          font-family: inherit; vertical-align: baseline;"></span><br>
+        <span style="border: 0px none ; margin: 0px; padding: 0px;
+          font-weight: inherit; font-style: inherit; font-size: 13px;
+          font-family: inherit; vertical-align: baseline;">&nbsp; &nbsp;
+          &nbsp;</span>else {<br>
+        <span style="border: 0px none ; margin: 0px; padding: 0px;
+          font-weight: inherit; font-style: inherit; font-size: 13px;
+          font-family: inherit; vertical-align: baseline;">&nbsp; &nbsp;
+          &nbsp;</span><span style="border: 0px none ; margin: 0px;
+          padding: 0px; font-weight: inherit; font-style: inherit;
+          font-size: 13px; font-family: inherit; vertical-align:
+          baseline;">&nbsp; &nbsp; &nbsp;</span>for each possible choice<br>
+        <span style="border: 0px none ; margin: 0px; padding: 0px;
+          font-weight: inherit; font-style: inherit; font-size: 13px;
+          font-family: inherit; vertical-align: baseline;">&nbsp; &nbsp;
+          &nbsp;</span><span style="border: 0px none ; margin: 0px;
+          padding: 0px; font-weight: inherit; font-style: inherit;
+          font-size: 13px; font-family: inherit; vertical-align:
+          baseline;">&nbsp; &nbsp; &nbsp;</span><span style="border: 0px
+          none ; margin: 0px; padding: 0px; font-weight: inherit;
+          font-style: inherit; font-size: 13px; font-family: inherit;
+          vertical-align: baseline;">&nbsp; &nbsp; &nbsp;</span>if
+        (backtrack(solutionSoFar + choice))<span
+          class="Apple-converted-space">&nbsp;</span><br>
+        <span style="border: 0px none ; margin: 0px; padding: 0px;
+          font-weight: inherit; font-style: inherit; font-size: 13px;
+          font-family: inherit; vertical-align: baseline;">&nbsp; &nbsp;
+          &nbsp;</span><span style="border: 0px none ; margin: 0px;
+          padding: 0px; font-weight: inherit; font-style: inherit;
+          font-size: 13px; font-family: inherit; vertical-align:
+          baseline;">&nbsp; &nbsp; &nbsp;</span><span style="border: 0px
+          none ; margin: 0px; padding: 0px; font-weight: inherit;
+          font-style: inherit; font-size: 13px; font-family: inherit;
+          vertical-align: baseline;">&nbsp; &nbsp; &nbsp;</span><span
+          style="border: 0px none ; margin: 0px; padding: 0px;
+          font-weight: inherit; font-style: inherit; font-size: 13px;
+          font-family: inherit; vertical-align: baseline;">&nbsp; &nbsp;
+          &nbsp;</span>return true // this choice returns the final
+        solution<br>
+        <span style="border: 0px none ; margin: 0px; padding: 0px;
+          font-weight: inherit; font-style: inherit; font-size: 13px;
+          font-family: inherit; vertical-align: baseline;">&nbsp; &nbsp;
+          &nbsp;</span>}<br>
+        <span style="border: 0px none ; margin: 0px; padding: 0px;
+          font-weight: inherit; font-style: inherit; font-size: 13px;
+          font-family: inherit; vertical-align: baseline;">&nbsp; &nbsp;
+          &nbsp;</span>return false // tried every possible solution
+        without finding a solution<br>
+        }</big></p>
+    <span style="font-weight: bold;">N-Queens</span><br>
+    <br>
+    We will examine this in class.<br>
+    <br>
+    <br>
+  </body>
+</html>

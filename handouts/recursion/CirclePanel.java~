@@ -1,0 +1,65 @@
+import java.awt.event.*;
+import java.awt.*;
+import javax.swing.*;
+
+@SuppressWarnings("serial")
+class CirclePanel extends JPanel
+{
+
+static int colorLevel = 8;
+
+    /**
+     * invoked when the application first starts
+     */
+    public void paintComponent( Graphics g )
+    {
+      drawCircles(g, 50, 10, 240, 320, 110);
+    }
+
+    /**
+     * Draw the ruler from position left to right at height level
+     */
+    private void drawCircles( Graphics g, int x, int y, int width, int height, int radius)
+    {
+        if( radius < 0)
+            return;
+
+        // sets the color of the circles
+        // this technique will work with the recursive solution
+        switch(colorLevel) {
+          case 8:
+            g.setColor(Color.red);
+            break;
+          case 4:        
+            g.setColor(Color.blue);
+            break;        
+          case 2:
+            g.setColor(Color.black);
+            break;        
+          case 1:
+            g.setColor(Color.yellow);
+            break;
+        }
+        
+        if (colorLevel == 1)
+          colorLevel = 8;
+        else
+          colorLevel /= 2;
+        
+        // iterative solution
+        
+        do {
+          x = width/2 - radius;
+          y = height/2 - radius;
+          g.drawOval(x, y, 2*radius, 2*radius);
+          radius -= 20;
+        }
+        while (radius > 0);
+        
+        
+        // recursive solution
+        //g.drawOval(  );
+        //drawCircles(  );
+        
+    }
+}

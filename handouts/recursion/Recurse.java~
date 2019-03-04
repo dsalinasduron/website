@@ -1,0 +1,52 @@
+/**
+ * Example program illustrating iterative and recursive
+ * solutions to the incredibly simply problem of
+ * printing out a list of numbers from n ... 0
+ */
+
+public class Recurse
+{
+	/**
+	 * Outputs a list of numbers from n .. 0
+	 */
+	public static void iterative(int n) {
+		for (int i = n; i >= 0; i--)
+			System.out.println(i + " ");
+	}
+
+	/**
+	 * Outputs a list of numbers from 0 .. n
+	 */
+	public static void recursive(int n) {
+		if (n < 0)
+			return;
+		else {
+			System.out.print(n + " ");
+			recursive(n - 1);
+			System.out.print("\n DONE " + n);
+		}
+	}	
+
+	public static int factorial(int n) {
+
+		if (n == 0)
+			return 1;
+		else {
+			int fact = n * factorial(n - 1);
+			return fact;
+		}
+	}
+	
+
+	public static void main(String args[]) {
+		if (args.length != 1) {
+			System.out.println("Usage: java Recurse <n>");
+			System.exit(0);
+		}
+
+		//recursive(Integer.parseInt(args[0]));
+		System.out.println(factorial(Integer.parseInt(args[0])));
+
+		System.out.println();
+	}
+}

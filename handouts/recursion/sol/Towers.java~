@@ -1,0 +1,15 @@
+public class Towers
+{
+  public void solve(int num, int startPole, int tempPole, int endPole) {
+    if (num == 1)
+      System.out.println("Moving " + num + " disk from start pole to end pole");
+    else {
+      solve(num-1, startPole, endPole, tempPole);
+      solve(num-1, tempPole, startPole, endPole);
+    }
+  }
+  
+  public static void main(String[] args) {
+    solve(3);
+  }
+}

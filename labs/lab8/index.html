@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>N-Queens</title>
+  </head>
+  <body>
+    <b>CMPT 202 Fall 2018</b><b><br>
+      Lab 8<br>
+    </b><b><br>
+    </b><b>N-Queens</b><b><br>
+    </b><br>
+    <hr width="100%" size="2"><br>
+    This assignment will involve developing a recursive, backtracking
+    solution to the N Queens problem. The starting point for your code
+    is <br>
+    <br>
+    - <a href="./Queens.java">Queens.java</a><br>
+    <br>
+    - <a href="./QueensGUI.java">QueensGUI.java</a> (which uses <a
+      href="./queen.png" target="_blank">queen.png</a> - this file must
+    be in the same package as your other Java source files.)<br>
+    <br>
+    <big><tt>QueensGUI.java</tt></big> allows you to draw the game board
+    that your algorithm constructs. The following program provides an
+    example of how this will appear:<br>
+    <br>
+    - <a href="./QueensGUIExample.java">QueensGUIExample.java</a><br>
+    <br>
+    [All files as a <a href="./lab8.zip">zip file</a>.]<br>
+    <br>
+    You do not need to be concerned as to how <big><tt>QueensGUI</tt></big>
+    works other than&nbsp; calling&nbsp; the <big><tt>draw()</tt></big>
+    method. After calling <big><tt>draw()</tt></big>, the output will
+    appear as follows:<br>
+    <br>
+    <blockquote>
+      <blockquote><img alt="" src="./game-board.png" width="200"
+          height="199"><br>
+      </blockquote>
+    </blockquote>
+    <br>
+    <b>The Assignment</b><br>
+    <br>
+    The program is first invoked by calling <big><tt>Queens.java</tt></big>
+    and specifying the size of the board. When running this using
+    Eclipse, be sure to use the <big><tt>Run As</tt></big> -&gt; <big><tt>Run
+
+
+
+
+
+
+
+
+        Configurations</tt></big> and set the&nbsp; <a target="_blank"
+      href="./args.png">Arguments tab</a> to the size of the board. This
+    becomes an input argument to your running program.<br>
+    <br>
+    When you look through the <big><tt>Queens.java</tt></big> program,
+    you will notice several methods that must be implemented. Some of
+    them are obvious and simple to implement, however, the majority of
+    your time on this assignment will be focused on the following two
+    methods:<big><tt></tt></big><br>
+    <blockquote> - <big><tt>isUnderAttack(int row, int column)<br>
+          <br>
+        </tt></big>- <big><tt>placeQueens(int </tt><tt>row)</tt></big><br>
+    </blockquote>
+    The <big><tt>isUnderAttack(int row, int column)</tt></big> method
+    determines if a Queen that is placed at <big><tt>[row][column]</tt></big>
+    is under attack by another Queen on the board. This method will need
+    to check for being under attack by column, diagonally left, and
+    diagonally right. As you are placing Queens row-by-row, you only
+    need to check for the rows above where a Queen has already been
+    placed.&nbsp; Some of this method has already been defined for you,
+    and it should be clear where you need to extend the logic.<br>
+    <br>
+    The <big><tt>placeQueens(int row)</tt></big> method implements the
+    recursive backtracking algorithm discussed in class, assigning a
+    Queen to a specified row. It is initially called by the <big><tt>solveQueens()
+
+
+
+
+
+
+
+
+      </tt></big>method, which places a Queen at row 0. <br>
+    <br>
+    If you determine you can place a Queen, you will set the value of
+    the board to a 'Q'; board positions that do not have a Queen are
+    assigned a '*'.<br>
+    <br>
+    Pseudocode for&nbsp; the general backtracking algorithm that
+    proceeds row-by-rowis as follows:<br>
+    <br>
+    <blockquote><font size="+1"><tt>NQueens(currentRow)</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; if currentRow &gt; end of
+          the board</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return
+          true // we found a solution</tt></font><br>
+      <br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; for (each column in
+          currentRow)</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if a
+          queen placed in currentRow and column would not be attacked</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; modify the board by add the queen to
+          currentRow/column</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; recursively call NQueens(nextRow)</tt></font><br>
+      <br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; if the recursive call cannot find a
+          solution</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; remove queen placement</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; else</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return true // the
+          recursive call did find a solution</tt></font><br>
+      <br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; return false // no solution
+          for each column in currentRow</tt></font><br>
+    </blockquote>
+    <br>
+    <br>
+    Submit your implementation of <big><tt>Queens.java</tt></big> to
+    the Canvas Dropbox for Lab #8.<br>
+    <br>
+    Your submission will be graded according to the following criteria:<br>
+    <br>
+    <table width="60%" cellspacing="2" cellpadding="2" border="0">
+      <tbody>
+        <tr>
+          <td valign="top" align="center"><b>Task</b><b><br>
+            </b></td>
+          <td valign="top" align="center"><b>Points</b><b><br>
+            </b></td>
+        </tr>
+        <tr>
+          <td valign="top">Comments<br>
+          </td>
+          <td valign="top">10 <br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Correct implementation of <big><tt>isUnderAttack()</tt></big><br>
+          </td>
+          <td valign="top">40<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Correct implementation of <big><tt>placeQueens()</tt></big><br>
+          </td>
+          <td valign="top">40<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Correct implementation of <big><tt>clearBoard()</tt></big>,
+            <big><tt>setQueen()</tt></big>, <big><tt>removeQueen()</tt></big><br>
+          </td>
+          <td valign="top">10<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Total<br>
+          </td>
+          <td valign="top">100<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+  </body>
+</html>
