@@ -1,30 +1,69 @@
 \documentclass{article}
+\usepackage{listings}
+\title{CMPT 202\\Quiz 2}
 \begin{document}
+\maketitle
+\emph{Name:}
 \begin{enumerate}
-	\item Are stacks LIFO or FIFO? Explain.
-	\item Are queues LIFO or FIFO? Explain.
-	\item Given the Java List API, implement the push and pop functions on
-	a stack.
-	\item Given the nodes A $\rightarrow$ C $\rightarrow$ D, and assuming
+	\item What is the printout for the following code? \emph{This
+	code compiles.}
+		\lstinputlisting{q1.java}
+		\vspace{0.5in}
+	\item What is the printout for the following code? \emph{This code
+	compiles.}
+		\lstinputlisting{q2.java}
+		\vspace{0.5in}
+	\item Assume \texttt{elements} is a \texttt{List<String>}. implement
+	the add and remove methods of a Queue<T>. Remember that the remove
+	method will check if the list is empty.
+	\begin{lstlisting}[language = java]
+	public void add(T element) {
+	\end{lstlisting}
+	\vspace{1in}
+	\begin{lstlisting}[language = java]
+	}
+	public T remove(T element) {
+	\end{lstlisting}
+	\vspace{1in}
+	\begin{lstlisting}[language = java]
+	}
+	\end{lstlisting}
+	\item Given the nodes A $\rightarrow$ B $\rightarrow$ D, and assuming
 	that each node has a \texttt{next} variable and are respectively
-	called, $A$, $C$, and $D$. Write pseudocode that will add the node $B$
+	called, $A$, $B$, and $D$. Write pseudocode that will add the node $C$
 	to the list in the position: A $\rightarrow$ B $\rightarrow$ C
 	$\rightarrow$ D
+	\begin{lstlisting}
+	Node a = new Node();
+	Node b = new Node();
+	Node c = new Node();
+	Node d = new Node();
+	a.next = b;
+	b.next = d;
+	\end{lstlisting}
+	\vspace{1in}
+	\newpage
 	\item Assume you are using the array \texttt{a = [2,3,4,null,null]} to
-	store the elements of a stack. Assume that top is stored in a variable
-	\texttt{top} = 0. 
-	Draw the array after pusing \texttt{1}.
-	Write pseudocode to add \texttt{1} to the array.
+	store the elements of a queue. Assume that the front of the queue is
+	\emph{always} at index 0.
+	Draw the array after adding \texttt{10}.
+	\vspace{1in}
+
+	Write code that would add \texttt{10} to the array. Remember that the
+	array's name is \texttt{a}.
+	\vspace{2in}
 	\item Will this code compile? Why or why not?
 	\begin{verbatim}
 		Object a = new String("a");
 		System.out.println(a.charAt(0));
 	\end{verbatim}
-	\item Will this code compile? Why or why not?
+	\vspace{1in}
+	\item Will this code compile? If so, why?  If not, use generics to fix
+	it.
 	\begin{verbatim}
-		ArrayList a = new ArrayList();
-		a.add("b");
-		String b = a.get(0);
+		LinkedList a = new LinkedList();
+		a.add(1);
+		Integer b = a.get(0);
 	\end{verbatim}
 \item 
 
