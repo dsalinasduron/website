@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Trees</title>
+  </head>
+  <body>
+    <span style="font-weight: bold;">Graphs</span><br>
+    <br>
+    <p>A graph is a set of <b>vertices</b> and <b>edges</b>. The following
+    graph contains the vertices {A,B,C,D,E} and the edges {AE, DE, BE, CE,
+    AD}. These edges are considered <b>undirected</b>.</p>
+    <p><img src="graph1.png" height="200px"
+    float="left"></img></p>
+
+<p>
+Some terminology:
+<ul>
+<li> Graphs can contain <b>paths</b>, e..g B -> E -> A -> D</li>
+<li> A graph may contain a <b>cycle</b> (a path which starts and ends at the
+same node.) i.e. A -> E -> D -> A . </li>
+<li> An <b>acyclic graph</b> contains no cycles. </li>
+<li> A graph is <b>connected</b> if there is a path from every node to every other
+node in the graph. </li>
+</ul>
+</p>
+
+<p>A <b>disconnected</b> graph is comprised of connected components:<br>
+<img src="graphDisconnected.png" height="200px"></img><br>
+<b>G = {J, K, L, M, N}</b>
+</p>
+
+<p>Graphs may be complete (where there is an edge between every node
+in the graph):<br>
+<img src="graphComplete.png" height="200px"></img></p>
+
+<p>
+Graphs may be considered either:
+<ul>
+<li><b>Sparse</b> - with relatively few edges</li>
+<li><b>Dense</b> - with relatively few edges missing.</li>
+</ul>
+</p>
+
+<p>
+Graphs may also be <b>directed</b> where the edge goes only one way:<br>
+<img src="graphDirected.png" height="100px"></img>
+</p>
+
+
+<b>Representation of Graphs</b>:
+
+<p>
+There are two general approaches for representing a graph, an <b>adjacency
+list</b> and an <b>adjacency matrix</b>.<br>
+
+For the following undirected graph:<br>
+<img src="graphAdjacency.png" height="300px"></img><br>
+</p>
+<p>
+Adjacency List<br>
+<ul>
+<li> A: B, D, E </li>
+<li> B: A, D, E </li>
+<li> C: D </li>
+<li>D: A, B, C </li>
+<li>E: A, B</li>
+</ul>
+</p>
+
+<p>
+<b>Adjacency Matrix</b><br>
+<img src="adjacencyMatrix.png" height="300px"></img>
+</p>
+
+    <br><span style="font-weight: bold;">Trees</span><br>
+    <br>
+    A fundamental data structure in computer science that illustrates a
+    hierarchical relationship between data.<br>
+    <br>
+    <span style="font-weight: bold;">Overview</span><br>
+    <br>
+    <div style="margin-left: 80px;"><a href="./trees.png"><img
+          target="_blank" alt="" src="./trees.png"
+          style="border-top-width: 0px; border-right-width: 0px;
+          border-bottom-width: 0px; border-left-width: 0px;
+          border-top-style: solid; border-right-style: solid;
+          border-bottom-style: solid; border-left-style: solid;
+          border-top-color: -moz-use-text-color; border-right-color:
+          -moz-use-text-color; border-bottom-color: -moz-use-text-color;
+          border-left-color: -moz-use-text-color;
+          -moz-border-top-colors: none; -moz-border-right-colors: none;
+          -moz-border-bottom-colors: none; -moz-border-left-colors:
+          none; border-image-source: none; border-image-slice: 100% 100%
+          100% 100%; border-image-width: 1 1 1 1; border-image-outset: 0
+          0 0 0; border-image-repeat: stretch stretch; width: 400px;
+          height: 299px;" border="0" height="1530" width="2014"></a><br>
+    </div>
+    <br>
+    * Notice how counting begins at level zero!<br>
+    <br>
+    <span style="font-weight: bold;">Binary Tree </span><br>
+    <br>
+    The tree shown above is a special type of tree known as a <span
+      style="font-weight: bold;">binary tree</span> which means that a
+    node can have 0, 1, or<span style="font-weight: bold;"></span> 2
+    children. <br>
+    <br>
+    A tree of height h that has all of its leaves at level h and every
+    non-leaf node has exactly two children is known as a <span
+      style="font-weight: bold;">full binary tree</span>.<br>
+    <br>
+    <div style="margin-left: 80px;"><img style="width: 350px; height:
+        201px;" alt="" src="./full-binary-tree.png"><br>
+    </div>
+    <br>
+    A <span style="font-weight: bold;">complete binary tree</span> has
+    all possible nodes filled in, yet the bottom level is filled in from
+    left to right<br>
+    <br>
+    <div style="margin-left: 80px;"><img style="width: 350px; height:
+        270px;" alt="" src="./complete.png"><br>
+    </div>
+    <br>
+    <span style="font-weight: bold;">General Trees</span><br>
+    <br>
+    A <span style="font-weight: bold;">general tree</span> has no
+    restriction on the number of children a node may have.<br>
+    <br>
+    <div style="margin-left: 80px;"><img style="width: 450px; height:
+        262px;" alt="" src="./general-tree.png"><br>
+    </div>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Traversals of a Binary Tree</span><br>
+    <br>
+    Consider the following tree<br>
+    <br>
+    <div style="margin-left: 80px;"><img style="width: 500px; height:
+        366px;" alt="" src="./traversals.png"><br>
+    </div>
+    <br>
+    <br>
+    <br>
+    A <span style="font-weight: bold;">traversal</span> involves <span
+      style="font-weight: bold;">visiting</span> a node, and then
+    traversing the left and right subtrees. Traversals are distinguished
+    by the order of these operations.<br>
+    <br>
+    <span style="font-weight: bold;">Pre-Order Traversal</span><br>
+    <br>
+    <div style="margin-left: 40px;">1. Visit the root<br>
+      <br>
+      2. Traverse left subtree<br>
+      <br>
+      3. Traverse right subtree<br>
+    </div>
+    <br>
+    Note this is a recursive algorithm. If we consider visiting a node
+    simply outputting the value of the node, the pre-order traversal
+    outputs the following nodes<br>
+    <br>
+    <div style="margin-left: 40px;"><big><big><span style="font-weight:
+            bold;">J, F, C, A, D, H, T, W, V, Z</span></big></big><br>
+    </div>
+    <br>
+    <span style="font-weight: bold;">In-Order Traversal</span><br>
+    <br>
+    <div style="margin-left: 40px;">1. Traverse left subtree<br>
+      <br>
+      2. Visit the root<br>
+      <br>
+      3. Traverse right subtree<br>
+    </div>
+    <br>
+    The output<br>
+    <br>
+    <div style="margin-left: 40px;"><big><big><span style="font-weight:
+            bold;">A, C, D F, H, J, T, V, W, Z</span></big></big><br>
+    </div>
+    <br>
+    <span style="font-weight: bold;">Post-Order Traversal</span><br>
+    <br>
+    1. Traverse left subtree<br>
+    <br>
+    2. Traverse right subtree<br>
+    <br>
+    3. Visit the root<br>
+    <br>
+    The output<br>
+    <br>
+    <div style="margin-left: 40px;"><big><big><span style="font-weight:
+            bold;">A, D, C, H, F, V, Z, W, T, J</span></big></big><br>
+    </div>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Examples of&nbsp; Trees</span><br>
+    <br>
+    We now look at some uses of&nbsp; trees<br>
+    <br>
+    <span style="font-weight: bold;">Expression Trees</span><br>
+    <br>
+    We can use binary trees to illustrate expressions<br>
+    <br>
+    <br>
+    <div style="margin-left: 80px;"><img style="width: 400px; height:
+        148px;" alt="" src="./expressions.png"><br>
+    </div>
+    <br>
+    <br>
+    <br>
+    Recall <a target="_blank"
+href="http://www.people.westminstercollege.edu/faculty/ggagne/spring2018/202/handouts/stacks/index.html">infix
+
+
+
+
+
+
+      and postfix expressions</a>?<br>
+    <br>
+    <span style="font-weight: bold;">Decision Trees</span><br>
+    <br>
+    Decision trees are widely used in artificial intelligence for
+    decision-making.<br>
+    <br>
+    The following decision tree is used to answer whether a customer
+    will wait for a table at a busy restaurant.<br>
+    <br>
+    <img style="width: 836px; height: 510px;" alt=""
+      src="./decision-tree.png"><br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Binary Search Trees</span><br>
+    &nbsp;<br>
+    A binary search tree (BST) is a special type of tree with the
+    following requirement<br>
+    <br>
+    <div style="margin-left: 40px;"><img style="width: 450px; height:
+        182px;" alt="" src="./bst.png"><br>
+    </div>
+    <br>
+    <br>
+    The tree in the figure at the top of this document is a BST.<br>
+    <br>
+    Performance of a binary search tree can range from <big><span
+        style="font-family: monospace;">O(lg n)</span></big> to <big><span
+        style="font-family: monospace;">O(n)</span></big>.<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Constructing Binary Search Trees</span><br>
+    <br>
+    Inserting the following elements into a binary search tree<br>
+    <br>
+    <div style="margin-left: 40px;"><big><big><span style="font-weight:
+            bold;">16, 19, 2, 4, 3, 1, 9, 12, 18, 27</span></big></big><br>
+    </div>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Deleting from a Binary Search Tree</span><br>
+    <br>
+    Three Cases:<br>
+    <br>
+    <span style="font-weight: bold;">#1 - Removing a Leaf Node</span><br>
+    <br>
+    <div style="margin-left: 40px;">This is trivial.<br>
+    </div>
+    <br>
+    <br>
+    <span style="font-weight: bold;">#2 - Removing a Node with One Child</span><br>
+    <br>
+    <div style="margin-left: 40px;"><img style="width: 771px; height:
+        550px;" alt="" src="./BST-Delete-P1.jpg"><br>
+    </div>
+    <br>
+    <span style="font-weight: bold;">#3 - Removing a Node with Two
+      Children</span><br>
+    <br>
+    <div style="margin-left: 40px;"><img style="width: 649px; height:
+        273px;" alt="" src="./BST-Delete-P2.jpg"><br>
+    </div>
+    <br>
+    <br>
+    <a target="_blank" href="./TreeExercise.pdf">In-Class Exercise</a><br>
+    <br>
+    [ Only click on the following link once you have completed the in
+    class exercise. &lt;<a target="_blank" href="./TreeExercise-sol.pdf">
+      Solutions</a> &gt; ]<br>
+    <br>
+  </body>
+</html>
