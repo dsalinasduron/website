@@ -1,0 +1,461 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Lab 9</title>
+  </head>
+  <body>
+    <big><span style="font-weight: bold;">CMPT 202 Data Structures</span><br
+        style="font-weight: bold;">
+      <br style="font-weight: bold;">
+      <span style="font-weight: bold;">Lab 9 - Binary Trees</span><br
+        style="font-weight: bold;">
+      <br style="font-weight: bold;">
+      <span style="font-weight: bold;">Due:&nbsp; Wednesday October
+        31,&nbsp; 2018<br>
+      </span></big> <br style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px; font-weight: bold;">Objectives</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;">The objectives of this lab are:</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;"></span><br>
+    &nbsp;&nbsp;&nbsp; * Understand the basics of a binary tree ADT
+    using coding and visualization<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; * Implement several methods of a binary tree
+    class<br>
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;">&nbsp;&nbsp;&nbsp; * To apply some principles of
+      programming, testing, and software engineering<span
+        class="Apple-converted-space">&nbsp;</span></span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px; font-weight: bold;">The Lab</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;">This lab will involve creating several different
+      binary tree structures and completing the implementation of the <big><span
+          style="font-family: monospace;">BinaryTree</span></big> class.<br>
+      <br>
+      <span style="font-weight: bold;">Getting Started</span><br>
+      <br>
+      Download the following files<br>
+      <br>
+      - <a href="./BinaryTree.java">BinaryTree.java</a> - An partial
+      implementation of a binary tree<big><span style="font-family:
+          monospace;"></span></big><br>
+      <br>
+      - <a href="./BinaryTreeExample.java">BinaryTreeExample.java</a> -
+      An demonstration program that creates a binary tree and performs
+      several operations.<br>
+      <br>
+      Also open the <a target="_blank"
+        href="http://bridgesuncc.github.io/doc/java-api/current/html/index.html">API</a>
+      associated with the Bridges visualization tool. In particular,
+      notice the API (including its inheritance) of the <font size="+1"><tt>BinTreeElement</tt></font>
+      class.<br>
+      <br>
+      <b> Part 1. Create and Visualize a Binary Tree</b><br>
+      <br>
+      Initially, run <big><tt>BinaryTreeExample.java</tt></big> and
+      visualize the simple tree that is created. Read through the code
+      for creating a tree, and complete the tree shown below. Be sure to
+      check your implementation with a visualization.<br>
+    </span><span style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px; display: inline
+      ! important; float: none;"><br>
+      <br>
+    </span>
+    <div style="margin-left: 40px;">
+      <div style="margin-left: 40px;"><span style="color: rgb(0, 0, 0);
+          font-family: Times; font-size: medium; font-style: normal;
+          font-variant: normal; font-weight: normal; letter-spacing:
+          normal; line-height: normal; text-align: start; text-indent:
+          0px; text-transform: none; white-space: normal; widows: 1;
+          word-spacing: 0px; display: inline ! important; float: none;"><img
+            style="width: 352px; height: 299px;" alt="" src="./Tree.png"></span><br>
+      </div>
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"></span></div>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;"><br>
+      The remainder of the lab involves completing the
+      partially-implemented <a href="./BinaryTree.java">BinaryTree.java</a>
+      class.<big><span style="font-family: monospace;"></span></big><br>
+      &nbsp;<br>
+      <span style="font-weight: bold;">Part 2. Complete the
+        printLevels() Method</span><br>
+      <br>
+      Take a look through the <big><span style="font-family:
+          monospace;">printLevels()</span></big> method and call this
+      method from <big><tt>BinaryTreeExample.java</tt></big> - Notice
+      how it uses a private helper method.<br>
+      <br>
+      Modify this method so that it sets the color of each node to
+      yellow, and also sets the label of each node to the level it
+      occurs on. Recall the root node is level 0, the node(s) below the
+      root are at level 1, and so forth. <br>
+      <br>
+      Test your implementation with a visualization, using a mouse over
+      to ensure each node has its label set to its appropriate level.<br>
+      <br>
+      <b>Part 3.&nbsp; Complete the getLeftMostData() Method</b><br>
+      <br>
+      Examine <big><tt>getLeftMostData()</tt></big> and call this
+      method from <big><tt>BinaryTreeExample.java</tt></big> - Again,
+      notice how it uses a private helper method.<br>
+      <br>
+      Modify this method so that it sets the left-most node in the
+      binary tree to green.<br>
+      <br>
+      <b>Part 4. Implement the getRightMostData() Method</b><br>
+      <br>
+      Using a similar strategy to <big><tt>getLeftMostData()</tt></big>,
+      implement the <big><span style="font-family: monospace;">getRightMostData()</span></big>
+      method. Set the color of the right-most element to a color of your
+      choice.<br>
+      <br>
+      Be sure to to test your implementation using the bridges
+      visualization tool.<br>
+    </span><span style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px; display: inline
+      ! important; float: none;"></span><span style="color: rgb(0, 0,
+      0); font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px; display: inline ! important; float: none;"><br>
+      <span style="font-weight: bold;">Part 5. Implement getHeight()
+        Method</span><br>
+      <br>
+      Just as <big><span style="font-family: monospace;">getSize()</span></big>
+      can be implemented recursively, there is a similar approach for
+      determining the height of a binary tree:<br>
+      <br>
+    </span>
+    <div style="margin-left: 40px;"><span style="color: rgb(0, 0, 0);
+        font-family: Times; font-size: medium; font-style: normal;
+        font-variant: normal; font-weight: normal; letter-spacing:
+        normal; line-height: normal; text-align: start; text-indent:
+        0px; text-transform: none; white-space: normal; widows: 1;
+        word-spacing: 0px; display: inline ! important; float: none;"><big><span
+            style="font-family: monospace;">int getHeight(node)</span></big></span><br
+        style="font-family: monospace;">
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"><big><span style="font-family:
+            monospace;">{</span></big></span><br style="font-family:
+        monospace;">
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"><big><span style="font-family:
+            monospace;">&nbsp;&nbsp;&nbsp; if node == null</span></big></span><br
+        style="font-family: monospace;">
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"><big><span style="font-family:
+            monospace;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return 0</span></big></span><br
+        style="font-family: monospace;">
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"><big><span style="font-family:
+            monospace;">&nbsp;&nbsp;&nbsp; else {</span></big></span><br
+        style="font-family: monospace;">
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"><big><span style="font-family:
+            monospace;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; maxHeight
+            = max( getHeight(left child of node), getHeight(right child
+            of node) )</span></big></span><br style="font-family:
+        monospace;">
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"></span><br style="font-family:
+        monospace;">
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"><big><span style="font-family:
+            monospace;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return
+            maxHeight + 1</span></big></span><br style="font-family:
+        monospace;">
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"><big><span style="font-family:
+            monospace;">&nbsp;&nbsp;&nbsp; }</span></big></span><br
+        style="font-family: monospace;">
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"><big><span style="font-family:
+            monospace;">}</span></big></span><br>
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"></span></div>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;"><br>
+      However, the above algorithm has one small bug in it (hint - we
+      measure the height of a tree beginning at zero) that you will need
+      to fix.<br>
+      <br>
+      Just as is with earlier methods, you may find the above algorithm
+      more useful as a private helper method that is called by the
+      public <big><span style="font-family: monospace;">getHeight()</span></big>
+      method defined in <big><span style="font-family: monospace;">BinaryTree</span></big>.<br>
+      <br>
+    </span><br>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;"><span style="color: rgb(0, 0, 0); font-family:
+        Times; font-size: medium; font-style: normal; font-variant:
+        normal; font-weight: normal; letter-spacing: normal;
+        line-height: normal; text-align: start; text-indent: 0px;
+        text-transform: none; white-space: normal; widows: 1;
+        word-spacing: 0px; display: inline ! important; float: none;"><span
+          style="font-weight: bold;">Part 6. Implement a recursive
+          algorithm for getSize()</span><br>
+        <br>
+        One way of keeping track of the number of elements in the tree
+        (its size) is by using a counter that is incremented whenever a
+        new element is&nbsp; added to the tree. However, this approach
+        of using a counter is awkward and can instead be performed by
+        using a recursive algorithm. </span></span><span style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px; display: inline ! important; float: none;"><br>
+      <br>
+      You may notice that the API in <big><span style="font-family:
+          monospace;">BinaryTree</span></big> for <big><span
+          style="font-family: monospace;">getSize()</span></big> is not
+      passed a parameter. You may find that it is easiest to instead
+      create a private helper method that is based on the&nbsp;
+      algorithm for <big><tt>getHeight()</tt></big>, and have the <big><span
+          style="font-family: monospace;">getsize()</span></big> method
+      that is part of the interface call this helper method. <br>
+      <br>
+      Be sure to test your implementation of <big><span
+          style="font-family: monospace;">getSize()</span></big> .<br>
+      <br>
+    </span><span style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px; display: inline
+      ! important; float: none;"><span style="font-weight: bold;">Part
+        7. Implement the removeRightMostData() Method.</span><br>
+      <br>
+      The <big><span style="font-family: monospace;">removeLeftMostData()</span></big>
+      method has been implemented for you (notice it uses the familiar
+      pattern of a private helper method.) When considering removing the
+      left-most data, there are some special cases to consider:<br>
+      <br>
+    </span>
+    <div style="margin-left: 40px;"><span style="color: rgb(0, 0, 0);
+        font-family: Times; font-size: medium; font-style: normal;
+        font-variant: normal; font-weight: normal; letter-spacing:
+        normal; line-height: normal; text-align: start; text-indent:
+        0px; text-transform: none; white-space: normal; widows: 1;
+        word-spacing: 0px; display: inline ! important; float: none;"><img
+          style="width: 666px; height: 536px;" alt=""
+          src="./LeftChild.jpg"></span><br>
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"></span></div>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;"><br>
+      Read through how the <big><span style="font-family: monospace;">removeLeftMostData()</span></big>
+      methods handle these special cases, as well as the general case
+      where the left-most child is a leaf node. Using a similar
+      strategy, implement </span><span style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px; display: inline ! important; float: none;">the
+      <big><span style="font-family: monospace;">removeRightMostData()</span></big>
+      method. You should consider how the special cases shown above are
+      different when considering removing the right-most element.<br>
+      <br>
+      Be sure to test your implementation.<br>
+      <br>
+    </span><span style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px; display: inline
+      ! important; float: none;"><span style="font-weight: bold;">Part
+        8. Implement the getPreOrderIterator() and
+        getPostOrderIterator() Methods.</span><br>
+      <br>
+      Notice how the <big><span style="font-family: monospace;">getPreOrderIterator()</span></big>
+      method is implemented. Using a similar strategy, implement the </span><span
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px; display: inline ! important; float:
+      none;"><big><span style="font-family: monospace;">getInOrderIterator()</span></big>
+      and <big><span style="font-family: monospace;">getPostOrderIterator()</span></big>
+      methods. Be sure to test each of your methods.<br>
+    </span><br>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;"><br>
+      <span style="font-weight: bold;">Lab Submission</span><br>
+      <br>
+      Submit your completed <big><span style="font-family: monospace;">BinaryTree.java</span></big>
+      file to the Lab 9 dropbox on Canvas.<br>
+      <br>
+    </span><br>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;"><br>
+    </span><span style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px; display: inline
+      ! important; float: none;">&nbsp;<br>
+    </span><br>
+  </body>
+</html>

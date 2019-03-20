@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Lab 9</title>
+  </head>
+  <body>
+    <big><span style="font-weight: bold;">CMPT 202 Data Structures</span><br
+        style="font-weight: bold;">
+      <br style="font-weight: bold;">
+      <span style="font-weight: bold;">Lab 9 - Trees & Graphs</span><br
+        style="font-weight: bold;">
+      <br style="font-weight: bold;">
+</big> <br style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+      <b> Part 1. Visualize a Binary Tree</b><br>
+
+      <p>Download <a href="Lab9.java">Lab9.java</a>, <a
+      href="TreeGraph.java">TreeGraph.java</a>, and <a
+      href="Node.java">Node.java</a>. Run the main method in Lab9. You should
+      see a tree with this structure.  Node.java is a class that can represent
+      a general tree. For this lab, we will be dealing with binary trees.
+      Node.java returns a list of children.  You may assume that the left child
+      is at index 0 in that list and the right child is at index 1 when both
+      children are present.</p>
+
+
+    <div style="margin-left: 40px;">
+      <div style="margin-left: 40px;"><span style="color: rgb(0, 0, 0);
+          font-family: Times; font-size: medium; font-style: normal;
+          font-variant: normal; font-weight: normal; letter-spacing:
+          normal; line-height: normal; text-align: start; text-indent:
+          0px; text-transform: none; white-space: normal; widows: 1;
+          word-spacing: 0px; display: inline ! important; float: none;"><img
+            style="width: 352px; height: 299px;" alt="" src="./Tree.png"></span><br>
+      </div>
+
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"></span></div>
+      <span style="font-weight: bold;">Part 2. Complete the Pre-Order Method</span><br>
+      <br>
+
+      <p>A <a href="../../handouts/trees/index.html">preorder traversal of a
+      tree</a> visits each node in the tree by visiting the parent first, and
+      then the child. By that rule, we know that the root (top of the tree)
+      must be visited before any other node in the tree. For example, a
+      preorder traversal of the tree above visits nodes in the following order:
+      M,F,D,Q,H,G,L,R,T.</p>
+      
+      <p>Complete the preOrder method in Lab9.java so that, when the method is
+      called, it produces the following printout:<br><br>
+	<code>
+	Visited: M<br>
+	Visited: F<br>
+	Visited: D<br>
+	Visited: Q<br>
+	Visited: H<br>
+	Visited: G<br>
+	Visited: L<br>
+	Visited: R<br>
+	Visited: T<br>
+	</code><br>
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"></span></div>
+      <span style="font-weight: bold;">Part 3. Complete the Post-Order Method</span><br>
+      <br>
+
+      <p>A <a href="../../handouts/trees/index.html">postorder traversal of a
+      tree</a> visits each node in the tree by all the children of a node
+      before visiting the node itself. By that rule, we know that the root (top
+      of the tree) must be visited last in all preorder traversals. For
+      example, a preorder traversal of the tree above visits nodes in the
+      following order: Q,D,G,L,H,F,T,R,M </p>
+      
+      <p>Complete the postOrder method in Lab9.java so that, when the method is
+      called, it produces the following printout:<br><br>
+	<code>
+	Visited: Q<br>
+	Visited: D<br>
+	Visited: G<br>
+	Visited: L<br>
+	Visited: H<br>
+	Visited: F<br>
+	Visited: T<br>
+	Visited: R<br>
+	Visited: M<br>
+	</code><br><br>
+      <br>
+
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"></span></div>
+      <span style="font-weight: bold;">Part 4. Complete the In-Order Method</span><br>
+      <br>
+
+      <p>An <a href="../../handouts/trees/index.html">in-order traversal of a
+      tree</a> visits the left child, then the parent, then the right child.
+      By that rule, we know that the root (top of the tree) must be visited
+      after all the nodes in the left subtree are visited and before all the
+      nodes in the right subtree are visited. You may assume that, if a node
+      has only one child, it is a left child. For example, a preorder traversal
+      of the tree above visits nodes in the following order: Q,D,G,L,H,F,T,R,M
+      </p>
+      
+      <p>Complete inOrder method in Lab9.java so that, when the method is
+      called, it produces the following printout:<br><br>
+	<code>
+	Visited: Q<br>
+	Visited: D<br>
+	Visited: F<br>
+	Visited: G<br>
+	Visited: H<br>
+	Visited: L<br>
+	Visited: M<br>
+	Visited: T<br>
+	Visited: R<br>
+	</code><br><br><br>
+      </p>
+
+      <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"></span></div>
+      <span style="font-weight: bold;">Part 5. Implement your own UndirectedGraph class.</span><br>
+      You must implement the <a
+      href="UndirectedGraph.java">UndirectedGraph.java</a> interface. Your
+      class must be able to represent a graph and answer some questions about
+      it. That means it must keep track of the vertices and edges in the graph.
+      You are free to choose which classes to use to represent a vertex and an
+      edge. (See this <a href="GraphExample.java">example</a>. You may write
+      your own Vertex and Edge class. I recommend this since it will help you
+      make the methods easy to implmement.
+      The interface has four methods:
+      <ul>
+      <li>getVertices() returns all the vertices of the graph inside of a list.</li>
+      <li>getEdges() returns all the edges of the graph inside of a list.</li>
+      <li>isComplete() return true if the number of edges is the maximum
+      possible. For an undirected graph, this is n * (n - 1) / 2, where n is
+      the number of vertices.</li>
+      <li>hasCycle() returns true if there is a cycle in the graph. Remember
+      that a cycle is a path that intersects itself (forms a circle).</li>
+      </ul>
+
+      <br><br><span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; text-align:
+        start; text-indent: 0px; text-transform: none; white-space:
+        normal; widows: 1; word-spacing: 0px; display: inline !
+        important; float: none;"></span></div>
+      <span style="font-weight: bold;">Submission</span><br><br>
+      You must submit Lab9.java, your graph class, and your vertex and edge
+      classes if you made your own.
+
+
+
+  </body>
+</html>
