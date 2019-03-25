@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Searching</title>
+  </head>
+  <body>
+    <span style="font-weight: bold;">Searching</span><br>
+    <br>
+    We consider searching for an element in a collection of data.<br>
+    <br>
+    <span style="font-weight: bold;">Objectives</span><br>
+    <br>
+    - Provide an overview of sequential and binary searches<br>
+    <br>
+    - Contrast the benefits of each searching algorithm<br>
+    <br>
+    <a href="./SearchExercise.pdf" target="_blank">In Class Exercise</a><br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Overview</span><br>
+    <br>
+    Why might we need to search for an item in an array/list?<br>
+    <br>
+    For arrays, we essentially have two choices:<br>
+    <br>
+    (1) Searching through an unsorted array<br>
+    <br>
+    or<br>
+    <br>
+    (2) Searching through a sorted array<br>
+    <br>
+    <span style="font-weight: bold;">Unsorted Array</span><br>
+    <br>
+    The general idea is we have to use a <span style="font-weight:
+      bold;">sequential search</span>.<br>
+    <br>
+    Consider the array:<br>
+    <br>
+    <table style="text-align: left; width: 50%;" cellspacing="2"
+      cellpadding="2" border="1">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top;">115<br>
+          </td>
+          <td style="vertical-align: top;">67<br>
+          </td>
+          <td style="vertical-align: top;">0<br>
+          </td>
+          <td style="vertical-align: top;">-200<br>
+          </td>
+          <td style="vertical-align: top;">54<br>
+          </td>
+          <td style="vertical-align: top;">99<br>
+          </td>
+          <td style="vertical-align: top;">12<br>
+          </td>
+          <td style="vertical-align: top;">42<br>
+          </td>
+          <td style="vertical-align: top;">-42<br>
+          </td>
+          <td style="vertical-align: top;">15<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    How would a sequential search work?<br>
+    <br>
+    <br>
+    What is the Big-Oh notation of the sequential search for the:<br>
+    <br>
+    - best case?<br>
+    <br>
+    - worst case?<br>
+    <br>
+    - average case?<br>
+    <br>
+    <span style="font-weight: bold;">Sorted Array</span><br>
+    <br>
+    We can use a different algorithm if our data is already in sorted
+    order. Note - this only works for a sorted array.<br>
+    <br>
+    <table style="text-align: left; width: 50%;" cellspacing="2"
+      cellpadding="2" border="1">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top;">-200<br>
+          </td>
+          <td style="vertical-align: top;">-42<br>
+          </td>
+          <td style="vertical-align: top;">0<br>
+          </td>
+          <td style="vertical-align: top;">12<br>
+          </td>
+          <td style="vertical-align: top;">15<br>
+          </td>
+          <td style="vertical-align: top;">42<br>
+          </td>
+          <td style="vertical-align: top;">54<br>
+          </td>
+          <td style="vertical-align: top;">67<br>
+          </td>
+          <td style="vertical-align: top;">99<br>
+          </td>
+          <td style="vertical-align: top;">115<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <a href="https://idea-instructions.com/binary-search/"
+      target="_blank">Ikea-style description</a>.<br>
+    <br>
+    <span style="font-weight: bold;">General Algorithm</span><br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">// search for desiredItem in elements</span></big><br>
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">binarySearch(elements,
+          desiredItem)</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">{</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; //
+          calculate midpoint</span></big><br style="font-family:
+        monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; if
+          desiredItem == element at midpoint</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; // we found it!!</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; else
+          if desiredItem &lt; element at midpoint</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; search left side of elements</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; else</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; search right side of elements</span></big><br>
+    </div>
+    <br>
+    <br>
+    (This is a recursive algorithm)<br>
+    <br>
+    Search through <big><span style="font-family: monospace;">a[0] ...
+        a[n-1] </span></big>for item<br>
+    <br>
+    Sketch of Algorithm<br>
+    <br>
+    <div style="margin-left: 40px;"><big style="font-family: monospace;">midpoint
+=
+midpoint
+between
+0
+and
+
+
+
+
+        (n-1)</big><br>
+      <br>
+      <big style="font-family: monospace;">if (item == a[mid]) // we
+        found it!</big><br>
+      <div style="margin-left: 40px;"><big style="font-family:
+          monospace;">return true</big><br>
+      </div>
+      <big style="font-family: monospace;">else if (item &lt; a[mid]) //
+        search to the left</big><br>
+      <div style="margin-left: 40px;"><big style="font-family:
+          monospace;">return the result of searching through a[0]
+          through a[mid-1]</big><br>
+      </div>
+      <big style="font-family: monospace;">else if (item &gt; a[mid]) //
+        search to the right</big><br>
+      <div style="margin-left: 40px;"><big style="font-family:
+          monospace;">return the result of searching through a[mid+1]
+          through a[n-1]</big><br>
+      </div>
+      <br>
+    </div>
+    Detailed Java Code<br>
+    <br>
+    <div style="margin-left: 40px;">&nbsp;&nbsp;<big><span
+          style="font-family: monospace;"> private boolean
+          binarySearch(int first, int last, T desiredItem)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp; {</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+boolean
+
+
+
+
+          found;</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+int
+
+
+
+
+          mid = first + (last - first) / 2;</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+
+        </span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if
+
+
+
+
+          (first &gt; last)</span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+found
+
+
+
+
+          = false;</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+else
+
+
+
+
+          if (desiredItem.equals(list[mid]))</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+found
+
+
+
+
+          = true;</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+else
+
+
+
+
+          if (desiredItem.compareTo(list[mid]) &lt; 0)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+found
+
+
+
+
+          = binarySearch(first, mid - 1, desiredItem);</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+
+          else</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+found
+
+
+
+
+          = binarySearch(mid + 1, last, desiredItem);</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+
+        </span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+return
+
+
+
+
+          found;</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp; } </span></big><br>
+    </div>
+    <br>
+    <br>
+    A <a target="_blank" href="./searching-worksheet.pdf">worksheet</a>
+    we will go through in class.<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Binary Search Trees</span><br>
+    <br>
+    An advantage of binary search trees is that we can apply the binary
+    search when looking for an element:<br>
+    <br>
+    <div style="margin-left: 80px;"><img style="width: 438px; height:
+        211px;" alt="" src="./TreeExercise.png"><br>
+      <br>
+      <br>
+    </div>
+    The <span style="font-weight: bold;">shape</span> of the tree can
+    influence performance.<br>
+    <br>
+    What is the height of a complete tree with N nodes?<br>
+    <br>
+    What is the worst case of a complete tree?<br>
+    <br>
+    What is the worst case with no guarantees of the shape of the tree?<br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>

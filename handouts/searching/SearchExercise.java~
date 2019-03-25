@@ -1,0 +1,34 @@
+public class SearchingExercise
+{
+   /**
+    * A binary search
+    * 
+    * @param list[] - the array to be searched through
+    * @param int first - the position to begin searching from
+    * @param int last - the last index in the array to search
+    * @param Object key - the item being searched for
+    *
+    * @return the index where key occurs in list[] (>= 0) or -1 if unsuccessful
+    */
+   private static int binarySearch(Object[] list, int first, int last, Object key)
+   {
+      int found;
+      int mid = first + (last - first) / 2;
+      
+      if (first > last)
+         found = false;
+      else if (desiredItem.equals(list[mid]))
+         found = true;
+      else if (desiredItem.compareTo(list[mid]) < 0)
+         found = binarySearch(first, mid - 1, desiredItem);
+      else
+         found = binarySearch(mid + 1, last, desiredItem);
+         
+      return found;
+   } // end binarySearch
+
+   public static int search(Object[] list, int first, int last, Object key)
+   {
+      return binarySearch(list, 0, list.length - 1, key);
+   } 
+} 
