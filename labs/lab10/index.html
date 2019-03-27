@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;
+      charset=windows-1252">
+      <title>Lab 10</title>
+  </head>
+  <body>
+    <big><span style="font-weight: bold;">CMPT 202 Data Structures</span><br
+        style="font-weight: bold;">
+      <br style="font-weight: bold;">
+      <span style="font-weight: bold;">Lab 10 - Binary Search Trees</span><br
+        style="font-weight: bold;">
+      <br style="font-weight: bold;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px; font-weight: bold;">Objectives</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;">The objectives of this lab are:</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;"></span><br style="color: rgb(0, 0, 0); font-family:
+      Times; font-size: medium; font-style: normal; font-variant:
+      normal; font-weight: normal; letter-spacing: normal; line-height:
+      normal; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;">&nbsp;&nbsp;&nbsp; * Understand the basics of a
+      binary search tree ADT</span><br style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;">&nbsp;&nbsp;&nbsp; * Implement several methods of a
+      binary search tree class</span><br style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;">&nbsp;&nbsp;&nbsp; * To apply some principles of
+      programming, testing, and software engineering<span
+        class="Apple-converted-space">&nbsp;</span></span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;"></span><br>
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px; font-weight: bold;">The Lab</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;">This lab will involve&nbsp; completing the
+      implementation of the<span class="Apple-converted-space"> </span><big><span
+          style="font-family: monospace;">SearchTreeInterface</span></big><span
+        class="Apple-converted-space"> interface</span>.<br>
+      <br>
+      - <a href="./SearchTreeInterface.java">SearchTreeInterface.java</a><br>
+      <br>
+    </span>First off, what's up with the following?<br>
+    <br>
+    <div style="margin-left: 40px;"><span style="font-family:
+        monospace;">public interface SearchTreeInterface </span><big
+        style="font-family: monospace;">&lt;K extends Comparable&lt;?
+        super K&gt;&gt; </big><br>
+    </div>
+    <br>
+    This just means that the generic type K either implements the <a
+      target="_blank"
+href="http://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html">Comparable</a>
+    interface, or one of its superclasses implements the interface.<br>
+    <br>
+    Before proceeding, read through this interface to familiarize
+    yourself with the methods you will be implementing.<br>
+    <br>
+    <span style="font-weight: bold;">Implementing the Interface</span><br>
+    <br>
+    The following class is a starting point:<br>
+    <br>
+    - <a href="./BinarySearchTree.java">BinarySearchTree.java</a>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Unimplemented Methods</span><br>
+    <br>
+    Apart from <big><span style="font-family: monospace;">add()</span></big>
+    you must implement all other methods in the <big><tt>SearchTreeInterface</tt></big>
+    for <big><tt>BinarySearchTree</tt></big>.
+    <br>
+    You can implement the remaining methods in any order you wish, but I
+    suggest begin implementing them in the following order:<br>
+    <br>
+    <div style="margin-left: 40px; font-family: monospace;">
+    <big> 
+    - isEmpty()<br>
+        <br>
+        - size()<br>
+        <br>
+        - getLargest() &amp; getSmallest()<br>
+        <br>
+        - iterator()<br>
+      </big><br>
+    </div>
+    You may find using private helper methods for <big><tt>getLargest()</tt></big>
+    and <big><tt>getSmallest()</tt></big> to be very useful!
+        <br>
+
+    <br>It is important to note the <big><span style="font-family:
+        monospace;">iterator()</span></big> method will return an <span
+      style="font-weight: bold;">in-order</span> iteration of the
+    elements in your binary search tree. Additionally, the <big><tt>iterator()</tt></big>
+    method will need to create an array of <big><span
+        style="font-family: monospace;">Comparable</span></big> objects:<br>
+    <br>
+    <div style="margin-left: 40px; font-family: monospace;"><big>elements
+
+
+
+        = (K[])new <span style="font-weight: bold;">Comparable</span>[size()];<br>
+      </big></div>
+    <br>
+    Now the fun begins .....<br>
+    <br>
+    <span style="font-weight: bold;">Implementing contains()</span><br>
+    <br>
+    To implement <big><span style="font-family: monospace;">contains()</span></big>
+    will require invoking the <big><span style="font-family:
+        monospace;">compareTo()</span></big> method. Notice how it is
+    used in the implementation of <big><span style="font-family:
+        monospace;">add()</span></big> that you have been provided. I
+    suggest you have the public method call a recursive private helper
+    method. <br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Implementing remove() </span><br>
+    <br>
+    Implementing <big><span style="font-family: monospace;">remove()</span></big>
+    will be the most difficult method. Recall from class there are three
+    special cases:<br>
+    <br>
+    <div style="margin-left: 40px;">- deleting a leaf node<br>
+      <br>
+      - deleting a node with one child<br>
+      <br>
+      - deleting a node with two children.<br>
+    </div>
+    <br>
+    Before proceeding it is worthwhile to review the delete algorithm on
+    some hand-drawn trees. Make sure you are comfortable with each of
+    the above three cases.<br>
+    <br>
+    Recall that deleting a node with two children means you may either
+    replace the deleted node with the <span style="font-style: italic;">right-most
+child
+of
+the
+
+
+
+      left subtree</span>, or the <span style="font-style: italic;">left-most
+child
+of
+      the right subtree</span>. <br>
+    Below is an <span style="font-weight: bold;">outline</span> of an <span
+      style="font-weight: bold;">algorithm</span> for remove:<br>
+    <br>
+    <br>
+    <div style="margin-left: 40px;"><img style="width: 744px; height:
+        1091px;" alt="" src="./remove.png"><br>
+    </div>
+    <br>
+    <br>
+    This algorithm is recursive, and would therefore need to be called
+    from your public <big><span style="font-family: monospace;">remove()</span></big>
+    method.<br>
+    <br>
+    <br>
+    When completed, submit your implementation of <big><span
+        style="font-family: monospace;">BinarySearchTree.java</span></big>
+    to the Canvas dropbox for Lab 10. Remember, each team member must
+    submit the lab. <br>
+    <br>
+  </body>
+</html>
