@@ -6,6 +6,10 @@
  * @author Greg Gagne
  */
 import java.util.Iterator;
+import java.awt.*;
+import java.awt.geom.*;
+import javax.swing.*;
+import java.util.List;
 
 
 public class BinarySearchTree <K extends Comparable<? super K>> implements SearchTreeInterface<K> 
@@ -104,6 +108,48 @@ public class BinarySearchTree <K extends Comparable<? super K>> implements Searc
 			printHelper(n.leftChild);
 			System.out.println(n.content);
 			printHelper(n.rightChild);
+		}
+	}
+	public void draw() {
+		TreeGraph tg = new TreeGraph();
+		tg.draw();
+	}
+
+	private class TreeGraph extends JPanel {
+		int nodeSize = 30;
+		int currentX = 0;
+		int frameX = 500;
+		int frameY = 500;
+
+		public void draw() {
+			JFrame f = new JFrame();
+			f.setSize(frameX,frameY);
+			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			f.add(this);
+			f.setVisible(true);
+		}
+		public void paint(Graphics g) {
+			drawNode(g,root,0);
+		}
+		public int drawNode(Graphics g, Node n, int parentY) {
+			if (n == null) return 0;
+			int myNodeY = parentY + nodeSize * 2; int sourceY = myNodeY +  nodeSize;
+			int childY =  myNodeY + nodeSize * 2;
+			
+			// draw left node first
+			int leftX = drawNode(g,n.leftChild,myNodeY);
+			int myX = currentX; int sourceX = myX + nodeSize / 2;
+			if(n.leftChild != null)  g.drawLine(sourceX,sourceY,leftX + nodeSize/2,childY); 
+
+			// actually draw the node
+			g.drawOval(myX, myNodeY, nodeSize, nodeSize);
+			g.drawString(n.content.toString(), myX + 10, myNodeY + nodeSize/2 + 4);
+			currentX += nodeSize * 2;
+
+			// draw  the right child
+			int rightX = drawNode(g,n.rightChild,myNodeY);
+			if(n.rightChild != null) g.drawLine(sourceX,sourceY,rightX + nodeSize/2,childY);
+			return  myX ;
 		}
 	}
 }
