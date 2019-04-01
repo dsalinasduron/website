@@ -1,0 +1,528 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Hashing</title>
+  </head>
+  <body>
+    <span style="font-weight: bold;">Hashing</span><br>
+    <br>
+    Hashing is a technique that can provide very efficient O(1)
+    searches.<br>
+    <br>
+    <span style="font-weight: bold;">Objectives</span><br>
+    <br>
+    - Provide an overview of hashing<br>
+    <br>
+    - Examine applications that use hashes<br>
+    <br>
+    - How to resolve collisions with open addressing and separate
+    chaining<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Overview</span><br>
+    <br>
+    <span style="font-weight: bold;">Hashing</span> is a&nbsp; technique
+    that applies a function to a data item and this function returns a
+    numeric value.<br>
+    <br>
+    More specifically, a <span style="font-weight: bold;">hash function</span>
+    takes a search key and applies a numeric operation, returning a <span
+      style="font-weight: bold;">hash code</span>. This hash code is
+    then used as an index into a <span style="font-weight: bold;">hash
+      table</span>. The data item located at index is the value mapped
+    to the key. Because hashing provides a direct index to the value, we
+    say hashing is an O(1) operation.<br>
+    <br>
+    Generic&nbsp; <big><span style="font-family: monospace;">set()</span></big>
+    and <big><span style="font-family: monospace;">getValue()</span></big>
+    dictionary operations:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">set(key, value)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">{</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          index = hash(key)</span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          hashTable[index] = value</span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">}</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">getValue(key)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">{</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          index = hash(key)</span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          return hashTable[index]</span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">}</span></big><br>
+    </div>
+    <br>
+    <div style="margin-left: 80px;"><img style="width: 439px; height:
+        333px;" alt="" src="./hashing.jpg"><br>
+    </div>
+    <br>
+    <span style="font-weight: bold;">Hash Functions</span><br>
+    <br>
+    A hash function must:<br>
+    <br>
+    1. Convert the search key into an integer value called a <span
+      style="font-weight: bold;">hash code</span>.<br>
+    <br>
+    2. Compress the hash code to a value 0 ... [size of hash table -1]<br>
+    <br>
+    Example<br>
+    <br>
+    Generate a hash code for a telephone number<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">hash(telephone number)</span></big><br
+        style="font-family: monospace;">
+    </div>
+    <br>
+    <div style="margin-left: 40px;">i.e. <big><span style="font-family:
+          monospace;">hash(801-832-2361)</span></big><br>
+    </div>
+    <br>
+    Possible algorithms?<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Hash Table</span><br>
+    <br>
+    A hash table is a simple array of size N (range 0 .. N-1)<br>
+    <br>
+    The hash code can be <span style="font-style: italic;"></span>&gt;
+    <span style="font-style: italic;">(N-1)</span> (We are ignoring
+    negative values for the moment.)<br>
+    <br>
+    To address this, we apply modulo arithmetic to the hash code:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">index = hash(key) % N</span></big><br>
+    </div>
+    <br>
+    which produces a value between <span style="font-style: italic;">0
+      .. (N - 1)</span><br>
+    <br>
+    To compensate for negative values, we simply determine the absolute
+    value&nbsp; of the hash code:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">// general hash function:</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">int hash(K key)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">{</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp; int
+          hashIndex = Math.abs(key.hashCode()) % hashTable.length;</span></big><big><span
+          style="font-family: monospace;"></span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; </span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp; return
+          hashIndex;</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">} </span></big><br>
+    </div>
+    <br>
+    Notice this uses the <a target="_blank"
+href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html#hashCode%28%29">hashCode()</a>
+    method (which is in the <big><span style="font-family: monospace;">java.lang.Object</span></big>
+    class)<br>
+    <br>
+    - <a target="_blank" href="./HashExamples.java">HashExamples.java</a><br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Issues</span><br>
+    <br>
+    There are several issues related to hashing.<br>
+    <br>
+    <span style="font-weight: bold;">1. Hashing Non-Integer Search Keys</span><br>
+    <br>
+    Consider strings. What are some approaches?<br>
+    <br>
+    (How <big><span style="font-family: monospace;">hashCode()</span></big>
+    for <a target="_blank"
+      href="http://www.docjar.com/html/api/java/lang/String.java.html">java.lang.String</a>
+    is implemented.)<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">2. Calculating the Size of the Hash
+      Table</span><br>
+    <br>
+    Not just any value of N will do!<br>
+    <br>
+    Consider if we choose a value of N, all values of (key % N) are even
+    for even values of key, and odd for odd values of key. If the data
+    is disproportionately even or odd, we won't have a uniform
+    distribution of values in the hash table. <br>
+    <br>
+    The best choices for a size of a hash table is a <span
+      style="font-weight: bold;">prime number &gt; 2</span>.<br>
+    <br>
+    We also need to waste space! <br>
+    <br>
+    To obtain the O(1) performance, for a hash table of size N, we want
+    to have 25% - 33% of the entries in the hash table to be empty. (Or
+    another way to think about it, we want the ratio of [keys]:[table
+    size] to be &lt; 0.67)<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">3. Collisions</span><br>
+    <br>
+    Even if we use a relatively large prime number for the size of the
+    hash table and we implement a good <big><span style="font-family:
+        monospace;">hashCode()</span></big> function, collisions are
+    possible. How can collisions occur?<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Collision </span><span
+      style="font-weight: bold;">Handling </span><span
+      style="font-weight: bold;"><br>
+      <br>
+    </span>Two general choices<br>
+    <br>
+    1. Use another location in the hash table<br>
+    <br>
+    2. Change the structure of the hash table so that each array
+    location can refer to more that one value.<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Open Addressing</span> (Using
+    Another Location)<br>
+    <br>
+    Actually Several Techniques<br>
+    <br>
+    (1) Open addressing with <span style="font-weight: bold;">linear
+      probing</span>.<br>
+    <br>
+    If a collision occurs at index <span style="font-style: italic;">k</span>,
+    try <span style="font-style: italic;">(k + 1), (k + 2)</span>, and
+    so forth until you find an available spot.<br>
+    <br>
+    - Consider additions<br>
+    <br>
+    - Consider how retrievals now work<br>
+    <br>
+    <br>
+    &lt; In the Java API, the <a target="_blank"
+href="https://docs.oracle.com/javase/8/docs/api/java/util/IdentityHashMap.html">IdentityHashMap</a>
+    is implemented using linear probing. &gt;<br>
+    <br>
+    <br>
+    (2) <b>Double Hashing</b><br>
+    <br>
+    Double hashing addresses the clustering issues of&nbsp; linear&nbsp;
+    probing by using a secondary hash function.<br>
+    <br>
+    It works as follows:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">hash_value = hash_1(key)</span></big><br>
+    </div>
+    <br>
+    If a collision occurs, the probes are generated according to a
+    secondary hash function<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">probe = hash_2(key)</span></big><br>
+    </div>
+    <br>
+    <br>
+    The general algorithm is as follows:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">hash_value = hash_1(key)</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">if collision then</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;
+probe
+
+
+          = hash_2(key)</span></big><br style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          while (table[hash_value] is occupied)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; hash_value = (hash_value + probe) % N</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          table[hash_value] = key</span></big><br>
+    </div>
+    <br>
+    <br>
+    What is the fundamental different between linear probing and double
+    hashing?<br>
+    <br>
+    <span style="font-weight: bold;">Choice of hash_1() and hash_2()
+      Functions:</span><br>
+    <br>
+    It is important&nbsp; the hash value generates all possible
+    positions in the table of size N. A suggested strategy:<br>
+    <br>
+    Choose a prime number N<br>
+    <br>
+    Choose a <a target="_blank"
+      href="https://en.wikipedia.org/wiki/Twin_prime">twin prime number</a>
+    M where M &lt; N<br>
+    <br>
+    i.e.&nbsp; <big><span style="font-family: monospace;">N = 13</span></big>,<big><span
+        style="font-family: monospace;"> M = 11</span></big><br>
+    &nbsp;<br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">hash_1(key)</span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">{</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          return (key.hashCode() % N)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">}</span></big><br>
+      <br style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">hash_2(key)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">{</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          return 1 + (key.hashCode() % M)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">}</span></big><br>
+    </div>
+    <br>
+    [Why do we add 1 to the return value?] <br>
+    <br>
+    <br>
+    As an example:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">N = 13</span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">M = 11</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">key = 197</span></big><br>
+    </div>
+    <br>
+    produces hash&nbsp; indices:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">2, 0, 11, 9, 7, 5, 3, 1, 12, 10, 8, 6, 4</span></big><br>
+      <br>
+    </div>
+    Contrast this with linear probing which would produce <font
+      size="+1"><tt>2, 3, 4, 5, ....<br>
+        <br>
+      </tt>Another way to think about it ..... linear probing is
+      essentially double hashing, except the probe value is always 1!<br>
+      <br>
+      <tt></tt></font><br>
+    <span style="font-weight: bold;">Removing Entries</span> <br>
+    <br>
+    Consider how we can remove entries from a hash table where open
+    addressing is being used:<br>
+    <br>
+    We could use null, but what are the problems with this approach?<br>
+    <br>
+    We will identify three different types of locations in a hash table:<br>
+    <br>
+    <div style="margin-left: 40px;">- <span style="font-weight: bold;">Occupied</span>
+      - The location references a valid entry in the hash table.<br>
+      <br>
+      - <span style="font-weight: bold;">Empty</span> - The location
+      contains null and has not yet been occupied.<br>
+      <br>
+      - <span style="font-weight: bold;">Available</span> - The
+      location's entry was removed from the dictionary.<br>
+      <br>
+    </div>
+    <br>
+    Overall, apart from clustering, what is the other biggest potential
+    problem with open addressing?<br>
+    <br>
+    <span style="font-weight: bold;">Re-hashing</span><br>
+    <br>
+    1. Calculate the new size of the table by doubling its present size
+    and then increasing its value to the next prime number.<br>
+    <br>
+    2. Re-hash all existing values.<br>
+    <br>
+    <br>
+    <br>
+    (2)<span style="font-weight: bold;"> Separate Chaining</span>
+    (Change the Structure of the Table)<br>
+    <br>
+    Each index serves as a <span style="font-weight: bold;">hash bucket</span>
+    which is a reference to a linked list of all nodes that hash to that
+    index.<br>
+    <br>
+    <div style="margin-left: 80px;"><img style="width: 861px; height:
+        396px;" alt="" src="./chaining.png"><br>
+    </div>
+    <div style="margin-left: 440px;">&lt; From ITCuties.org&gt;<br>
+    </div>
+    <br>
+    What are the advantages of separate chaining over open addressing?<br>
+    <br>
+    <br>
+    <div style="margin-left: 40px;"><big>Load Factor = (number of
+        entries in the dictionary) / (number of locations in the hash
+        table)<br>
+      </big></div>
+    <br>
+    As the load factor increases (&gt; 0.67), the performance of open
+    addressing (particularly linear probing) degrades significantly.<br>
+    <br>
+    &lt; In the Java API, the <a target="_blank"
+      href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html">HashMap</a>
+    is implemented using separate chaining. &gt;<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">General Rules</span><br>
+    <br>
+    For open addressing, the load factor should be &lt; 0.67<br>
+    <br>
+    For separate chaining, the load factor should be &lt; 1.0<br>
+    <br>
+    If the load factor exceeds these values, the table must be re-hashed
+    to preserve the O(1) behavior of hashing.<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Using </span><big><span
+        style="font-family: monospace;">hashCode()</span></big><span
+      style="font-weight: bold;"> with Java Objects</span><br>
+    <br>
+    An object - <a target="_blank" href="./Person.java">Person.java</a><br>
+    <br>
+    Simple test program - <a target="_blank" href="./Test.java">Test.java</a><br>
+    <br>
+    Note that the second key (bill) - although it contains the same name
+    "Willy"- does not appear in the hash table. The reason for this is
+    that the two keys hash to different values with the default value of
+    <big><span style="font-family: monospace;">hashCode()</span></big>.
+    Ideally, two keys with the same object state should map to the same
+    value.<br>
+    <br>
+    <br>
+    A simple implementation of <big><span style="font-family:
+        monospace;">hashCode()</span></big> appears as:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">public int hashCode() { </span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          return 0; </span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">}</span></big><br>
+    </div>
+    <br>
+    - <a target="_blank" href="./HashPerson.java">HashPerson.java</a><br>
+    <br>
+    - <a target="_blank" href="./TestHash.java">TestHash.java</a><br>
+    <br>
+    We now have the same hash code, but&nbsp; the second key still does
+    not appear. The reason for this is because of the default behavior
+    of <big><span style="font-family: monospace;">equals()</span></big>.
+    Recall that unless you override <big><span style="font-family:
+        monospace;">equals()</span></big> from <big><span
+        style="font-family: monospace;">java.lang.Object</span></big> ,
+    its default behavior tests equality by comparing object references.
+    For this example to work properly, in addition to properly
+    implementing <big><span style="font-family: monospace;">hashCode()</span></big>
+    , we must also override <big><span style="font-family: monospace;">equals()</span></big>.
+    <br>
+    <br>
+    A requirement of implementing <big><span style="font-family:
+        monospace;">hashCode()</span></big> is that the hash value of an
+    object must be synchronized with equality, that is<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">if ( x.equals(y) ) is true, then ( x.hashCode() ==
+          y.hashCode() ) is true</span></big><br>
+    </div>
+    <br>
+    The reason for this involves collisions. If two objects have the
+    same position in the hash table (they collide), you must allow the
+    hashing algorithm to search for the object you want. The hashing
+    algorithm will use the <big><span style="font-family: monospace;">equals()
+
+      </span></big>method for the object.<br>
+    <br>
+    *** Uncomment the <big><span style="font-family: monospace;">equals()</span></big>
+    method on <big><span style="font-family: monospace;">HashPerson.java</span></big>
+    and run <big><span style="font-family: monospace;">TestHash.java</span></big>
+    again. You should now see the proper output that shows both keys <big><span
+        style="font-family: monospace;">william</span></big> and <big><span
+        style="font-family: monospace;">bill</span></big> mapping to the
+    same value <big><span style="font-family: monospace;">Willy</span></big>
+    .<br>
+    <br>
+    <br>
+    In general, when implementing <big><span style="font-family:
+        monospace;">hashCode()</span></big>, you must construct the hash
+    for the object on a field-by-field basis. The rules for implementing
+    <big><span style="font-family: monospace;">hashCode()</span></big>:<br>
+    <br>
+    (1) For most primitive types, use the following approach:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">int result = 1;</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">. . .</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">result =
+          HashUtilities.PRIME * result + primitiveField;</span></big><br>
+    </div>
+    <br>
+    However, make sure that you are using the int value of
+    primitiveField !<br>
+    <br>
+    (2) For most reference (object) types, use:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">result = HashUtilities.PRIME * result +
+          objectField.hashCode();</span></big><br>
+    </div>
+    <br>
+    For example, returning 0 was not a good choice as we have ensured
+    collisions. A better alternative is to use the following method:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">public int hashCode() {</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; int
+          result = 1;</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          result = HashUtilities.PRIME * result + name.hashCode();</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          return result;</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">}</span></big><br>
+    </div>
+    <br>
+    Note, this uses the value of <big><span style="font-family:
+        monospace;">hashCode()</span></big> for the name field.<br>
+    <br>
+    Uncomment this line from <big><span style="font-family: monospace;">HashPerson.java</span></big>
+    and re-run the program <big><span style="font-family: monospace;">TestHash.java</span></big><br>
+    <br>
+    <br>
+    <br>
+    <span style="font-weight: bold;"><br>
+    </span>
+  </body>
+</html>
