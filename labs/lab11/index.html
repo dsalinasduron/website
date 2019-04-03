@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Dictionaries and Hashing</title>
+  </head>
+  <body>
+    <span style="font-weight: bold;">CMPT 202</span><br
+      style="font-weight: bold;">
+    <span style="font-weight: bold;">Lab 11: Dictionaries and Hashing</span><br>
+    <br>
+    <br class="Apple-interchange-newline">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px; font-weight: bold;">Objectives</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;">The objectives of this lab are:</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;"></span><br style="color: rgb(0, 0, 0); font-family:
+      Times; font-size: medium; font-style: normal; font-variant:
+      normal; font-weight: normal; letter-spacing: normal; line-height:
+      normal; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;">&nbsp;&nbsp;&nbsp; * Understand the basics of a
+      Dictionary ADT</span><br style="color: rgb(0, 0, 0); font-family:
+      Times; font-size: medium; font-style: normal; font-variant:
+      normal; font-weight: normal; letter-spacing: normal; line-height:
+      normal; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;">&nbsp;&nbsp;&nbsp; * Implement linear probing<br>
+      <br>
+      &nbsp;&nbsp;&nbsp; * Implement double hashing<br>
+      <br>
+      &nbsp;&nbsp;&nbsp; * Implement separate chaining<br style="color:
+        rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+        normal; font-variant: normal; font-weight: normal;
+        letter-spacing: normal; line-height: normal; text-align: start;
+        text-indent: 0px; text-transform: none; white-space: normal;
+        widows: 1; word-spacing: 0px;">
+    </span><br style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;">&nbsp;&nbsp;&nbsp; * To apply some principles of
+      programming, testing, and software engineering<span
+        class="Apple-converted-space"> <br>
+        <br>
+        You will also use this lab in a later&nbsp; assignment that
+        performs some basic machine learning.<br style="color: rgb(0, 0,
+          0); font-family: Times; font-size: medium; font-style: normal;
+          font-variant: normal; font-weight: normal; letter-spacing:
+          normal; line-height: normal; text-align: start; text-indent:
+          0px; text-transform: none; white-space: normal; widows: 1;
+          word-spacing: 0px;">
+      </span></span> <br style="color: rgb(0, 0, 0); font-family:
+      Times; font-size: medium; font-style: normal; font-variant:
+      normal; font-weight: normal; letter-spacing: normal; line-height:
+      normal; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; float: none; display: inline
+      ! important;"></span><br>
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px; font-weight: bold;">The Lab</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <br>
+    This lab will involve implementing several different hashing
+    algorithms and collision resolution mechanisms for designing a
+    Dictionary ADT.<br>
+    <br>
+    There are several Java source files used when completing this lab -
+    <a href="./lab11-src.zip">lab11-src.zip</a> <br>
+    <br>
+    The&nbsp; dictionary ADT is defined in the following interface:<br>
+    <br>
+    - <a href="./DictionaryInterface.java">DictionaryInterface.java</a><br>
+    <br>
+    Review these methods and make sure you are comfortable with each
+    method and its functionality.<br>
+    <br>
+    <span style="font-weight: bold;">Part I - Linear Probing</span><br>
+    <br>
+    The following class is a starting point for linear probing:<br>
+    <br>
+    - <a href="./HashDictionaryLinear.java">HashDictionaryLinear.java</a><br>
+    <br>
+    and its associated unit test:<br>
+    <br>
+    - <a href="./TestLinear.java">TestLinear.java</a><br>
+    <br>
+    Some of the basic functionality of linear probing has been provided
+    for you, but you have to fill in a lot of the details!<br>
+    <br>
+    To pass these unit tests you will have to:<br>
+    <br>
+    1. Modify the algorithm for adding a [key:value] pair so that it
+    supports modifying an existing key so that it can be updated to a
+    new value.<br>
+    <br>
+    2. Implement the <big><tt>get()</tt></big> and <big><tt>contains()</tt></big>
+    methods.<br>
+    <br>
+    2. Rehash the table if the current load factor exceeds the <big><span
+        style="font-family: monospace;">CAPACITY_THRESHOLD</span></big>.
+    (There are several helper methods that will assist with this step.)<br>
+    <br>
+    3. Support removing an element from the hash table using lazy
+    evaluation. (Which involves simply marking the element as being
+    removed, but not actually removing it.)<br>
+    <div align="right"><br>
+    </div>
+    You will also notice the <big><span style="font-family: monospace;">keySet()</span></big>
+    and <big><span style="font-family: monospace;">valueSet()</span></big>
+    methods return the set of keys or values respectively. Use your
+    implementation of <big><span style="font-family: monospace;">ArraySet</span></big>
+    from <a target="_blank"
+href="http://people.westminstercollege.edu/faculty/dsalinasduron/202/labs/lab5/index.html">Lab
+
+
+
+
+
+
+
+
+      5</a> for storing these sets. <br>
+    <br>
+    Just to ensure you are using the proper version, make sure your <big><span
+        style="font-family: monospace;">ArraySet</span></big> class
+    implements the following interface:<br>
+    <br>
+    - <a href="./Set.java">Set.java</a><br>
+    <br>
+    and passes the following unit tests<br>
+    <br>
+    - <a href="./TestArraySet.java">TestArraySet.java</a><br>
+    <br>
+    <br>
+    Make sure your implementation passes <big><span style="font-family:
+        monospace;">TestLinear</span></big> unit tests before proceeding
+    to the next step!<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Part II - Double Hashing</span><br>
+    <br>
+    Create a class named <big><span style="font-family: monospace;">HashDictionaryDouble.java</span></big>
+    - you can use your class file from Part I as a starting point. You
+    will implement double hashing in this class so that it passes the
+    following unit tests:<br>
+    <br>
+    - <a href="./TestDouble.java">TestDouble.java</a><br>
+    <br>
+    Double hashing works by creating a second hash function and using
+    that value as a probe in the case of a collision.&nbsp; The
+    algorithm is shown in the notes on <a target="_blank"
+href="http://people.westminstercollege.edu/faculty/dsalinasduron/202/handouts/hashing/index.html">hashing</a>.
+    (Think of how the <font size="+1"><tt>probeValue()</tt></font>
+    helper method in <font size="+1"><tt>HashDictionaryLinear.java</tt></font>
+    can be used to implement this.)<br>
+    <br>
+    Use the following technique for calculating the second hash value:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">(1 + (Math.abs(key.hashCode())) % (currentCapacity
+          - 2) )</span></big><br>
+    </div>
+    <br>
+    (Although you are of course welcome to try a different approach.)<br>
+    <br>
+    You will have to support all of the functionality described in the
+    section on linear probing.<br>
+    <br>
+    Make sure your implementation passes all unit tests before
+    proceeding to the next step!<br>
+    <br>
+    <br>
+    <span style="font-weight: bold;">Part III - Separate Chaining</span><br>
+    <br>
+    The third approach for implementing a dictionary involves separate
+    chaining, where each element in the array is a <font size="+1"><tt>List</tt></font>
+    of <font size="+1"><tt>TableElement</tt></font> objects:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">private List&lt;TableElement&lt;K, V&gt;&gt;[]
+          dictionary;</span></big><br>
+    </div>
+    <br>
+    The <font size="+1"><tt>List</tt></font> you will use is the <big><span
+        style="font-family: monospace;">LinkedList</span></big> that you
+    created in <a target="_blank"
+href="http://people.westminstercollege.edu/faculty/ggagne/spring2018/202/labs/lab4/index.html">Lab
+
+
+
+
+
+
+
+
+      4</a>. This will require modifying that solution so that it now
+    uses generics. Below is the <big><span style="font-family:
+        monospace;">List</span></big> interface with generics:<br>
+    <br>
+    - <a href="./List.java">List.java</a><br>
+    <br>
+    Modify your <font size="+1"><tt>LinkedList.java</tt></font> file
+    for Lab 4 so that it now uses generics and passes the following unit
+    test:<br>
+    <br>
+    - <a href="./TestLinkedList.java">TestLinkedList.java</a><br>
+    <br>
+    Next, create a file named <big><span style="font-family:
+        monospace;">HashDictionaryChained.java</span></big> that
+    implements <big><tt>DictionaryInterface</tt></big>.<br>
+    <br>
+    <br>
+    The approach for using separate chaining is a bit different than
+    with open addressing (linear probing or double hashing). For one, a
+    <big><tt>remove() </tt></big>operation can remove the <big><span
+        style="font-family: monospace;">[key:value]</span></big> mapping
+    from the linked list. Also, it is unnecessary to rehash the list if
+    it exceeds a certain threshold. In open addressing rehashing was
+    necessary, not only for performance, but also to guarantee there was
+    a spot in the array to map a new <big><span style="font-family:
+        monospace;">[key:value]</span></big> pair.<br>
+    <br>
+    Several of the methods will require accessing the elements in the
+    linked list for a given hash location (known as a <span
+      style="font-style: italic;">hash bucket</span>). <br>
+    <br>
+    The following unit test will be used to test your implementation:<br>
+    <br>
+    - <a href="./TestChained.java">TestChained.java</a><br>
+    <br>
+    <br>
+    What to Submit:<br>
+    <br>
+    There are five different unit tests you need to make sure you pass
+    for this lab to work correctly:<br>
+    <br>
+    <big><tt>TestArraySet.java</tt><tt><br>
+      </tt><tt><br>
+      </tt><tt>TestLinkedList.java</tt><tt><br>
+      </tt><tt><br>
+      </tt><tt>TestLinear.java</tt><tt><br>
+      </tt><tt><br>
+      </tt><tt>TestDouble.java</tt><tt><br>
+      </tt><tt><br>
+      </tt><tt>TestChained.java</tt></big><br>
+    <br>
+    You can run all of these tests at the same time - this is known as a
+    test suite:<br>
+    <br>
+    - <a href="./TestSuite.java">TestSuite.java</a><br>
+    <br>
+    Once you pass the suite of unit tests, submit all of the following
+    Java source files to the Lab 11 dropbox on Canvas:<br>
+    <br>
+    There are <span style="font-weight: bold;">5 </span>Java files to
+    submit with this lab. <br>
+    <br style="font-family: monospace;">
+    <div style="margin-left: 40px;"> <br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">-
+          HashDictionaryLinear.java</span></big><br style="font-family:
+        monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">-
+          HashDictionaryDouble.java</span></big><br style="font-family:
+        monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">-
+          HashDictionaryChained.java</span></big><br style="font-family:
+        monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">- LinkedList.java</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">- ArraySet.java</span></big><br>
+    </div>
+    <br>
+    <br>
+    You will use your solution to this lab to implement a subsequent
+    homework problem.<br>
+    <br>
+    &nbsp;<br>
+  </body>
+</html>
