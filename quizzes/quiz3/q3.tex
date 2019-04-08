@@ -1,0 +1,38 @@
+\documentclass{article} 
+\usepackage{listings}
+\title{CMPT 202\\Quiz 3}
+\begin{document}
+\maketitle
+\emph{Name:}\\
+\begin{enumerate}
+	\item Given $n$ nodes, what is the  height of a complete binary tree?
+	\item Prove that $f(n) = n + 1$ has big O complexity $O(n)$.
+	\item Prove that $f(n) = 100n$ has big O complexity $O(n)$
+	\item What is the big O complexity of binary search?
+	\item \emph{Fill in the blank:} In a binary search tree, the
+	\underline{\hspace{0.6in}}
+	child is \underline{\hspace{0.6in}} than the root.
+	\item \label{traversal} Is the following tree traversal recursive? If not, explain why.
+	If so, label the base case and the recursive step(s)
+	\begin{lstlisting}[language=Java]
+	public static void traverse(Node root) {
+		if(root == null) {
+			return;
+		}
+		else {
+			traverse(root.leftChild);
+			traverse(root.rightChild);
+			System.out.println("Visited: " + root.content);
+		}
+	}
+	\end{lstlisting}
+	\item \emph{True or False:} The traversal in question \ref{traversal}
+	is a preorder traversal.
+	\item Linear probing and separate chaining are two methods to resolve
+	collisions in hash tables. Explain how each resolves collisions.
+	\item Consider a complete binary search tree and a hash table that is
+	almost empty. Also, assume that they contain the same data. Which one
+	will give a faster look-up time? Would your answer change depending on
+	the shape of the tree or how full the hash table is? Explain how.
+\end{enumerate}
+\end{document}

@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+    <title>Sorting Algorithms</title>
+  </head>
+  <body>
+    <h2>Sorting</h2>
+    <span style="font-weight: bold;">Objectives<br>
+      <br>
+    </span>
+    <div style="margin-left: 40px;">- Understand selection and insertion
+      sort algorithms.<br>
+      <br>
+      - Understand faster merge sort and quick sort algorithms.<br>
+      <br>
+      - Explore Java syntax that supports Comparable and generics.<span
+        style="font-weight: bold;"></span><br>
+      <span style="font-weight: bold;"></span></div>
+    <span style="font-weight: bold;"><br>
+      <br>
+      Sorting</span> is the task of arranging items in a <span
+      style="font-style: italic;">natural</span> order<br>
+    <br>
+    i.e.<br>
+    <br>
+    <div style="margin-left: 40px;"><big><big><span style="font-weight:
+            bold;">7&nbsp; 3&nbsp; 19&nbsp; -2&nbsp; 14&nbsp; 6&nbsp;
+            15&nbsp; 9&nbsp; 0&nbsp; --&gt; -2 &nbsp; 0 &nbsp; 3 &nbsp;
+            6 &nbsp; 7 &nbsp; 9 &nbsp; 14 &nbsp; 15 &nbsp; 19</span></big></big><br>
+    </div>
+    <br>
+    <br>
+    <h3><span style="font-weight: bold;">Quadratic Sorting Algorithms</span></h3>
+    <a href="./Selection-Insertion.pdf" target="_blank">Worksheet</a><br>
+    <br>
+    <span style="font-weight: bold;">Selection Sort</span> - We
+    continually select the next smallest item<br>
+    <br>
+    <span style="font-weight: bold;">Insertion Sort</span> - We insert
+    the next item from the unsorted region into the sorted region:<br>
+    <br>
+    The algorithm below sorts an array a of length n where a[0] ....
+    a[n-1]<br>
+    <br>
+    <div style="margin-left: 80px;"><big><span style="font-family:
+          monospace;">for i = 1 to n - 1</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; key
+          = a[i]</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; j =
+          i - 1</span></big><br style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          while j &gt;= 0 and a[j] &gt; key</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; a[j+1] = a[j]</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; j--</span></big><br style="font-family:
+        monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          a[j+1] = key</span></big><br>
+    </div>
+    <br>
+    <br>
+    <hr style="width: 100%; height: 2px;"><br>
+    <h2>Implementation</h2>
+    We now examine the gritty details of the necessary Java syntax.<br>
+    <br>
+    <h3>Comparable Interface</h3>
+    <br>
+    Download the following file to see an example of Selection Sort
+    using Comparable objects (not generics). <br>
+    <br>
+    - <a target="_blank" href="./BasicSelectionSort.java">BasicSelectionSort.java</a><br>
+    <br>
+    Normally, if we didn't use generics, we would use an array of
+    Objects. However, in this case, we want to sort our array, and not
+    all Objects have the <big><span style="font-family: monospace;">compareTo()</span></big>
+    method. Instead, we will need an array of <big><span
+        style="font-family: monospace;">Comparable</span></big> objects.<br>
+    <br>
+    The <a target="_blank"
+href="http://docs.oracle.com/javase/6/docs/api/java/lang/Comparable.html">Comparable
+
+
+
+
+      interface</a> has only one method in it: a <big><span
+        style="font-family: monospace;">compareTo(</span></big>) method,
+    that returns a negative integer, zero, or a positive integer if this
+    object is less than, equal to, or greater than the parameter.<br>
+    <br>
+    Examine the code, and run it.<br>
+    <br>
+    <br>
+    <hr style="width: 100%; height: 2px;">
+    <h3>Generics</h3>
+    <br>
+    Now if we converted this code to use generics, our first try might
+    produce the following file:<br>
+    <br>
+    - <a target="_blank" href="./GenericsSelectionSort.java">GenericsSelectionSort.java</a><br>
+    <br>
+    &nbsp;Because all the methods in this class are generics, we need to
+    add <big><span style="font-family: monospace;">&lt; T &gt;</span></big>
+    after each "<big><span style="font-family: monospace;">static</span></big>"
+    in the method headers. This tells the code that we are using
+    generics in a <big><span style="font-family: monospace;">static</span></big>
+    method. (In the past, we only added <big><span style="font-family:
+        monospace;">&lt; T &gt;</span></big> after the class name to use
+    generics with non-static methods.)<br>
+    <br>
+    The <big><span style="font-family: monospace;">selectionSort()</span></big>
+    method now looks like<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;<big><span style="font-family: monospace;"> public
+        static <span style="color: rgb(51, 51, 255);">&lt; T &gt;</span>
+        void selectionSort(<span style="color: rgb(51, 51, 255);">T[]</span>
+        a, int n)</span></big><br>
+    <br>
+    The problem with this code is the following line in the <big><span
+        style="font-family: monospace;">getIndexOfSmallest()</span></big>
+    method:<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;<big><span style="font-family: monospace;"> if
+        (((Comparable)a[index]).compareTo(min) &lt; 0)</span></big><br>
+    <br>
+    The array "<big><span style="font-family: monospace;">a</span></big>"
+    is an array of <big><span style="font-family: monospace;">T</span></big>,
+    but we are typecasting to a <big><span style="font-family:
+        monospace;">Comparable</span></big>. There might be a run-time
+    error here if the array "<big><span style="font-family: monospace;">a</span></big>"
+    does not contain a <big><span style="font-family: monospace;">Comparable</span></big>.
+    So we will also&nbsp; need to modify our code to make sure the
+    generic <big><span style="font-family: monospace;">T</span></big>
+    is also a <big><span style="font-family: monospace;">Comparable</span></big>.
+    We do that next.<br>
+    <br>
+    <hr style="width: 100%; height: 2px;">
+    <h3>Generics with Comparable</h3>
+    <br>
+    The next version<br>
+    <br>
+    - <a target="_blank" href="./GenericComparablesSelectionSort.java">GenericComparablesSelectionSort.java</a><br>
+    <br>
+    adds the header to make sure we are only sorting <big><span
+        style="font-family: monospace;">Comparable</span></big> objects:<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; <big><span style="font-family: monospace;">public
+static
+
+
+
+
+        <span style="color: rgb(51, 51, 255);"></span></span></big><big
+      style="color: rgb(51, 51, 255);"><span style="font-family:
+        monospace;">&lt; T extends Comparable &lt; ? super T &gt;&gt;</span></big><big><span
+        style="font-family: monospace;"><span style="color: rgb(51, 51,
+          255);"></span> void selectionSort(<span style="color: rgb(51,
+          51, 255);">T[]</span> a, int n)</span></big><br>
+    <br>
+    The <big style="color: rgb(51, 51, 255);"><span style="font-family:
+        monospace;">?</span></big> represents any type that is a parent
+    of <big><span style="font-family: monospace;">T</span></big>. <br>
+    <br>
+    This is a much better version and will not cause any run-time
+    errors. It allows us to sort objects that implement the <big><span
+        style="font-family: monospace;">Comparable</span></big>
+    interface, or have parent classes that implement <big><span
+        style="font-family: monospace;">Comparable</span></big>.<br>
+    <br>
+    <hr style="width: 100%; height: 2px;">
+    <h3>Recursive Sorting Algorithms</h3>
+    <br>
+    Both insertion and selection sorts are known as quadratic O(n<sup>2</sup>)
+    algorithms. In this section we examine two sorting algorithms that
+    provide better performance.<br>
+    <br>
+    These algorithms implement what is known as a <i>divide and conquer</i>
+    strategy:<br>
+    <br>
+    <div style="margin-left: 80px;"><img style="width: 500px; height:
+        332px;" alt="" src="./d-q.png"><br>
+    </div>
+    <br>
+    <h2 style="color: rgb(0, 0, 0); font-family: Times; font-style:
+      normal; font-variant: normal; letter-spacing: normal; line-height:
+      normal; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px;">Merge Sort<br>
+    </h2>
+    - <a href="./Merge-Quick.pdf" target="_blank">Mergesort Worksheet</a><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;">Mergesort in the<span class="Apple-converted-space">&nbsp;</span></span><a
+      target="_blank"
+href="http://docs.oracle.com/javase/6/docs/api/java/util/Arrays.html#sort%28java.lang.Object%5B%5D%29"
+      style="font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px;">Java API</a><span style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px; display: inline ! important; float: none;">.</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px; font-weight: bold;">General Algorithm</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <div style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; margin-left: 40px;"><big><span
+          style="font-family: monospace;">mergesort(array, first, last)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">{</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; if
+          (first &lt; last)</span></big><br style="font-family:
+        monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; {</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; mid = (first + last) / 2</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; // recursively call merge sort on the two
+          halves</span></big><br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; mergesort(array, first, mid)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; mergesort(array, mid + 1, last)</span></big><br
+        style="font-family: monospace;">
+      <br style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; // now merge sorted halves</span></big><br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <big><span style="font-family:
+          monospace;">merge(array, first, last)</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; }</span></big><br
+        style="font-family: monospace;">
+      <big><span style="font-family: monospace;">}</span></big><br>
+      <br>
+    </div>
+    <h2 style="color: rgb(0, 0, 0); font-family: Times; font-style:
+      normal; font-variant: normal; letter-spacing: normal; line-height:
+      normal; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: 1; word-spacing: 0px;">Quick Sort</h2>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;">General idea</span><br style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;">(1) Select a pivot<span
+        class="Apple-converted-space">&nbsp;</span></span><span
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px; font-weight: bold;">P</span><br style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;">(2)<span class="Apple-converted-space"> Partition
+        the list such that&nbsp; </span></span><big style="color:
+      rgb(0, 0, 0); font-family: Times; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px;"><span style="font-weight: bold;">[ all items
+        &lt;= P] P [all items &gt;= P]</span></big><br style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px; display: inline ! important;
+      float: none;">Quicksort in the<span class="Apple-converted-space">&nbsp;</span></span><a
+      target="_blank"
+href="http://docs.oracle.com/javase/6/docs/api/java/util/Arrays.html#sort%28int%5B%5D%29"
+      style="font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px;">Java API</a><span style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: 1;
+      word-spacing: 0px; display: inline ! important; float: none;">.</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px;">
+    <br style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; text-align:
+      start; text-indent: 0px; text-transform: none; white-space:
+      normal; widows: 1; word-spacing: 0px;">
+    <br class="Apple-interchange-newline">
+    <br>
+    <br>
+  </body>
+</html>
