@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;
+      charset=windows-1252">
+    <title>Basic Sorting</title>
+  </head>
+  <body>
+    <span style="font-weight: bold;">CMPT 202<br>
+      Lab 12 Basic Sorting<br>
+      <br>
+      Due Wednesday, December 5, 2018<br>
+    </span><br>
+    In this lab, you will take the sorting algorithms from class and
+    rewrite them in object-oriented classes. <span style="font-weight:
+      bold;"><br>
+      <br>
+      Objectives<br>
+      <br>
+    </span>The objective of this lab is to
+    <ul>
+      <li>Further develop object-oriented programming skills using
+        abstract classes.<br>
+        <br>
+      </li>
+      <li>Analyze four sorting algorithms. </li>
+    </ul>
+    <p></p>
+    <hr>
+    <h4>UML</h4>
+    The UML class relationships for this lab appears as follows<br>
+    <div style="margin-left: 80px;"><a href="./lab5-uml.jpg"><img
+          target="blank" alt="" src="./lab11-uml.jpg" style="border: 0px
+          solid ; width: 430px; height: 468px;" width="589" border="0"
+          height="487"></a><br>
+    </div>
+    <br>
+    <h4><span style="font-weight: normal;">You may find it helpful to
+        refer back to this UML diagram as you develop this lab.</span></h4>
+    <p>*** The above figure does not include the Quicksort, but you will
+      implement it as well.<br>
+    </p>
+    <span style="font-weight: bold;">Abstract Class Review</span><br>
+    <br>
+    An abstract class is similar to an interface, except that whereas an
+    interface contains no implemented methods (all methods are
+    considered abstract, and must therefore be defined in the class
+    implementing the interface) an abstract class may implement certain
+    methods. Methods that are not implemented in an abstract class
+    (again, known as abstract methods) must be implemented by a class
+    that extends the abstract class.<br>
+    <br>
+    <div style="margin-left: 40px;"><span style="font-weight: bold;">Big
+        Picture -&gt; </span>A class that extends an <big><span
+          style="font-family: monospace;">abstract</span></big> class
+      must implement the <big><span style="font-family: monospace;">abstract</span></big>
+      methods defined in the <big><span style="font-family: monospace;">abstract</span></big>
+      parent class. Methods that are defined (non-abstract) are
+      inherited by child classes and are available for re-use.<br>
+    </div>
+    <br>
+    <h4>Step 1: Write an abstract class Algorithm.</h4>
+    <p>If we wanted to compare the methods for different sorting
+      algorithms, we would need a lot of repetitive code. This can be
+      avoided by using an object-oriented design. </p>
+    <p>Begin by using the following abstract <big><span
+          style="font-family: monospace;">Algorithm</span></big> class:
+    </p>
+    <pre style="margin-left: 40px;"><big>public abstract class Algorithm  &lt; T extends Comparable &lt; ? super T &gt; &gt; </big><br></pre>
+    In this abstract class,
+    include one abstract method named <big><code style="font-family:
+        monospace;">apply</code><span style="font-family: monospace;">()</span></big>
+    that is passed a <big>T</big>
+    array and
+    applies an algorithm to it (in this case it will be some type of
+    sorting
+    algorithm). It's return type is <font size="+1"><tt>void</tt></font>.
+    Its signature
+    appears as follows:<br>
+    <br>
+    <div style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">public abstract void apply(T[] array);</span></big><br>
+    </div>
+    <br>
+    <p>Next, create a method called <big><span style="font-family:
+          monospace;">time()</span></big>, which also takes
+      a <big><span style="font-family: monospace;">T</span></big>
+      array and returns the number of milliseconds required to invoke
+      the <big><span style="font-family: monospace;">apply()</span></big>
+      method :<br>
+    </p>
+    <big><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; public
+        long&nbsp; time(T[] array) {<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; long start, end;<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; start =
+        System.currentTimeMillis();<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; <br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; // invoke the apply
+        method<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; this.apply(array);<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; <br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; end =
+        System.currentTimeMillis();<br>
+        <br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; // returns elapsed
+        time<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; return&nbsp; (end -
+        start);<br>
+        &nbsp;&nbsp;&nbsp; }</span></big><br>
+    <p>You will ultimately use this method to record how long each of
+      the different sorting algorithms requires.<br>
+    </p>
+    <h4>Step 2: Add a static method to the Algorithm Class</h4>
+    <p>In this <big><span style="font-family: monospace;">Algorithm</span></big>
+      class, we are going to add a static method to make it
+      easier to compare several sorting algorithms. <br>
+    </p>
+    <p>Write a method <big><span style="font-family: monospace;">createRandomArray()</span></big>
+      that will take an int (n) as an argument and create and return an
+      array
+      of n random <big><tt>Integer</tt></big> values.&nbsp;
+      Its signature appears as<br>
+    </p>
+    <p style="margin-left: 40px;"><big><span style="font-family:
+          monospace;">/**<br>
+          &nbsp;* Create an array containing n random Integers.<br>
+          &nbsp;*/<br>
+          public
+          static
+          Integer[]
+          createRandomArray(int
+          n)</span></big><br>
+    </p>
+    <p><br>
+      Look at the Java API - in particular the <big><span style="font-family: monospace;">java.util.Random</span></big>
+      class
+      for generating random integers.<br>
+    </p>
+    <p></p>
+    <h4>Step 3: Write a SortingAlgorithm Class</h4>
+    <p>
+      This abstract class will be a child class of the <big><span style="font-family: monospace;">Algorithm</span></big> class
+      as it <big><span style="font-family: monospace;">extends
+          Algorithm</span></big> .
+    </p>
+    <div style="margin-left: 40px; font-family: monospace;"><big>public
+        abstract class SortingAlgorithm &lt;T extends Comparable &lt;?
+        super
+        T&gt;&gt; extends Algorithm &lt;T&gt;</big><br>
+    </div>
+    <pre><br></pre>
+    Add the following abstract&nbsp; method to this class:
+    <br>
+    <br>
+    <div style="margin-left: 40px;"><big style="font-family: monospace;">/**</big><br style="font-family: monospace;">
+      <big style="font-family: monospace;">&nbsp;* sorts the parameter
+        array
+        in ascending order (from smallest to largest) </big><br style="font-family: monospace;">
+      <big style="font-family: monospace;">&nbsp;*/ </big><br style="font-family: monospace;">
+      <big style="font-family: monospace;">public abstract void sort
+        (T[]
+        array);</big><br>
+    </div>
+    <pre><big><br></big></pre>
+    <big>This <span style="font-family: monospace;">sort()</span>
+      method
+      will ultimately invoke the appropriate sorting algorithm (i.e.
+      selection, insertion, merge sort, etc.)</big> This abstract method
+    is
+    an example of polymorphism and abstraction at work - the method
+    defines
+    its behavior that it sorts the array, but does not specify which
+    sorting algorithm is to be used.<br>
+    <br>
+    <big>Additionally, now define the abstract <span style="font-family: monospace;">apply()</span> method from the <span style="font-family: monospace;">Algorithm</span> class so that
+      it
+      invokes the <span style="font-family: monospace;">sort()</span>
+      method: </big><br>
+    <br>
+    <div style="margin-left: 40px;"><big style="font-family: monospace;">/**</big><br style="font-family: monospace;">
+      <big style="font-family: monospace;">&nbsp;* Invoke the
+        appropriate
+        sorting algorithm.</big><br style="font-family: monospace;">
+      <big style="font-family: monospace;">&nbsp;*/</big><br style="font-family: monospace;">
+      <big style="font-family: monospace;">public void apply(T[] array)
+        {</big><br style="font-family: monospace;">
+      <big style="font-family: monospace;"> &nbsp;&nbsp;&nbsp;
+        this.sort(array);</big><br style="font-family: monospace;">
+      <big style="font-family: monospace;">}</big><br>
+      <br>
+    </div>
+    The <big><span style="font-family: monospace;">apply()</span></big>
+    method implements <big><span style="font-family: monospace;">apply()</span></big>
+    from the parent abstract class <big><span style="font-family:
+        monospace;">Algorithm</span></big>. As you can
+    see, the purpose of <big><span style="font-family: monospace;">apply()</span></big>
+    is to merely
+    invoke the <big><span style="font-family: monospace;">sort()</span></big>
+    method.<br>
+    <br>
+    Next, write a method <big><span style="font-family: monospace;">isSorted()</span></big>,
+    that
+    will
+    take
+    an
+    array
+    of
+    <big><span style="font-family: monospace;">Comparable</span></big>
+    objects
+    as an argument and return true if it is sorted, and false
+    otherwise. The signature for this method should
+    be:
+    <pre> <big> public static &lt;T extends Comparable&lt;? super T&gt;&gt; boolean isSorted(Comparable[] array)</big></pre>
+    <br>
+    An array is considered sorted if every element at position <big><span style="font-style: italic;">i</span></big> in the array has the
+    following relationship:<br>
+    <br>
+    <div style="margin-left: 40px;"><big style="font-style: italic;"><span style="font-family: monospace;">array[i-1] &lt;= array[i]</span></big><br>
+    </div>
+    <br>
+    <br>
+    You should use <a target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html">the
+      compareTo
+      method</a> to check that the array is sorted. You will need
+    this <big><span style="font-family: monospace;">isSorted()</span></big>
+    method to confirm your sorting
+    algorithms are working correctly.<br>
+    <br>
+    <p>
+      Below is a unit test class for
+      testing <big><span style="font-family: monospace;">isSorted()</span></big>.
+      It
+      also
+      has
+      a
+      test
+      for
+      the
+      <big><span style="font-family: monospace;">SelectionSort</span></big>
+      ,
+      <big><span style="font-family: monospace;">InsertionSort</span></big>&nbsp;
+      <big><span style="font-family: monospace;">MergeSort</span></big>
+      and <font size="+1"><tt>QuickSort</tt></font> classes (for the
+      next step).&nbsp; Download these unit tests,&nbsp;
+      and&nbsp;
+      make sure you pass the <big><span style="font-family: monospace;">testIsSorted()</span></big>
+      test.<br>
+    </p>
+    <p>- <a target="_blank" href="./SortingTest.java">SortingTest.java</a><br>
+      <br>
+    </p>
+    <hr style="width: 67%; height: 2px;">
+    <h4>OK, Let's Take a Quick Breather</h4>
+    At this point you have defined an abstract class <big><span style="font-family: monospace;">Algorithm</span></big> that
+    allows you
+    to create a random array, as well as time a sorting algorithm.
+    However,
+    because it is abstract, there are no specifics, and it can be used
+    with
+    any sorting algorithm.<br>
+    <br>
+    You also defined an abstract class <big><span style="font-family:
+        monospace;">SortingAlgorithm</span></big> that
+    specifies an abstract method <big><span style="font-family:
+        monospace;">sort()</span></big>
+    - this abstract method is called from the <big><span style="font-family: monospace;">apply()</span></big> method.
+    Again,
+    because <big><span style="font-family: monospace;">SortingAlgorithm</span></big>
+    is also abstract, it is not defined in terms of any specific sorting
+    algorithm.<br>
+    <br>
+    So far your two abstract classes are, well, abstract; they can work
+    with any specific sorting algorithm. That is what you will cover in
+    the
+    next steps.<br>
+    <br>
+    <hr style="width: 67%; height: 2px;"><br>
+    <h4>Step 4: Rewrite Selection Sort as a SortingAlgorithm Class</h4>
+    <p>
+      Create a class called <big><span style="font-family: monospace;">SelectionSort.java</span></big>
+      that is a child class of the <big><span style="font-family:
+          monospace;">SortingAlgorithm</span></big>
+      class. The header of this class will appear as follows:</p>
+    <pre style="margin-left: 40px;"><big>public class SelectionSort &lt;T extends Comparable&lt;? super T&gt;&gt; extends SortingAlgorithm &lt;T&gt;</big><br></pre>
+    Now take the <a target="_blank"
+    href="../../handouts/sorting/GenericComparablesSelectionSort.java">Selection
+      Sort
+      from
+      class
+      notes
+      on
+      sorting</a>
+    and use code in this class to implement the <big><span style="font-family: monospace;">SelectionSort</span></big>
+    class.<br>
+    <br>
+    As it extends <big><span style="font-family: monospace;">SortingAlgorithm</span></big>,
+    it
+    must
+    implement the&nbsp;
+    <big><span style="font-family: monospace;">sort()</span></big>
+    method.
+    This <big><span style="font-family: monospace;">sort()</span></big>
+    method can call the <big><span style="font-family: monospace;">static
+        selectionSort()</span></big> method that you adopted from <big><span style="font-family: monospace;">GenericComparablesSelectionSort</span></big>
+    class.<br>
+    <br>
+    <p>Move the <big><span style="font-family: monospace;">swap()</span></big>
+      method to the <big><span style="font-family: monospace;">SortingAlgorithm</span></big>
+      class (because it may
+      be useful to other <big><span style="font-family: monospace;">SortingAlgorithm</span></big>
+      subclasses). The rest of the
+      class should not require any other modifications.
+    </p>
+    <p>Test your new <big><span style="font-family: monospace;">SelectionSort</span></big>
+      class by running the unit tests <big><span style="font-family:
+          monospace;">SortingTest</span></big> - be sure to
+      uncomment<big><span style="font-family: monospace;">
+          testSelectionSort()</span></big><br>
+    </p>
+    <p><br>
+      <span style="font-weight: bold;">Step 5: Implement Insertion Sort
+        as a
+        SortingAlgorithm Class</span><br>
+    </p>
+    <p>Create a class <font size="+1"><tt>InsertionSort</tt></font>
+      that is a child class of the <big><span style="font-family:
+          monospace;">SortingAlgorithm</span></big>
+      class. The header of this class will appear as follows:<br>
+    </p>
+    <pre style="margin-left: 40px;"><big>public class InsertionSort &lt;T extends Comparable&lt;? super T&gt;&gt; extends SortingAlgorithm &lt;T&gt;</big></pre>
+    <p><br>
+      Implement the insertion sort algorithm that we covered in <a
+      target="_blank" href="../../handouts/sorting/index.html">class
+        notes
+        on
+        sorting</a>. This implementation will look quite similar to
+      the <big><span style="font-family: monospace;">SelectionSort</span></big>
+      class except that it will have a method named <big><span style="font-family: monospace;">insertionSort()</span></big> .<br>
+    </p>
+    <p>Test your new <big><span style="font-family: monospace;">InsertionSort</span></big>
+      class by running the unit tests <big><span style="font-family:
+          monospace;">SortingTest</span></big> - be sure to
+      uncomment<big><span style="font-family: monospace;">
+          testInsertionSort()<br>
+        </span></big></p>
+    <br>
+    <span style="font-weight: bold;">Step 6: Include Merge Sort</span><br>
+    <br>
+    The link below contains an implementation of the merge sort
+    algorithm.
+    It has been provided for you and you will use it to contrast results
+    with the selection and insertion sorts.<br>
+    <br>
+    - <a href="./MergeSort.java">MergeSort.java</a><br>
+    <br>
+    Even though you are being supplied this code, it is worthwhile
+    ensuring
+    that it works properly. Uncomment <big><span style="font-family:
+        monospace;">testMergeSort()</span></big> and make
+    sure the unit test passes.<br>
+    <br>
+    <b>Step 7: Quick Sort</b><br>
+    <br>
+    Create a class <font size="+1"><tt>QuickSort</tt></font> that is a
+    child class of the <big><span style="font-family: monospace;">SortingAlgorithm</span></big>
+    class.&nbsp; It will be modeled after the three different sorting
+    algorithms you have implemented thus far. The general outline of
+    this algorithm is as follows: (This is slightly modified from the
+    version we covered in class)<br>
+    <br>
+    <blockquote><font size="+1"><tt>void quicksort(T[] a, int left, int
+          right)</tt></font><br>
+      <font size="+1"><tt>{</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; int l = left</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; int r = right</tt></font><br>
+      <br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; pivot = a[right]</tt></font><br>
+      <br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; while (l &lt;= r)</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; {</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; while
+          (a[l] &lt; pivot)</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; l++</tt></font><br>
+      <br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; while
+          (a[r] &gt; pivot)</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; r--</tt></font><br>
+      <br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if (l
+          &lt;= r)</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; swap(a[l], a[r])</tt></font><br>
+      <br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; l++</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; r--</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }</tt></font><br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+      <br>
+      <font size="+1"><tt>&nbsp;&nbsp; // call quick sort recursively</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp; if (left &lt; r)</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; quicksort(a,
+          left, r)</tt></font><br>
+      <br>
+      <font size="+1"><tt>&nbsp;&nbsp; if (l &lt; right)</tt></font><br>
+      <font size="+1"><tt>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; quicksort(a,
+          l, right)</tt></font><br>
+      <font size="+1"><tt>}</tt></font><br>
+      <font size="+1"><tt>
+        </tt></font><br>
+    </blockquote>
+    Uncomment <big><span style="font-family: monospace;">testQuickSort()</span></big>
+    and make
+    sure the unit test passes.
+    <h4>Step 6: Compare Different Sorting Algorithms</h4>
+    <p>
+      At this point, you have four different sorting algorithms: (1)
+      Selection Sort, (2) Insertion Sort,&nbsp; (3) Merge Sort, and (4)
+      Quick Sort. From class we
+      know that Selection and Insertion are O(N<sup>2</sup>) algorithms,
+      while Merge and Quick are O(N lg N). In this step you will compare
+      timing results
+      of these four different algorithms.</p>
+    <p>Write a <big><span style="font-family: monospace;">compareSorts()
+        </span></big>method
+      in
+      the
+      <big><span style="font-family: monospace;">SortingAlgorithm</span></big>
+      class that
+      is
+      passed&nbsp;
+      a
+      value
+      n.&nbsp;
+      The signature appears as follows:<br>
+    </p>
+    <p style="margin-left: 40px;"><big style="font-family: monospace;">public
+        static
+        void
+        compareSorts(int
+        n)</big><br>
+    </p>
+    <p><br>
+      This method will create an array of <big><span style="font-family: monospace;">Comparable</span></big>
+      objects of
+      size <big><span style="font-family: monospace;">n</span></big>,
+      create
+      a copy
+      of that array, and then sort the four copies (details below),
+      using
+      each of the
+      sorting
+      algorithms.
+      <br>
+    </p>
+    <p>To simplify the code for sorting the array copies, you should
+      create
+      an
+      array
+      of the sorting algorithms, such as:<br>
+    </p>
+    <p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;<font size="+1"><tt> static final int NUMBER = 4</tt></font><br>
+    </p>
+    <pre>	<big>SortingAlgorithm[] sorts = new SortingAlgorithm[NUMBER];<br><br>	sorts[0] = new SelectionSort();<br>	sorts[1] = new InsertionSort();<br>	sorts[2] = new MergeSort();<br>	sorts[3] = new Quicksort();<br><br>        </big><br></pre>
+    You should also create a two dimensional array&nbsp; (<big><span style="font-family: monospace;">sortArray</span></big>) of size
+    4.&nbsp; Create a
+    randomly generated array (using the <big><span style="font-family:
+        monospace;">createRandomArray() </span></big>method
+    in
+    your
+    <big><span style="font-family: monospace;">Algorithm</span></big>
+    class) and store it in <big><span style="font-family: monospace;">sortArray[0]</span></big>.
+    Then,
+    copy
+    it
+    to
+    <big style="font-family: monospace;"><span style="font-family:
+        monospace;">sortArray</span>[1]</big> as well as <big><span style="font-family: monospace;">sortArray[2]</span></big>
+    and&nbsp; <big><span style="font-family: monospace;">sortArray[3] </span></big>(The
+    reason
+    behind copying the array is that we want to test each sorting
+    algorithm
+    using identical arrays.) You may find the following code helpful:<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<big><span style="font-family: monospace;"> Integer[][] sortArray = new
+        Integer[NUMBER][n];</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;
+        sortArray[0] = createRandomArray(n);<br>
+        <br style="font-family: monospace;">
+      </span><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;
+System.arraycopy(sortArray[0],
+        0, sortArray[1], 0, sortArray[0].length);</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;
+        System.arraycopy(sortArray[0], 0, sortArray[2], 0,
+        sortArray[0].length);</span></big><big><span style="font-family:
+        monospace;"><br>
+        &nbsp;&nbsp;&nbsp;&nbsp; System.arraycopy(sortArray[0], 0,
+        sortArray[3], 0, sortArray[0].length);</span></big>
+    <p>After you have an array of sorting algorithms and a second two
+      dimensional array&nbsp; to sort, use a for loop to cycle through
+      all
+      your sorts:
+    </p>
+    <pre>	<big>for (int i=0; i &lt; sorts.length; i++) {<br>		sorts[i].time(sortArray[i]);<br>		// anything you need to do to report statistics<br>	}</big><br></pre>
+    <h4>Step 7: Compare the four sorting algorithms</h4>
+    <p>
+      Create a new class named <big><span style="font-family:
+          monospace;">TimeSorts</span></big>
+      and have the <big><span style="font-family: monospace;">main()</span></big>
+      method compare
+      the elapsed time for sorting random arrays
+      of various sizes (suggestions include 25000, 50000, 75000, and
+      100000 -
+      although you can certainly go higher than this) by calling <big><span style="font-family: monospace;">compareSorts()</span></big>
+      multiple times. You can either add a for-loop in your main method
+      so it
+      creates several different sized arrays (better), or run your
+      program
+      multiple times and copy and paste the timing results for
+      comparison. <br>
+    </p>
+    <p>Is there a consistent "winner" and a consistent "loser"?<br>
+    </p>
+    <p>Test your results for 25000, 50000, 75000, and 100000 .<br>
+    </p>
+    <br>
+    <hr>
+    <h3>Lab Handin</h3>
+    <p>
+      Upload to Canvas:<br>
+    </p>
+    <p>Zip the following files together:<br>
+    </p>
+    <ul>
+      <li>Algorithm.java </li>
+      <li>SortingAlgorithm.java </li>
+      <li>SelectionSort.java </li>
+      <li>InsertionSort.java </li>
+      <li>MergeSort.java</li>
+      <li>QuickSort.java<br>
+      </li>
+      <li>TimeSorts.java </li>
+    </ul>
+    <br>
+  
+
+</body></html>
