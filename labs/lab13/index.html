@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Lab 13</title>
+  </head>
+  <body>
+    <h3>CMPT 202 Data Structures<br>
+      Lab 13</h3>
+    <h3>Heaps / Priority Queues / HeapSort</h3>
+    <br>
+    <b>Objectives</b><br>
+    <br>
+    - Implement a Maximum Heap<br>
+    <br>
+    - Use the Maximum Heap to implement a priority queue<br>
+    <br>
+    - Use the Maximum Heap to implement HeapSort<br>
+    <br>
+    <meta charset="utf-8">
+    <br>
+    <b>Create a Maximum Heap</b><br>
+    <br>
+    The following interface defines basic operations for a heap. This
+    may be either a maximum or minimum heap.<br>
+    <br>
+    - <a href="./HeapInterface.java">HeapInterface.java</a><br>
+    <br>
+    The following Java class is a starting point for creating a maxheap:<br>
+    <br>
+    - <a href="./MaxHeap.java">MaxHeap.java</a><br>
+    <br>
+    Implement the remainder of the <big><tt>MaxHeap</tt></big> class.<br>
+    <br>
+    Specifics:<br>
+    <br>
+    - The <big><tt>add()</tt></big> and <big><tt>remove()</tt></big>
+    methods are implemented according to the strategies outlined in our
+    coverage of <a target="_blank"
+href="http://people.westminstercollege.edu/faculty/ggagne/spring2018/202/handouts/heaps/index.html">heaps</a>.<br>
+    <br>
+    - Remember items in a heap are stored in the array beginning at
+    position 1 (leave 0 empty.)<br>
+    <br>
+    - Notice there is an <big><tt>ensureCapacity()</tt></big> method
+    with some of the logic provided. If there is not sufficient room to
+    add a new element, double the capacity of the array. (No need for
+    prime numbers - just double the size of the array.)<br>
+    <br>
+    Write a unit test that checks the methods you have implemented work
+    correctly. Name your unit test <big><tt>TestMaxHeap.java</tt></big>
+    .<br>
+    <br>
+    Be sure to add a test that triggers the actions in <big><tt>ensureCapacity()</tt></big>.
+    I am not supplying my unit test, but will check your solution
+    against my test. Be sure to test thoroughly!<br>
+    <br>
+    *** Be sure to write rigorous unit tests .... don't just write
+    something simple so you will pass the test.<br>
+    <br>
+    <b>Create a Priority Queue</b><br>
+    <br>
+    The following interface specifies a basic queue (this is the same <big><tt>Queue</tt></big>
+    interface we used earlier this semester.)<br>
+    <br>
+    - <a href="./Queue.java">Queue.java</a><br>
+    <br>
+    Implement this interface as a priority queue. Your implementation
+    will be named <big><tt>PriorityQueue.java</tt></big> and the class
+    header will appear as follows:<br>
+    <br>
+    <big><tt>public class PriorityQueue&lt;T extends Comparable&lt;?
+        super T&gt;&gt; implements Queue&lt;T&gt;</tt><tt><br>
+      </tt><tt>{</tt><tt><br>
+      </tt><tt><br>
+      </tt><tt>}</tt></big><br>
+    <br>
+    You will use your <big><tt>MaxHeap</tt></big> to implement the <big><tt>Queue</tt></big>
+    interface. The implementation of the <big><tt>Queue</tt></big>
+    methods should be one-liners as they delegate all work to the <big><tt>MaxHeap</tt></big>.<br>
+    <br>
+    <b>Testing Your Priority Queue</b><br>
+    <br>
+    To motivate testing of your priority queue, we will use an example
+    from operating systems: An operating system is responsible for
+    maintaining all running programs in your system - the operating
+    system refers to running programs as <i>tasks</i>. A task has
+    several characteristics, for our example we will identify a task as
+    having a <i>name</i> and a <i>priority</i>. The name refers to the
+    name of the running program (i.e. Chrome), the priority refers to a
+    integer value that specifies the relative priority of the task,
+    where a higher numeric priority indicates a higher relative
+    priority. An operating system will schedule the task with the
+    highest priority to run on an available processing core.<br>
+    <br>
+    The following class identifies a generic task:<br>
+    <br>
+    - <a href="./Task.java">Task.java</a><br>
+    <br>
+    Notice Task implements the <big><tt>Comparable</tt></big>
+    interface, allowing tasks to be inserted into a priority queue.<br>
+    <br>
+    The following unit test ensures your priority queue functions
+    properly by inserting several <big><tt>Task</tt></big> objects into
+    the <big><tt>PriorityQueue</tt></big> and testing they are removed
+    according to priority.<br>
+    <br>
+    - <a href="./TestPriorityQueue.java">TestPriorityQueue.java</a><br>
+    <br>
+    <b>Implement HeapSort</b><br>
+    <br>
+    A heap can also be used to implement a heap sort algorithm. We went
+    over the general algorithm in class (for a minimum heap):<br>
+    <br>
+    1. Add all items that need to be sorted into a min heap.<br>
+    <br>
+    2. Remove the items from the heap, and insert them into the sorted
+    array from lowest to highest.<br>
+    <br>
+    We are using a max heap - not a min heap, but it should be clear how
+    you can use a max heap to implement the heap sort.<br>
+    <br>
+    This portion of the lab will require modifying <a target="_blank"
+href="http://people.westminstercollege.edu/faculty/ggagne/spring2018/202/labs/lab12/index.html">Lab
+
+
+
+
+      12</a> somewhat. Switch to your Lab 12 project for completing this
+    step.<br>
+    <br>
+    In Lab 12 you created <big><tt>SelectionSort</tt></big>, <big><tt>InsertionSort</tt></big>,
+    <font size="+1"><tt> QuickSort</tt></font>, and <big><tt>MergeSort</tt></big>.
+    Create a class <big><tt>HeapSort.java</tt></big> that is designed
+    similarly to the other three sorting algorithms, however this will
+    require using a heap to sort the array passed to the <big><tt>sort()</tt></big>
+    method. This should not be a complicated sorting algorithm as it
+    delegates&nbsp; <big><tt>MaxHeap</tt></big> to implement steps 1
+    and 2 from above.<br>
+    <br>
+    To test your implementation, modify <big><tt>SortingTests.java</tt></big>
+    (the unit tests for Lab 12) so that it also tests the <big><tt>HeapSort</tt></big>
+    . Only proceed when you pass the tests.<br>
+    <br>
+    Next, modify <big><tt>SortingAlgorithm.java</tt></big> so that it
+    includes <big><tt>HeapSort</tt></big> when comparing the different
+    sorting algorithms. Check lists of size 25000, 50000, 75000, and
+    100000.<br>
+    <br>
+    How does <big><tt>HeapSort</tt></big> compare to the other four
+    sorting algorithms?<br>
+    <br>
+    What to Submit:<br>
+    <br>
+    - <big><tt>MaxHeap.java</tt></big><br>
+    <br>
+    - <big><tt>TestMaxHeap.java</tt></big><br>
+    <br>
+    - <big><tt>PriorityQueue.java</tt></big><br>
+    <br>
+    - <big><tt>HeapSort.java</tt></big><br>
+    <br>
+    Include a comment in your submission as to how the heap sort
+    compared to the other three sorting algorithms.<br>
+    <br>
+    <br class="Apple-interchange-newline">
+    <hr size="2" width="100%"><br>
+  </body>
+</html>

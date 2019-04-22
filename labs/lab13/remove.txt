@@ -1,0 +1,15 @@
+General Algorithm for Removal
+
+item: what is being inserted into the heap
+
+while (  )
+    get the index of the larger child
+
+    if the larger child is > item , move the larger
+    child up. Otherwise break.
+
+    set the index to the index of the larger child
+
+
+copy the item to the array at location index 
+

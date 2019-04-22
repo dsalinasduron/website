@@ -1,0 +1,61 @@
+\documentclass{article} 
+\usepackage{listings}
+\title{CMPT 202\\Quiz 3}
+\begin{document}
+\maketitle
+\emph{Name:}
+
+\emph{Show your work. Proving $f(n)$ has big O complexity $g(n)$ means that
+$Kg(n)$ is always greater than $f(n)$ from some value $n_0$ onwards. $K$ is
+usually a big positive number.}
+
+\begin{enumerate}
+	\item What is the maximum number of nodes a complete binary can have if
+	its height is 2? (A tree of height 2 has three levels.) How many in a
+	tree of height 8? (You may leave your answer in the form $X^Y$)
+	\vspace{1in}
+	\item Prove that $f(n) = n - 1$ has big O complexity $O(n)$.
+	\vspace{1in}
+	\item Prove that $f(n) = n$ has big O complexity $O(n^2)$
+	\vspace{1in}
+	\item \emph{Circle the correct answer: }The big O complexity of binary
+	search on an array is: \hspace{0.3in} O(1) \hspace{0.3in} O(log $n$) \hspace{0.3in}
+	O($n$) \hspace{0.3in} O($n^2$) \hspace{0.3in} other . If you circled
+	\emph{other}, write your answer here:
+	\item In a binary search tree, the root node contains 5 as data. What
+	possible values can the right subtree contain?
+	\vspace{1in}
+	\item Write an example of a recursive method below. Label the base case
+	and the recursive step(s).
+	\vspace{1in}
+	\item Complete the method below if necessary. The method should perform
+	an in-order traversal. \\
+	You may assume that the node class has public
+	leftChild and rightChild instance variables, and that these instance
+	variables are of type Node.
+	\begin{lstlisting}[language=Java]
+	public static void traverse(Node root) {
+		if(root == null) {
+			return;
+		}
+		else {
+			
+
+			System.out.println("Visited: " + root.content);
+
+
+		}
+	}
+	\end{lstlisting}
+
+	\item Select the data structure that has the fastest lookup time,
+	assuming that they all contain the same amount of data :
+		\begin{enumerate}
+			\item A complete binary search tree
+			\item A binary search tree that is not complete
+			\item A hash table with frequent collisions
+			\item A hash table with no collisions
+		\end{enumerate}
+
+\end{enumerate}
+\end{document}
