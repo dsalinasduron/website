@@ -1,0 +1,154 @@
+\documentclass{article}
+\usepackage{listings}
+\begin{document}
+\newcommand{\var}[1]{\texttt{#1}}
+\newcommand{\java}[1]{\lstinputlisting[language=java,numbers=left]{#1}}
+\newcommand{\sol}[1]{\\}
+\section{Java}
+	\subsection{Formal \& Actual Type}
+		\lstinputlisting[language=java,numbers=left]{q1.java}
+	\begin{enumerate}
+		\item What is the actual type of variable \var a? \sol{Object}
+		\item What is the actual type of variable \var b? \sol{String}
+		\item Will line 5 compile? Why or Why not? \\ \emph{Hint: Look up the Object
+		class in the Java API} \sol{Yes. The Object class has a
+		hashCode method.}
+		\item Will line 6 compile? Why or Why not? \\ \emph{Hint: Look
+		up the Object class in the Java API} \sol{Yes. The Object class
+		has a toString method.}
+		\item Assuming that line 6 compiles and that both the Object class
+		and the String class have their own implementation of
+		\var{toString}, which version runs in line 6? The
+		Object implementation or the String implementation? \sol{The
+		String implementation. The actual type is what decides which
+		implementation runs.}
+	\end{enumerate}
+
+	\subsection{Static}
+	\java{q2.java}
+	\begin{enumerate}
+		\item There is an illegal method call in \var main. Which line
+		is illegal? \sol{Line 12. Static methods can only directly call
+		other static methods.}
+		\item There is an illegal assignment in \var{m1} . Which line is
+		illegal? \sol{Line 5. Static methods can only use static
+		variables.}
+		\item Which variables can be used in \var{m2}? \sol{x and y.
+		Non-static methods can use both static and non-static
+		variables.}
+	\end{enumerate}
+
+	\subsection{Scope}
+	\java{q3.java}
+	\begin{enumerate}
+		\item This code prints \\ 7 \\ 8 \\ Modify lines 9, 10 and 13
+		so that the printout is \\ 9 \\ 6 \\ \sol{Make L.9 print out
+		the value of the x that L.13 changes. Change L.13 to this.x = 9; and L.9 to
+		System.out.println(instance.x);. To reference a static variable, the class name can
+		be used. Change L.10 to System.out.println(q3.y);  }
+	\end{enumerate}
+	\subsection{Generics}
+	\java{q4.java}
+	\begin{enumerate}
+		\item Modify the Node class so that \var{getContent} for \var a
+		returns a String and \var{getContent} for \var b returns an
+		Integer. \\ \sol{ Node<T> \\ T content; \\  public Node(T input)
+		\{ \\ public T getContent() \{  \\ Node<String> a = new
+		Node<String>("Ada"); \\ Node<Integer> b = new Node<Integer>(5); }
+	\end{enumerate}
+
+\section{Data Structures}
+	\subsection{Stack}
+		\begin{enumerate}
+			\item What does it mean to push an item onto the stack?
+			\sol{The item is the new top of the stack.}
+			\item What does it mean to pop an item from the stack?
+			\sol{The item is removed from being the top of the
+			stack. The previous top becomes the new top.}
+			\item If 1,2,3 are pushed onto the stack, in what order
+			will they be returned? \sol{In reverse order: 3,2,1}
+		\end{enumerate}
+	\subsection{Queue}
+		\begin{enumerate}
+			\item What four letter acronym is used to describe the
+			order in which items are added to a queue? \sol{FIFO}
+			\item What do the four letters mean? \sol{First in
+			First Out}
+		\end{enumerate}
+	\subsection{Heap}
+		\begin{enumerate}
+			\item In a max-heap, is the parent of the node greater than
+			or less than the node? \sol{The parent is greater than
+			the children.}
+			\item Binary trees are used to represent heaps.
+			Describe the shape of binary tree a heap is trying to
+			maintain. \sol{Flat and wide: a complete binary tree.}
+			\item Can any node be removed from the heap? If not,
+			which node(s) can be removed from the heap? \sol{The
+			only node that can be removed is the node that, when
+			removed, will maintain the completeness of the tree.
+			This is the last node that was added. In terms of
+			content, only the content of the root of the heap can
+			be removed.  }
+		\end{enumerate}
+	\subsection{Dictionary}
+		\begin{enumerate}
+			\item Dictionaries are a collection of Key-Value pairs.
+			The pairs can be stored in the dictionary and then one
+			(either the key or the value) can be looked up using
+			the other. Are keys retrieved using values or are
+			values retrieved using keys? \sol{Values are retrieved
+			using keys.}
+			\item Dictionaries are usually implemented using a hash
+			table for fast lookup times. How does hashing allow for
+			a fast lookup time? \sol{Hashing allows us to transform
+			any key into an index of the array we are using for
+			storage. When the get(key) method is called, the key is
+			hashed and and the index $i$ of the key is found. Then,
+			the value at $i$ is returned. Since hashing is $O(1)$
+			and array lookups are $O(1)$, the get method is $O(1)$
+			unless there are collisions. }
+		\end{enumerate}
+
+\section{Algorithms}
+	\subsection{Sorting}
+		\begin{enumerate}
+			\item If a list is sorted, what is the first item? What
+			is the last item? \sol{The first item is the smallest
+			item. The last item is the largest item.}
+			\item Name three sorting algorithms. \sol{Insertion
+			sort, Quicksort, Selection Sort}
+			\item The fastest guaranteed sorting algorithm is
+			MergeSort. What is its complexity? \sol{$O(n \log n)$}
+		\end{enumerate}
+	\subsection{Binary Search}
+	\begin{enumerate}
+		\item The height of a tree grows as the number of nodes
+		increases. If a tree has $n$ nodes, what is its height?
+		\sol{$\log_2 n$, rounded down.}
+		\item Given your previous answer, what is the complexity of
+		looking up a value in a complete binary search tree?
+		\emph{Hint: This is the same complexity of searching for an
+		item in a sorted array.} \sol{The complexity of searching in a
+		BST is the same as the number of comparisons that have to be
+		done. This is at most the height of the tree, which is itself
+		at most $O(log_2 n)$. }
+	\end{enumerate}
+	\subsection{Recursion}
+		\begin{enumerate}
+			\item What are the two basic components of all
+			recursive functions?  \sol{The base case and recursive
+			step.}
+			\item Lists are recursive data structures. A list can
+			be thought of being composed of smaller lists. What is
+			another recursive data structure? \sol{A binary tree.
+			It has a root and two smaller trees attached.}
+		\end{enumerate}
+\section{Because for some reason I kept mentioning it:}
+\subsection{\var main}
+\begin{enumerate}
+	\item Why must \var main be static? \sol{The main method must be run
+	straight from the class because, at the beginning of any Java program,
+	no objects have been created yet.}
+\end{enumerate}
+\end{document}
